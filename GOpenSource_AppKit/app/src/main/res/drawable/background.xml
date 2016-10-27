@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item>
+        <bitmap
+            android:id="@+id/bitmap_splash"
+            android:src="@drawable/splashbackgroud" >
+        </bitmap>
+    </item>
+    <item android:top="100dp">
+        <bitmap
+            android:id="@+id/bitmap_splash"
+            android:gravity="top"
+            android:src="@drawable/gizwitslogo" >
+        </bitmap>
+    </item>
+
+</layer-list>

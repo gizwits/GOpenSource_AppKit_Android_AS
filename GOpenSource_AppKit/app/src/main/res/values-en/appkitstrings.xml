@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GOpenSourceAppKit</string>
+
+    <!-- 用户模块 -->
+
+
+    <!-- UserLoginActivity -->
+    <string name="app_company">Gizwits Account Login</string>
+    <string name="name_hint">Please enter phone number</string>
+    <string name="password_hint">Please Enter password</string>
+    <string name="name_digits">0123456789</string>
+    <string name="psw_digits">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ</string>
+    <string name="forget_password"><u>Reset password</u></string>
+    <string name="login">Login</string>
+    <string name="register">Sign up</string>
+    <string name="toast_name_empet">Username can not be empty</string>
+    <string name="toast_name_wrong">the phone number is incorrect</string>
+    <string name="toast_psw_empet">Password cannot be empty</string>
+    <string name="toast_login_successful">Login successful</string>
+    <string name="toast_login_failed">Login failed</string>
+    <string name="toast_third_login_failed">Login With Third Account Failed</string>
+    <string name="loadingtext">Processing, please wait ...</string>
+    <string name="pass">Skip >></string>
+    <string name="QQ">QQ</string>
+    <string name="Wechat">Wechat</string>
+    <string name="double_click">Press again to exit the program</string>
+
+    <!-- RegisterActivity -->
+    <string name="getcode">Get code</string>
+    <string name="getcode_again">To obtain the verification code</string>
+    <string name="timer_message">seconds later to get</string>
+    <string name="code_hint">please enter verification code</string>
+    <string name="send_successful">Phone verification code sent successfully</string>
+    <string name="send_failed">Phone verification code sent failed</string>
+    <string name="toast_code_empet">Verification code cannot be empty</string>
+    <string name="toast_psw_wrong">Please enter your password</string>
+    <string name="toast_psw_short">The password must be at least six characters</string>
+    <string name="no_getcode">Verification code error</string>
+    <string name="btn_register">Sign up now</string>
+    <string name="register_successful">Registered successfully</string>
+    <string name="register_failed">Registered Failed</string>
+
+    <!-- ForgetPasswordActivity -->
+    <string name="reset">Reset password</string>
+    <string name="reset_successful">Reset successful</string>
+    <string name="reset_failed">Reset failed</string>
+
+    <!-- 配置模块 -->
+
+
+    <!-- ReadyDeviceActivity -->
+    <string name="add_device">Add&#160;</string>
+    <string name="addDeviceTitle">Device</string>
+    <string name="add_device_menu">Add Device</string>
+    <string name="like_img">Verify that the device is in standby status</string>
+    <string name="noredlight">Not red?</string>
+    <string name="finished">Steps have been completed</string>
+    <string name="join_by_hands">Manual mode</string>
+    <string name="next">Next</string>
+
+    <!-- ResetDeviceActivity -->
+    <string name="reset_device">Reset Device</string>
+    <string name="resetmessage">click [KEY2], [RGB LED] lights red</string>
+
+    <!-- ChooseDeviceActivity -->
+    <string name="choosedevice">Select device</string>
+    <string name="nodevice">Without my device?</string>
+    <string name="network_error">Please switch to Wifi environment</string>
+    <string name="itemtext_start">Discover Devices</string>
+    <string name="itemtext_end">,Quick Configuration</string>
+    <string name="ssid_start">XPG-GAgent</string>
+
+    <!-- CheckDeviceWorkWifi -->
+    <string name="check_psw_title">Check the password</string>
+    <string name="check_psw">Check Wifi password</string>
+    <string name="configuration_title">Please enter the Wifi password</string>
+    <string name="softPsw_hint">Please enter the Wi-Fi password</string>
+    <string name="workwifi_isnull">Password is empty?</string>
+    <string name="choose_wifi_list_title">Please select an available Wi-Fi</string>
+    <string name="softssid_error">softap failure, please return</string>
+
+    <!-- ConfigCountDownActivity -->
+    <string name="configcountDown_title">Search for device</string>
+    <string name="configuration_successful">Configuration success</string>
+    <string name="configuration_failed">Configuration Failed</string>
+    <string name="prompt">Tip</string>
+    <string name="cancel_besure">Discard your configuration?</string>
+    <string name="cancel">Cancel</string>
+    <string name="besure">OK</string>
+    <string name="device_connect">The phone is configured devices to connect to the Internet...</string>
+    <string name="timer_text">After the device connected to the network, the phone can be remotely controlled device</string>
+    <string name="softap_loading">Connecting softap, please wait ...</string>
+
+    <!-- FailedConfigActivity -->
+    <string name="please_check">device connected to the network is unsuccessful, check the following:</string>
+    <string name="join_failed_title">The connection is failed</string>
+    <string name="check_first">1、Incorrect wifi password?</string>
+    <string name="check_second">2、Wifi can connect to the Internet?</string>
+    <string name="check_third">3、Mobile phones, devices and routers from farther than</string>
+    <string name="check_fourth">4、The router limits</string>
+    <string name="config_again">Retry</string>
+
+    <!-- 设备列表 -->
+
+
+    <!-- DeviceListActivity -->
+    <string name="devicelist_title">My Devices</string>
+    <string name="offline_devices">OFFLINE DEVICES</string>
+    <string name="found_devices">DISCOVERY OF NEW DEVICES</string>
+    <string name="havenot_device">No device</string>
+    <string name="no_lan">Remote</string>
+    <string name="lan">Lan</string>
+    <string name="unbind">Unbound</string>
+    <string name="found_many_devices">Discover multiple devices，Click to select Configure Device</string>
+    <string name="no_devices">No devices ,please add</string>
+    <string name="bound_divices">BOUND DEVICES</string>
+    <string name="remove_bound">Unbinding</string>
+    <string name="unbound_failed">Unbundling fail</string>
+    <string name="bound_successful">Bound Successful</string>
+    <string name="bound_failed">Bound Failed</string>
+    <string name="setsubscribe_failed">Subscribe to fail</string>
+    <string name="cancel_logout">Logout?</string>
+    <string name="no">Cancel</string>
+    <string name="doubleclick_logout">Click again to log off</string>
+    <string name="doubleclick_back">Click again to return</string>
+
+    <!-- AboutActivity -->
+    <string name="appversion">App Version:</string>
+    <string name="SDKversion">SDK version:</string>
+    <string name="about">About</string>
+
+    <!-- CaptureActivity -->
+    <string name="unknown_device">Unknown Device</string>
+    <string name="camera_error">Open the camera error, please try again later</string>
+    <string name="scan">Easy way to bind device</string>
+
+    <!-- 菜单 -->
+
+    <string name="QR_code">Scan QR code</string>
+    <string name="site">Setting</string>
+    <string name="change_user">Logout</string>
+
+    <!-- 扫描二维码 -->
+    <string name="add_successful">Add successful</string>
+    <string name="add_failed">Add failure，Please go back and try again</string>
+    <string name="qr_code_tips">Put the QR code into the frame</string>
+    <string name="scanning_successful">Scan code successfully</string>
+
+    <!-- MessageHandler -->
+    <string name="not_ticker">Gizwits:You have new device online, please check!</string>
+    <string name="not_title">New device</string>
+    <string name="not_text">,Click to configure this device!</string>
+    <string name="notify">Remind</string>
+
+    <!-- 设备控制 -->
+    <!-- DeviceControlActivity -->
+    <string name="MAC">MAC:</string>
+
+    <!-- AitlinkChooseDeviceWorkWifiActivity -->
+    <string name="choose_mode_title">Module type selection</string>
+    <string name="choose_mode_start">Select the type of module:</string>
+    <string name="configuration_message">Please enter the Wi-Fi password</string>
+    <string name="five_wifi">Note: Does not support 5G channel Wi-Fi network</string>
+
+    <!-- AirlinkReadyActivity -->
+    <string name="airlink_ready_title">Standby status</string>
+    <string name="airlink_ready_message">press [KEY2] until [RGB LED] lights green</string>
+
+    <!-- AirlinkConfigCountdown -->
+    <string name="search_join">Search for and connect the device</string>
+    <string name="searching_device">Searching for devices</string>
+    <string name="searched_device">Searched to device</string>
+    <string name="trying_join_device">Trying to connect with the device</string>
+
+    <!-- App Toast -->
+    <string name="AppID_Toast">请在UIConfig.json文件中填写您在机智云申请的App_ID、App_Secret、Product_Key等</string>
+    <string name="TencentAPPID_Toast">请在UIConfig.json文件中填写您在腾讯开放平台申请的App_ID</string>
+    <string name="WechatAppID_Toast">请在UIConfig.json文件中填写您在微信开放平台申请的App_ID、App_Secret</string>
+    <string name="BDPushAppID_Toast">请在UIConfig.json文件中填写您在百度推送服务平台申请的App_ID</string>
+	<string name="No_WXApp">Haven\'t WeChat Application</string>
+    
+    <!-- Error Toast -->
+    <string name="GIZ_SDK_PARAM_FORM_INVALID">SDK\'s intenal data form is invalid</string>
+    <string name="GIZ_SDK_CLIENT_NOT_AUTHEN">SDK is starting</string>
+    <string name="GIZ_SDK_CLIENT_VERSION_INVALID">SDK version is invalid</string>
+    <string name="GIZ_SDK_UDP_PORT_BIND_FAILED">UDP port bind failed</string>
+    <string name="GIZ_SDK_DAEMON_EXCEPTION">Exception happened with SDK\'s daemon service </string>
+    <string name="GIZ_SDK_PARAM_INVALID">SDK API param is invalid</string>
+    <string name="GIZ_SDK_APPID_LENGTH_ERROR">The length of AppID is invalid</string>
+    <string name="GIZ_SDK_LOG_PATH_INVALID">SDK\'s Log file path is invalid</string>
+    <string name="GIZ_SDK_LOG_LEVEL_INVALID">The log level is invalid</string>
+    <string name="GIZ_SDK_DEVICE_CONFIG_SEND_FAILED">Device‘s wifi configuration send failed</string>
+    <string name="GIZ_SDK_DEVICE_CONFIG_IS_RUNNING">Device‘s wifi configuration is running</string>
+    <string name="GIZ_SDK_DEVICE_CONFIG_TIMEOUT">Device‘s wifi configuration is timeout</string>
+    <string name="GIZ_SDK_DEVICE_DID_INVALID">DID is invalid</string>
+    <string name="GIZ_SDK_DEVICE_MAC_INVALID">MAC is invalid</string>
+    <string name="GIZ_SDK_SUBDEVICE_DID_INVALID">DID of the sub device is invalid</string>
+    <string name="GIZ_SDK_DEVICE_PASSCODE_INVALID">The passcode is invalid</string>
+    <string name="GIZ_SDK_DEVICE_NOT_SUBSCRIBED">The device is not subscribed</string>
+    <string name="GIZ_SDK_DEVICE_NO_RESPONSE">The device has no response to APP‘s command</string>
+    <string name="GIZ_SDK_DEVICE_NOT_READY">The device is not ready</string>
+    <string name="GIZ_SDK_DEVICE_NOT_BINDED">The device is not binded</string>
+    <string name="GIZ_SDK_DEVICE_CONTROL_WITH_INVALID_COMMAND">There is some invalid command in the control command</string>
+    <string name="GIZ_SDK_DEVICE_CONTROL_FAILED">Failed to controll device</string>
+    <string name="GIZ_SDK_DEVICE_GET_STATUS_FAILED">Failed to get device status</string>
+    <string name="GIZ_SDK_DEVICE_CONTROL_VALUE_TYPE_ERROR">The command param type is error</string>
+    <string name="GIZ_SDK_DEVICE_CONTROL_VALUE_OUT_OF_RANGE">The command param value is out of range</string>
+    <string name="GIZ_SDK_DEVICE_CONTROL_NOT_WRITABLE_COMMAND">There is readonly command in the control command</string>
+    <string name="GIZ_SDK_BIND_DEVICE_FAILED">Failed to bind device</string>
+    <string name="GIZ_SDK_UNBIND_DEVICE_FAILED">Failed to unbind device</string>
+    <string name="GIZ_SDK_DNS_FAILED">Failed to parse DNS</string>
+    <string name="GIZ_SDK_M2M_CONNECTION_SUCCESS">Connect to M2M successfully</string>
+    <string name="GIZ_SDK_SET_SOCKET_NON_BLOCK_FAILED">Failed to set socket non block</string>
+    <string name="GIZ_SDK_CONNECTION_TIMEOUT">Connection timeout</string>
+    <string name="GIZ_SDK_CONNECTION_REFUSED">Connection is refused</string>
+    <string name="GIZ_SDK_CONNECTION_ERROR">Connection error happened</string>
+    <string name="GIZ_SDK_CONNECTION_CLOSED">Connection is cloesed by peer</string>
+    <string name="GIZ_SDK_SSL_HANDSHAKE_FAILED">SSL handshake is failed</string>
+    <string name="GIZ_SDK_DEVICE_LOGIN_VERIFY_FAILED">Device login verified failed</string>
+    <string name="GIZ_SDK_INTERNET_NOT_REACHABLE">The internet is not reachable</string>
+    <string name="GIZ_SDK_HTTP_ANSWER_FORMAT_ERROR">HTTP response data format is error</string>
+    <string name="GIZ_SDK_HTTP_ANSWER_PARAM_ERROR">HTTP response data is error</string>
+    <string name="GIZ_SDK_HTTP_SERVER_NO_ANSWER">HTTP server can not response</string>
+    <string name="GIZ_SDK_HTTP_REQUEST_FAILED">HTTP request failed</string>
+    <string name="GIZ_SDK_OTHERWISE">Other errors</string>
+    <string name="GIZ_SDK_MEMORY_MALLOC_FAILED">Memory malloc failed</string>
+    <string name="GIZ_SDK_THREAD_CREATE_FAILED">Thread create failed</string>
+    <string name="GIZ_SDK_USER_ID_INVALID">The login user ID is invalid</string>
+    <string name="GIZ_SDK_TOKEN_INVALID">The login token is invalid</string>
+    <string name="GIZ_SDK_GROUP_ID_INVALID">The group ID is invalid</string>
+    <string name="GIZ_SDK_GROUPNAME_INVALID">The group name is invalid</string>
+    <string name="GIZ_SDK_GROUP_PRODUCTKEY_INVALID">The group type is invalid</string>
+    <string name="GIZ_SDK_GROUP_FAILED_DELETE_DEVICE">Failed to delete group</string>
+    <string name="GIZ_SDK_GROUP_FAILED_ADD_DEVICE">Failed to add group</string>
+    <string name="GIZ_SDK_GROUP_GET_DEVICE_FAILED">Failed to get the group list</string>
+    <string name="GIZ_SDK_DATAPOINT_NOT_DOWNLOAD">The device datapoint is not download yet</string>
+    <string name="GIZ_SDK_DATAPOINT_SERVICE_UNAVAILABLE">The device datapoint server is unavaliable</string>
+    <string name="GIZ_SDK_DATAPOINT_PARSE_FAILED">Failed to parse the device datapoint</string>
+    <string name="GIZ_SDK_SDK_NOT_INITIALIZED">SDK is not initialized yet</string>
+    <string name="GIZ_SDK_APK_CONTEXT_IS_NULL">The context is null，so can not start SDK</string>
+    <string name="GIZ_SDK_APK_PERMISSION_NOT_SET">The permission for SDK is not set</string>
+    <string name="GIZ_SDK_CHMOD_DAEMON_REFUSED">Failed to change permissions for SDK daemon</string>
+    <string name="GIZ_SDK_EXEC_DAEMON_FAILED">Failed to excute SDK daemon</string>
+    <string name="GIZ_SDK_EXEC_CATCH_EXCEPTION">Exception happened when excute SDK daemon</string>
+    <string name="GIZ_SDK_APPID_IS_EMPTY">The AppId is null，so can not use SDK</string>
+    <string name="GIZ_SDK_UNSUPPORTED_API">It is deprecated API, no longer to provide support </string>
+    <string name="GIZ_SDK_REQUEST_TIMEOUT">SDK API is timeout</string>
+    <string name="GIZ_SDK_DAEMON_VERSION_INVALID">SDK daemon version is invalid</string>
+    <string name="GIZ_SDK_PHONE_NOT_CONNECT_TO_SOFTAP_SSID">Phone is not connect to the device softap ssid</string>
+    <string name="GIZ_SDK_DEVICE_CONFIG_SSID_NOT_MATCHED">The phone\'s wifi and the device onboarding ssid is not the same</string>
+    <string name="GIZ_SDK_NOT_IN_SOFTAPMODE">Device is not in SoftAP mode</string>
+    <string name="GIZ_SDK_PHONE_WIFI_IS_UNAVAILABLE">Phone is not in Wifi network</string>
+    <string name="GIZ_SDK_RAW_DATA_TRANSMIT">It is the raw data transmission</string>
+    <string name="GIZ_SDK_PRODUCT_IS_DOWNLOADING">The device datapoint file is downloading</string>
+    <string name="GIZ_SDK_START_SUCCESS">SDK started successfully</string>
+    <string name="GIZ_SITE_PRODUCTKEY_INVALID">The product key is invalid</string>
+    <string name="GIZ_SITE_DATAPOINTS_NOT_DEFINED">The product datapoint is not defined</string>
+    <string name="GIZ_SITE_DATAPOINTS_NOT_MALFORME">The product datapoint is unavailable</string>
+    <string name="GIZ_OPENAPI_MAC_ALREADY_REGISTERED">mac already registered!</string>
+    <string name="GIZ_OPENAPI_PRODUCT_KEY_INVALID">product_key invalid</string>
+    <string name="GIZ_OPENAPI_APPID_INVALID">appid invalid</string>
+    <string name="GIZ_OPENAPI_TOKEN_INVALID">token invalid</string>
+    <string name="GIZ_OPENAPI_USER_NOT_EXIST">user not exist</string>
+    <string name="GIZ_OPENAPI_TOKEN_EXPIRED">token expired</string>
+    <string name="GIZ_OPENAPI_M2M_ID_INVALID">m2m_id invalid</string>
+    <string name="GIZ_OPENAPI_SERVER_ERROR">server error</string>
+    <string name="GIZ_OPENAPI_CODE_EXPIRED">code expired</string>
+    <string name="GIZ_OPENAPI_CODE_INVALID">code invalid</string>
+    <string name="GIZ_OPENAPI_SANDBOX_SCALE_QUOTA_EXHAUSTED">sandbox scale quota exhausted!</string>
+    <string name="GIZ_OPENAPI_PRODUCTION_SCALE_QUOTA_EXHAUSTED">production scale quota exhausted!</string>
+    <string name="GIZ_OPENAPI_PRODUCT_HAS_NO_REQUEST_SCALE">product has no request scale!</string>
+    <string name="GIZ_OPENAPI_DEVICE_NOT_FOUND">device not found!</string>
+    <string name="GIZ_OPENAPI_FORM_INVALID">form invalid!</string>
+    <string name="GIZ_OPENAPI_DID_PASSCODE_INVALID">did or passcode invalid!</string>
+    <string name="GIZ_OPENAPI_DEVICE_NOT_BOUND">device not bound!</string>
+    <string name="GIZ_OPENAPI_PHONE_UNAVALIABLE">phone unavailable!</string>
+    <string name="GIZ_OPENAPI_USERNAME_UNAVALIABLE">username unavailable!</string>
+    <string name="GIZ_OPENAPI_USERNAME_PASSWORD_ERROR">username or password error!</string>
+    <string name="GIZ_OPENAPI_SEND_COMMAND_FAILED">send command failed!</string>
+    <string name="GIZ_OPENAPI_EMAIL_UNAVALIABLE">email unavailable!</string>
+    <string name="GIZ_OPENAPI_DEVICE_DISABLED">device is disabled!</string>
+    <string name="GIZ_OPENAPI_FAILED_NOTIFY_M2M">fail to notify m2m!</string>
+    <string name="GIZ_OPENAPI_ATTR_INVALID">attr invalid!</string>
+    <string name="GIZ_OPENAPI_USER_INVALID">user invalid!</string>
+    <string name="GIZ_OPENAPI_FIRMWARE_NOT_FOUND">firmware not found!</string>
+    <string name="GIZ_OPENAPI_JD_PRODUCT_NOT_FOUND">JD product info not found!</string>
+    <string name="GIZ_OPENAPI_DATAPOINT_DATA_NOT_FOUND">datapoint data not found!</string>
+    <string name="GIZ_OPENAPI_SCHEDULER_NOT_FOUND">scheduler not found!</string>
+    <string name="GIZ_OPENAPI_QQ_OAUTH_KEY_INVALID">qq oauth key invalid!</string>
+    <string name="GIZ_OPENAPI_OTA_SERVICE_OK_BUT_IN_IDLE">ota upgrade service OK, but in idle or disable!</string>
+    <string name="GIZ_OPENAPI_BT_FIRMWARE_UNVERIFIED">bt firmware unverified, except verify device!</string>
+    <string name="GIZ_OPENAPI_BT_FIRMWARE_NOTHING_TO_UPGRADE">bt firmware is OK, but nothing to upgrade!</string>
+    <string name="GIZ_OPENAPI_SAVE_KAIROSDB_ERROR">Save kairosdb error!</string>
+    <string name="GIZ_OPENAPI_EVENT_NOT_DEFINED">event not defined!</string>
+    <string name="GIZ_OPENAPI_SEND_SMS_FAILED">send sms failed!</string>
+    <string name="GIZ_OPENAPI_APPLICATION_AUTH_INVALID">X-Gizwits-Application-Auth invalid!</string>
+    <string name="GIZ_OPENAPI_NOT_ALLOWED_CALL_API">Not allowed to call deprecated API!</string>
+    <string name="GIZ_OPENAPI_BAD_QRCODE_CONTENT">bad qrcode content!</string>
+    <string name="GIZ_OPENAPI_REQUEST_THROTTLED">request was throttled</string>
+    <string name="GIZ_OPENAPI_DEVICE_OFFLINE">device offline!</string>
+    <string name="GIZ_OPENAPI_TIMESTAMP_INVALID">\'X-Gizwits-Timestamp invalid!</string>
+    <string name="GIZ_OPENAPI_SIGNATURE_INVALID">X-Gizwits-Signature invalid!</string>
+    <string name="GIZ_OPENAPI_DEPRECATED_API">API deprecated!</string>
+    <string name="GIZ_OPENAPI_RESERVED">reserved</string>
+    <string name="GIZ_PUSHAPI_BODY_JSON_INVALID">body json invalid</string>
+    <string name="GIZ_PUSHAPI_DATA_NOT_EXIST">Data Not Exist</string>
+    <string name="GIZ_PUSHAPI_NO_CLIENT_CONFIG">No Client config</string>
+    <string name="GIZ_PUSHAPI_NO_SERVER_DATA">No Server Data</string>
+    <string name="GIZ_PUSHAPI_GIZWITS_APPID_EXIST">Gizwits_appid Already Exist</string>
+    <string name="GIZ_PUSHAPI_PARAM_ERROR">Param Error</string>
+    <string name="GIZ_PUSHAPI_AUTH_KEY_INVALID">Auth_Key Invalid</string>
+    <string name="GIZ_PUSHAPI_APPID_OR_TOKEN_ERROR">Appid or User-Token Error</string>
+    <string name="GIZ_PUSHAPI_TYPE_PARAM_ERROR">Type Param Error</string>
+    <string name="GIZ_PUSHAPI_ID_PARAM_ERROR">Id Param Error</string>
+    <string name="GIZ_PUSHAPI_APPKEY_SECRETKEY_INVALID">ApiKey or SecretKey Param Invalid</string>
+    <string name="GIZ_PUSHAPI_CHANNELID_ERROR_INVALID">ChannelId Param Error</string>
+    <string name="GIZ_PUSHAPI_PUSH_ERROR">Push Error</string>
+    <string name="UNKNOWN_ERROR">Unknow Error</string>
+
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+
+    <RelativeLayout
+        android:id="@+id/params"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="80dp"
+        android:paddingRight="80dp"
+        android:paddingTop="80dp" >
+
+        <com.gizwits.opensource.appkit.view.RoundProgressBar
+            android:id="@+id/rpbConfig"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="16dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_alignBottom="@+id/params"
+        android:id="@+id/tvTimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/search_join" />
+
+</RelativeLayout>

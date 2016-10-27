@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="mode">
+        <item>乐鑫</item>
+        <item>庆科</item>
+        <item>汉枫</item>
+        <item>瑞昱</item>       
+        <item>联盛德</item>
+        <item>高通</item>
+        <item>TI</item>       
+        <item>宇音天下</item>
+        <item>庆科V3</item>
+        <item>古北</item>
+    </string-array> 
+    
+</resources>
