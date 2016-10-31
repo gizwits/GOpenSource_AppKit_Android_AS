@@ -1,15 +1,15 @@
 package com.gizwits.opensource.appkit.ControlModule;
 
-import com.gizwits.gizwifisdk.api.GizWifiDevice;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
-import com.gizwits.opensource.appkit.R;
-
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.gizwits.gizwifisdk.api.GizWifiDevice;
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 
 public class GosDeviceControlActivity extends GosBaseActivity {
 
@@ -24,11 +24,9 @@ public class GosDeviceControlActivity extends GosBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gos_device_control);
 		initDevice();
-		// 设置ActionBar
 		setActionBar(true, true, device.getProductName());
 		initView();
 	}

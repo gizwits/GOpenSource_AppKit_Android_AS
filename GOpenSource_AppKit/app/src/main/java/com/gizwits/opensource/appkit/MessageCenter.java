@@ -68,8 +68,6 @@ public class MessageCenter {
 			GizWifiSDK.sharedInstance().setLogLevel(
 					GizLogPrintLevel.GizLogPrintAll);
 
-			GizWifiSDK.sharedInstance().setCloudService(
-					GosDeploy.setCloudService());
 
 		};
 	};

@@ -8,15 +8,15 @@
 
     <!-- UserLoginActivity -->
     <string name="app_company">Gizwits Account Login</string>
-    <string name="name_hint">Please enter phone number</string>
-    <string name="password_hint">Please Enter password</string>
+    <string name="name_hint">Phone number</string>
+    <string name="password_hint">Password</string>
     <string name="name_digits">0123456789</string>
     <string name="psw_digits">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ</string>
-    <string name="forget_password"><u>Reset password</u></string>
+    <string name="forget_password"><u>Forgot password?</u></string>
     <string name="login">Login</string>
     <string name="register">Sign up</string>
     <string name="toast_name_empet">Username can not be empty</string>
-    <string name="toast_name_wrong">the phone number is incorrect</string>
+    <string name="toast_name_wrong">please input cellphone</string>
     <string name="toast_psw_empet">Password cannot be empty</string>
     <string name="toast_login_successful">Login successful</string>
     <string name="toast_login_failed">Login failed</string>
@@ -26,18 +26,18 @@
     <string name="QQ">QQ</string>
     <string name="Wechat">Wechat</string>
     <string name="double_click">Press again to exit the program</string>
-
+    <string name="push_type_string">Only enterprise developers can apply this feature which is not supported by the current version.</string>
     <!-- RegisterActivity -->
     <string name="getcode">Get code</string>
     <string name="getcode_again">To obtain the verification code</string>
     <string name="timer_message">seconds later to get</string>
-    <string name="code_hint">please enter verification code</string>
+    <string name="code_hint">Verification code</string>
     <string name="send_successful">Phone verification code sent successfully</string>
     <string name="send_failed">Phone verification code sent failed</string>
     <string name="toast_code_empet">Verification code cannot be empty</string>
-    <string name="toast_psw_wrong">Please enter your password</string>
+    <string name="toast_psw_wrong">please input password</string>
     <string name="toast_psw_short">The password must be at least six characters</string>
-    <string name="no_getcode">Verification code error</string>
+    <string name="no_getcode">code invalid</string>
     <string name="btn_register">Sign up now</string>
     <string name="register_successful">Registered successfully</string>
     <string name="register_failed">Registered Failed</string>
@@ -46,7 +46,7 @@
     <string name="reset">Reset password</string>
     <string name="reset_successful">Reset successful</string>
     <string name="reset_failed">Reset failed</string>
-
+    <string name="forget_pass">Reset password</string>
     <!-- 配置模块 -->
 
 
@@ -76,30 +76,30 @@
     <string name="check_psw_title">Check the password</string>
     <string name="check_psw">Check Wifi password</string>
     <string name="configuration_title">Please enter the Wifi password</string>
-    <string name="softPsw_hint">Please enter the Wi-Fi password</string>
+    <string name="softPsw_hint">Password</string>
     <string name="workwifi_isnull">Password is empty?</string>
     <string name="choose_wifi_list_title">Please select an available Wi-Fi</string>
     <string name="softssid_error">softap failure, please return</string>
 
     <!-- ConfigCountDownActivity -->
-    <string name="configcountDown_title">Search for device</string>
+    <string name="configcountDown_title">Search for devices</string>
     <string name="configuration_successful">Configuration success</string>
     <string name="configuration_failed">Configuration Failed</string>
-    <string name="prompt">Tip</string>
+    <string name="prompt">tip</string>
     <string name="cancel_besure">Discard your configuration?</string>
     <string name="cancel">Cancel</string>
     <string name="besure">OK</string>
-    <string name="device_connect">The phone is configured devices to connect to the Internet...</string>
+    <string name="device_connect">Phone is configured device to connect to internet</string>
     <string name="timer_text">After the device connected to the network, the phone can be remotely controlled device</string>
     <string name="softap_loading">Connecting softap, please wait ...</string>
 
     <!-- FailedConfigActivity -->
-    <string name="please_check">device connected to the network is unsuccessful, check the following:</string>
-    <string name="join_failed_title">The connection is failed</string>
+    <string name="please_check">device connected to the network is unsuccessful:</string>
+    <string name="join_failed_title">Connection failed</string>
     <string name="check_first">1、Incorrect wifi password?</string>
     <string name="check_second">2、Wifi can connect to the Internet?</string>
-    <string name="check_third">3、Mobile phones, devices and routers from farther than</string>
-    <string name="check_fourth">4、The router limits</string>
+    <string name="check_third">3、Phone, device and router from farther than.</string>
+    <string name="check_fourth">4、The router limits.</string>
     <string name="config_again">Retry</string>
 
     <!-- 设备列表 -->
@@ -128,7 +128,7 @@
 
     <!-- AboutActivity -->
     <string name="appversion">App Version:</string>
-    <string name="SDKversion">SDK version:</string>
+    <string name="SDKversion">SDK Version:</string>
     <string name="about">About</string>
 
     <!-- CaptureActivity -->
@@ -145,7 +145,7 @@
     <!-- 扫描二维码 -->
     <string name="add_successful">Add successful</string>
     <string name="add_failed">Add failure，Please go back and try again</string>
-    <string name="qr_code_tips">Put the QR code into the frame</string>
+    <string name="qr_code_tips">Put the QR Code into the frame</string>
     <string name="scanning_successful">Scan code successfully</string>
 
     <!-- MessageHandler -->
@@ -170,17 +170,17 @@
 
     <!-- AirlinkConfigCountdown -->
     <string name="search_join">Search for and connect the device</string>
-    <string name="searching_device">Searching for devices</string>
+    <string name="searching_device">Searching for devices...</string>
     <string name="searched_device">Searched to device</string>
-    <string name="trying_join_device">Trying to connect with the device</string>
+    <string name="trying_join_device">Trying to connect with the device...</string>
 
     <!-- App Toast -->
     <string name="AppID_Toast">请在UIConfig.json文件中填写您在机智云申请的App_ID、App_Secret、Product_Key等</string>
     <string name="TencentAPPID_Toast">请在UIConfig.json文件中填写您在腾讯开放平台申请的App_ID</string>
     <string name="WechatAppID_Toast">请在UIConfig.json文件中填写您在微信开放平台申请的App_ID、App_Secret</string>
     <string name="BDPushAppID_Toast">请在UIConfig.json文件中填写您在百度推送服务平台申请的App_ID</string>
-	<string name="No_WXApp">Haven\'t WeChat Application</string>
-    
+    <string name="No_WXApp">Haven\'t WeChat Application</string>
+
     <!-- Error Toast -->
     <string name="GIZ_SDK_PARAM_FORM_INVALID">SDK\'s intenal data form is invalid</string>
     <string name="GIZ_SDK_CLIENT_NOT_AUTHEN">SDK is starting</string>
@@ -193,7 +193,7 @@
     <string name="GIZ_SDK_LOG_LEVEL_INVALID">The log level is invalid</string>
     <string name="GIZ_SDK_DEVICE_CONFIG_SEND_FAILED">Device‘s wifi configuration send failed</string>
     <string name="GIZ_SDK_DEVICE_CONFIG_IS_RUNNING">Device‘s wifi configuration is running</string>
-    <string name="GIZ_SDK_DEVICE_CONFIG_TIMEOUT">Device‘s wifi configuration is timeout</string>
+    <string name="GIZ_SDK_DEVICE_CONFIG_TIMEOUT">Bad network,switch to manual connection</string>
     <string name="GIZ_SDK_DEVICE_DID_INVALID">DID is invalid</string>
     <string name="GIZ_SDK_DEVICE_MAC_INVALID">MAC is invalid</string>
     <string name="GIZ_SDK_SUBDEVICE_DID_INVALID">DID of the sub device is invalid</string>
