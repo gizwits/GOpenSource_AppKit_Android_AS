@@ -1,8 +1,6 @@
 # 机智云开源框架App工程
 ==================
 
-    此为Android Studio工程。Eclipse工程请去这里下载：https://github.com/gizwits/GizOpenSource_AppKit_Android
-
     使用机智云开源APP之前，需要先在机智云开发平台创建您自己的产品和应用。
 
     开源App需要使用您申请的AppId、AppSecret以及您自己的产品ProductKey才能正常运行。
@@ -13,12 +11,10 @@
 
     使用QQ、微信登录或百度或极光推送功能之前，需要您先到相应网站申请对应的应用信息，在配置文件中作相应的替换。
 
-    配置文件位置：assets/UIConfig.json
-
 
 # GizWifiSDK 版本号
 
-    2.03.03
+    2.04.04
 
 # 功能介绍
 
@@ -129,16 +125,24 @@
 	wechat_app_secret：微信登录 app secret
 	push_type：推送类型 【0：关闭，1：极光，2：百度】
 	bpush_app_key：百度推送 app key
-	openAPI_URL：openAPI 域名及端口，格式：“api.gizwits.com:80”，不写端口默认80
-	site_URL：site 域名及端口，格式：“site.gizwits.com:80”，不写端口默认80
-	push_URL：推送绑定服务器 域名及端口，格式：“push.gizwits.com:80”，不写端口默认80
+	openAPIDomain：openAPI 域名及端口，格式：api.gizwits.com”。要指定端口，格式为：”xxx.xxxxxxx.com:81&8443”
+	siteDomain：site 域名及端口，格式：“site.gizwits.com”。要指定端口，格式为：”xxx.xxxxxxx.com:81&8443”
+	pushDomain：推送绑定服务器 域名及端口，格式：“push.gizwits.com”。要指定端口，格式为：”xxx.xxxxxxx.com:81&8443”
 	buttonColor：按钮颜色
 	buttonTextColor：按钮文字颜色
 	navigationBarColor：导航栏颜色
 	navigationBarTextColor：导航栏文字颜色
 	configProgressViewColor：配置中界面 progress view 颜色
 	addDeviceTitle：添加设备界面 导航栏标题文字
-
+	qq：是否打开QQ登录【true：打开】
+    wechat：是否打开微信登录【true：打开】
+    anonymousLogin：是否打开匿名登录【true：打开】
+    
+              需要注意:
+              1.极光推送的appid需要在AndroidManifest.xml 中填写见243行。
+              2.微信登录需要进行在腾讯api中设置自己的md5值否者无法正常运行
+              3.tencent_app_id需要在AndroidManifest.xml中89行填写
+    
     具体细节可以参考【开源框架工程使用文档】：http://docs.gizwits.com/hc/kb/article/186638/
 
 # GoKit硬件依赖
