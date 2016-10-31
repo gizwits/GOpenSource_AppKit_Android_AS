@@ -153,7 +153,7 @@
 
     ▪	虚拟设备
         机智云官网提供GoKit虚拟设备的支持，链接地址：
-        http://site.gizwits.com/developer/product/631/virtualdevice
+	http://dev.gizwits.com/zh-cn/developer/product/
 
     ▪	实体设备
         GoKit开发板。您可以在机智云官方网站上免费预约申请（限量10000台），申请地址：
