@@ -156,8 +156,8 @@
 	http://dev.gizwits.com/zh-cn/developer/product/
 
     ▪	实体设备
-        GoKit开发板。您可以在机智云官方网站上免费预约申请（限量10000台），申请地址：
-        http://gizwits.com/zh-cn/gokit
+        GoKit开发板。您可以在机智云官方网站上免费预约申请，申请地址：
+        http://www.gizwits.com/zh-cn/gokit
 
     GoKit开发板提供MCU开源代码供智能硬件设计者参考，请去此处下载：https://github.com/gizwits/gokit-mcu
 
