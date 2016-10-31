@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gizwits.opensource.appkit"
     android:versionCode="1"
-    android:versionName="2.2.0.081718" >
+    android:versionName="2.3.0.102812" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -86,7 +86,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="tencent1105509702" />
+                <data android:scheme="QQ的appkey" />
             </intent-filter>
         </activity>
         <activity
@@ -242,7 +242,7 @@
         <!-- Required. AppKey copied from Portal -->
         <meta-data
             android:name="JPUSH_APPKEY"
-            android:value="4c9f1e9d391d8dbbe343a1bb" />
+            android:value="请在这填写" />
 
         <!-- 百度推送 -->
         <!-- push service start -->

@@ -91,6 +91,8 @@ public class GosAirlinkConfigCountdownActivity extends
 		modeDataList.add(GizWifiGAgentType.GizGAgentFSK);
 		modeDataList.add(GizWifiGAgentType.GizGAgentMXCHIP3);
 		modeDataList.add(GizWifiGAgentType.GizGAgentBL);
+		modeDataList.add(GizWifiGAgentType.GizGAgentAtmelEE);
+		modeDataList.add(GizWifiGAgentType.GizGAgentOther);
 		modeList = new ArrayList<GizWifiGAgentType>();
 
 		modeList.add(modeDataList

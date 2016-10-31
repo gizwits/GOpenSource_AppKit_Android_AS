@@ -135,7 +135,7 @@ public class GosForgetPasswordActivity extends GosUserModuleBaseActivity impleme
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gos_forget_password);
 		// 设置ActionBar
-		setActionBar(true, true, R.string.forget_password);
+		setActionBar(true, true, R.string.forget_pass);
 
 		initView();
 		initEvent();

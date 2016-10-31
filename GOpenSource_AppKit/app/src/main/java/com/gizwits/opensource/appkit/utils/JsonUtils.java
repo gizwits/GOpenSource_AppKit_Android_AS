@@ -5,7 +5,9 @@
  */
 package com.gizwits.opensource.appkit.utils;
 
-import android.util.Log;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,9 +25,8 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+import android.util.Log;
 
 /**
  * @description 更多移动开发内容请关注： http://blog.csdn.net/xiong_it
@@ -36,7 +37,7 @@ import java.io.InputStreamReader;
  */
 public class JsonUtils {
 	public static JSONObject initSSLWithHttpClinet(String path)
-			throws  IOException {
+			throws ClientProtocolException, IOException {
 		HTTPSTrustManager.allowAllSSL();
 		JSONObject jsonObject = null;
 		int timeOut = 30 * 1000;
@@ -50,6 +51,7 @@ public class JsonUtils {
 		registry.register(new Scheme("https", TrustAllSSLSocketFactory .getDefault(), 443));
 		ClientConnectionManager manager = new ThreadSafeClientConnManager( param, registry);
 		DefaultHttpClient client = new DefaultHttpClient(manager, param);
+
 		HttpGet request = new HttpGet(path);
 		// HttpGet request = new HttpGet("https://www.alipay.com/");
 		HttpResponse response = client.execute(request);

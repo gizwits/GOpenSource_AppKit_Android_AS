@@ -318,7 +318,7 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 	public void onPause() {
 		super.onPause();
 		boundMessage.clear();
-		// TODO GosMessageHandler.getSingleInstance().SetHandler(null);
+		 GosMessageHandler.getSingleInstance().SetHandler(null);
 
 	}
 

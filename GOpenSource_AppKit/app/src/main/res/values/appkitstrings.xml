@@ -26,7 +26,7 @@
     <string name="QQ">QQ登录</string>
     <string name="Wechat">微信登录</string>
     <string name="double_click">再按一次退出程序</string>
-
+	<string name="push_type_string">推送功能仅限于企业开发者使用，目前版本暂不支持推送</string>
     <!-- RegisterActivity -->
     <string name="getcode">获取验证码</string>
     <string name="getcode_again">重新获取验证码</string>
@@ -46,7 +46,7 @@
     <string name="reset">重置密码</string>
     <string name="reset_successful">重置成功</string>
     <string name="reset_failed">重置失败</string>
-
+    <string name="forget_pass">忘记密码?</string>
     <!-- 配置模块 -->
 
 
@@ -90,16 +90,16 @@
     <string name="cancel">取消</string>
     <string name="besure">确定</string>
     <string name="device_connect">手机已连接设备，正在配置设备连接网络...</string>
-    <string name="timer_text">设备连接网络后，手机可以远程控制设备</string>
+    <string name="timer_text">设备连接网络后，手机可以远程控制...</string>
     <string name="softap_loading">正在连接设备热点，请稍等...</string>
 
     <!-- FailedConfigActivity -->
     <string name="please_check">设备连接网络不成功，请检查：</string>
     <string name="join_failed_title">连接不成功</string>
-    <string name="check_first">1、wifi密码是否正确：</string>
-    <string name="check_second">2、网络是否能正常上网：</string>
-    <string name="check_third">3、手机、设备与路由器是否离得比较远：</string>
-    <string name="check_fourth">4、路由器是否设置了限制：</string>
+    <string name="check_first">1、wifi密码是否正确;</string>
+    <string name="check_second">2、网络是否能正常上网;</string>
+    <string name="check_third">3、手机、设备与路由器是否离得比较远;</string>
+    <string name="check_fourth">4、路由器是否设置了限制.</string>
     <string name="config_again">重试</string>
 
     <!-- 设备列表 -->
@@ -145,7 +145,7 @@
     <!-- 扫描二维码 -->
     <string name="add_successful">添加成功</string>
     <string name="add_failed">添加失败，请返回重试</string>
-    <string name="qr_code_tips">将二维码放入框内，即刻自动扫描</string>
+    <string name="qr_code_tips">将二维码放入框内，即可自动扫描</string>
     <string name="scanning_successful">扫码成功</string>
 
     <!-- MessageHandler -->
@@ -170,7 +170,7 @@
 
     <!-- AirlinkConfigCountdown -->
     <string name="search_join">搜索并连接设备</string>
-    <string name="searching_device">正在搜索设备</string>
+    <string name="searching_device">正在搜索设备...</string>
     <string name="searched_device">已搜索到设备</string>
     <string name="trying_join_device">正在尝试与设备连接...</string>
 

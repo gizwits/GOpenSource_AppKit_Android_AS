@@ -23,6 +23,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.gizwits.opensource.appkit.R;
 import com.gizwits.opensource.appkit.utils.AssetsUtils;
@@ -85,13 +86,13 @@ public class GosDeploy {
 	private static final String Bpush_App_Key = "bpush_app_key";
 
 	/** The API_URL Key */
-	private static final String API_URL_Key = "openAPI_URL";
+	private static final String API_URL_Key = "openAPIDomain";
 
 	/** The Site_URL Key */
-	private static final String SITE_URL_Key = "site_URL";
+	private static final String SITE_URL_Key = "siteDomain";
 
 	/** The GDMS_URL Key */
-	private static final String GDMS_URL_Key = "push_URL";
+	private static final String GDMS_URL_Key = "pushDomain";
 
 	/** The ButtonColor Key */
 	private static final String ButtonColor_Key = "buttonColor";
@@ -110,15 +111,13 @@ public class GosDeploy {
 
 	/** The AddDeviceTitle Key */
 	private static final String AddDeviceTitle_Key = "addDeviceTitle";
-	
-	
+
 	/** The QQ Key */
 	private static final String QQ = "qq";
-	
-	
+
 	/** The Wechat Key */
 	private static final String Wechat = "wechat";
-	
+
 	/** The AnonymousLogin Key */
 	private static final String AnonymousLogin = "anonymousLogin";
 
@@ -150,30 +149,31 @@ public class GosDeploy {
 
 		return infoMap.get(App_Secret_Key).toString();
 	}
-	
+
 	/**
-	 *  用来判断是否需要打开QQ登录
-	 * @return  boolean
+	 * 用来判断是否需要打开QQ登录
+	 * 
+	 * @return boolean
 	 */
-	public static boolean setQQ(){
+	public static boolean setQQ() {
 		return (Boolean) infoMap.get(QQ);
 	}
-	
-	
+
 	/**
-	 *  用来判断是否需要打开Wechat登录
-	 * @return  boolean
+	 * 用来判断是否需要打开Wechat登录
+	 * 
+	 * @return boolean
 	 */
-	public static boolean setWechat(){
+	public static boolean setWechat() {
 		return (Boolean) infoMap.get(Wechat);
 	}
-	
-	
+
 	/**
-	 *  用来判断是否需要打开匿名登录
-	 * @return  boolean
+	 * 用来判断是否需要打开匿名登录
+	 * 
+	 * @return boolean
 	 */
-	public static boolean setAnonymousLogin(){
+	public static boolean setAnonymousLogin() {
 		return (Boolean) infoMap.get(AnonymousLogin);
 	}
 
@@ -255,8 +255,17 @@ public class GosDeploy {
 		int PushType_FromMap = Integer.parseInt(infoMap.get(Push_Type_Key)
 				.toString());
 		if (PushType_FromMap == 1) {
+
+			Toast.makeText(
+					context,
+					context.getResources().getString(R.string.push_type_string),
+					1).show();
 			pushType = PushType_FromMap;
 		} else if (PushType_FromMap == 2) {
+			Toast.makeText(
+					context,
+					context.getResources().getString(R.string.push_type_string),
+					1).show();
 			pushType = PushType_FromMap;
 		}
 
@@ -493,8 +502,10 @@ public class GosDeploy {
 	private void readJSON() {
 		try {
 			FileInputStream input = new FileInputStream(fileOutName);
-			InputStreamReader inputStreamReader = new InputStreamReader(input, "UTF-8");
-			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+			InputStreamReader inputStreamReader = new InputStreamReader(input,
+					"UTF-8");
+			BufferedReader bufferedReader = new BufferedReader(
+					inputStreamReader);
 			String line;
 			StringBuilder stringBuilder = new StringBuilder();
 			while ((line = bufferedReader.readLine()) != null) {
@@ -529,14 +540,13 @@ public class GosDeploy {
 
 	}
 
-	
-	//拷贝json文件
-	private void copyJson(){
+	// 拷贝json文件
+	private void copyJson() {
 		try {
 			AssetsUtils.assetsDataToSD(fileOutName, fileName, context);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 }

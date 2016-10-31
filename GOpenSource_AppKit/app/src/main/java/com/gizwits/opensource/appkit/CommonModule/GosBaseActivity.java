@@ -80,7 +80,7 @@ public class GosBaseActivity extends Activity {
 
 	/**
 	 * 添加ProductKeys
-	 *
+	 * 
 	 * @param productkeys
 	 * @return
 	 */
@@ -95,7 +95,7 @@ public class GosBaseActivity extends Activity {
 
 	/**
 	 * 设置ActionBar（工具方法*开发用*）
-	 *
+	 * 
 	 * @param HBE
 	 * @param DSHE
 	 * @param Title
@@ -115,7 +115,7 @@ public class GosBaseActivity extends Activity {
 
 	/**
 	 * 设置ActionBar（工具方法*GosAirlinkChooseDeviceWorkWiFiActivity.java中使用*）
-	 *
+	 * 
 	 * @param HBE
 	 * @param DSHE
 	 * @param Title
@@ -145,7 +145,7 @@ public class GosBaseActivity extends Activity {
 
 	/**
 	 * 设置ProgressDialog
-	 *
+	 * 
 	 * @param Message
 	 * @param Cancelable
 	 * @param CanceledOnTouchOutside
@@ -159,7 +159,7 @@ public class GosBaseActivity extends Activity {
 
 	/**
 	 * 检查网络连通性（工具方法）
-	 *
+	 * 
 	 * @param context
 	 * @return
 	 */
@@ -609,7 +609,7 @@ public class GosBaseActivity extends Activity {
 
 	/**
 	 * NoID 提示
-	 *
+	 * 
 	 * @param context
 	 *            当前上下文
 	 * @param alertTextID
