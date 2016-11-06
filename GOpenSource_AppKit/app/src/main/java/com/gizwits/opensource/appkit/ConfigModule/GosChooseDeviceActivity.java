@@ -24,217 +24,233 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-@SuppressLint({ "InflateParams", "HandlerLeak" })
+@SuppressLint({"InflateParams", "HandlerLeak"})
 public class GosChooseDeviceActivity extends GosConfigModuleBaseActivity implements OnClickListener {
 
-	/** The tv Nodevice */
-	TextView tvNodevice;
+    /**
+     * The tv Nodevice
+     */
+    TextView tvNodevice;
 
-	/** The list View */
-	ListView listView;
+    /**
+     * The list View
+     */
+    ListView listView;
 
-	/** 系统WiFi集合 */
-	ArrayList<ScanResult> list;
+    /**
+     * 系统WiFi集合
+     */
+    ArrayList<ScanResult> list;
 
-	/** 设备热点集合 */
-	ArrayList<ScanResult> softList;
+    /**
+     * 设备热点集合
+     */
+    ArrayList<ScanResult> softList;
 
-	/** 适配器 */
-	Myadapter myadapter;
+    /**
+     * 适配器
+     */
+    Myadapter myadapter;
 
-	/** 计时器 */
-	Timer timer;
+    /**
+     * 计时器
+     */
+    Timer timer;
 
-	int flag = 0;
+    int flag = 0;
 
-	private enum handler_key {
+    private enum handler_key {
 
-		/** 刷新列表 */
-		UPDATALIST,
+        /**
+         * 刷新列表
+         */
+        UPDATALIST,
 
-	}
+    }
 
-	Handler handler = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			super.handleMessage(msg);
-			handler_key key = handler_key.values()[msg.what];
-			switch (key) {
-			// 更新列表
-			case UPDATALIST:
-				initData();
-				break;
-			}
-		};
+    Handler handler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            super.handleMessage(msg);
+            handler_key key = handler_key.values()[msg.what];
+            switch (key) {
+                // 更新列表
+                case UPDATALIST:
+                    initData();
+                    break;
+            }
+        }
 
-	};
+        ;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_gos_choose_device);
-		// 设置ActionBar
-		setActionBar(true, true, R.string.choosedevice);
+    };
 
-		initView();
-		initEvent();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gos_choose_device);
+        // 设置ActionBar
+        setActionBar(true, true, R.string.choosedevice);
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		startTimer();
-	}
+        initView();
+        initEvent();
+    }
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		timer.cancel();
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startTimer();
+    }
 
-	private void initData() {
-		list = new ArrayList<ScanResult>();
-		list = (ArrayList<ScanResult>) NetUtils.getCurrentWifiScanResult(GosChooseDeviceActivity.this);
-		softList = new ArrayList<ScanResult>();
-		ScanResult scanResult;
-		for (int i = 0; i < list.size(); i++) {
-			scanResult = list.get(i);
-			if (scanResult.SSID.length() > SoftAP_Start.length()) {
-				if (scanResult.SSID.contains(SoftAP_Start)) {
-					softList.add(scanResult);
-				}
-			}
-		}
-		myadapter = new Myadapter(softList);
-		listView.setAdapter(myadapter);
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
 
-	}
+    private void initData() {
+        list = new ArrayList<ScanResult>();
+        list = (ArrayList<ScanResult>) NetUtils.getCurrentWifiScanResult(GosChooseDeviceActivity.this);
+        softList = new ArrayList<ScanResult>();
+        ScanResult scanResult;
+        for (int i = 0; i < list.size(); i++) {
+            scanResult = list.get(i);
+            if (scanResult.SSID.length() > SoftAP_Start.length()) {
+                if (scanResult.SSID.contains(SoftAP_Start)) {
+                    softList.add(scanResult);
+                }
+            }
+        }
+        myadapter = new Myadapter(softList);
+        listView.setAdapter(myadapter);
 
-	private void initView() {
-		tvNodevice = (TextView) findViewById(R.id.nodevice);
-		listView = (ListView) findViewById(R.id.list_view);
+    }
 
-	}
+    private void initView() {
+        tvNodevice = (TextView) findViewById(R.id.nodevice);
+        listView = (ListView) findViewById(R.id.list_view);
 
-	private void initEvent() {
-		tvNodevice.setOnClickListener(this);
+    }
 
-		listView.setOnItemClickListener(new OnItemClickListener() {
+    private void initEvent() {
+        tvNodevice.setOnClickListener(this);
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Intent intent = new Intent(GosChooseDeviceActivity.this, GosConfigCountdownActivity.class);
-				intent.putExtra("softSSID", softList.get(position).SSID);
-				startActivity(intent);
-				finish();
-			}
-		});
-	}
+        listView.setOnItemClickListener(new OnItemClickListener() {
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.nodevice:
-			Intent intent = new Intent(GosChooseDeviceActivity.this, GosDeviceResetActivity.class);
-			intent.putExtra("flag", "FLAG");
-			startActivity(intent);
-			break;
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(GosChooseDeviceActivity.this, GosConfigCountdownActivity.class);
+                intent.putExtra("softSSID", softList.get(position).SSID);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
 
-		default:
-			break;
-		}
-	}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.nodevice:
+                Intent intent = new Intent(GosChooseDeviceActivity.this, GosDeviceResetActivity.class);
+                intent.putExtra("flag", "FLAG");
+                startActivity(intent);
+                break;
 
-	private void startTimer() {
-		timer = new Timer();
-		timer.schedule(new TimerTask() {
+            default:
+                break;
+        }
+    }
 
-			@Override
-			public void run() {
-				handler.sendEmptyMessage(handler_key.UPDATALIST.ordinal());
-			}
-		}, 0, 3000);
-	}
+    private void startTimer() {
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
 
-	class Myadapter extends BaseAdapter {
+            @Override
+            public void run() {
+                handler.sendEmptyMessage(handler_key.UPDATALIST.ordinal());
+            }
+        }, 0, 3000);
+    }
 
-		ArrayList<ScanResult> softList;
+    class Myadapter extends BaseAdapter {
 
-		public Myadapter(ArrayList<ScanResult> list) {
-			this.softList = list;
-		}
+        ArrayList<ScanResult> softList;
 
-		@Override
-		public int getCount() {
-			return softList.size();
-		}
+        public Myadapter(ArrayList<ScanResult> list) {
+            this.softList = list;
+        }
 
-		@Override
-		public Object getItem(int position) {
-			return null;
-		}
+        @Override
+        public int getCount() {
+            return softList.size();
+        }
 
-		@Override
-		public long getItemId(int position) {
-			return 0;
-		}
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
 
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			View view = convertView;
-			Holder holder;
-			if (view == null) {
-				view = LayoutInflater.from(GosChooseDeviceActivity.this).inflate(R.layout.item_gos_wifi_list, null);
-				holder = new Holder(view);
-				view.setTag(holder);
-			} else {
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
 
-				holder = (Holder) view.getTag();
-			}
-			String ssid = softList.get(position).SSID;
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View view = convertView;
+            Holder holder;
+            if (view == null) {
+                view = LayoutInflater.from(GosChooseDeviceActivity.this).inflate(R.layout.item_gos_wifi_list, null);
+                holder = new Holder(view);
+                view.setTag(holder);
+            } else {
 
-			String itemStart = (String) getText(R.string.itemtext_start);
-			String itemEnd = (String) getText(R.string.itemtext_end);
-			holder.getTextView().setText(itemStart + ssid.substring(ssid.length() - 4) + itemEnd);
+                holder = (Holder) view.getTag();
+            }
+            String ssid = softList.get(position).SSID;
 
-			return view;
-		}
+            String itemStart = (String) getText(R.string.itemtext_start);
+            String itemEnd = (String) getText(R.string.itemtext_end);
+            holder.getTextView().setText(itemStart + ssid.substring(ssid.length() - 4) + itemEnd);
 
-	}
+            return view;
+        }
 
-	class Holder {
-		View view;
+    }
 
-		public Holder(View view) {
-			this.view = view;
-		}
+    class Holder {
+        View view;
 
-		TextView textView;
+        public Holder(View view) {
+            this.view = view;
+        }
 
-		public TextView getTextView() {
-			if (textView == null) {
-				textView = (TextView) view.findViewById(R.id.SSID_text);
-			}
-			return textView;
-		}
-	}
+        TextView textView;
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			quitAlert(this);
-			break;
-		}
-		return true;
-	}
-	
-	// 屏蔽掉返回键
-		@Override
-		public boolean onKeyDown(int keyCode, KeyEvent event) {
-			if (keyCode == KeyEvent.KEYCODE_BACK) {
-				quitAlert(this);
-				return true;
-			}
-			return false;
-		}
+        public TextView getTextView() {
+            if (textView == null) {
+                textView = (TextView) view.findViewById(R.id.SSID_text);
+            }
+            return textView;
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                quitAlert(this);
+                break;
+        }
+        return true;
+    }
+
+    // 屏蔽掉返回键
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            quitAlert(this);
+            return true;
+        }
+        return false;
+    }
 }

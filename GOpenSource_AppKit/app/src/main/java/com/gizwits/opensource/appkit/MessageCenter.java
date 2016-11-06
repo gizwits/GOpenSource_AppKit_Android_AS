@@ -43,11 +43,11 @@ public class MessageCenter {
 
 
 			serverMap.put("openAPIInfo",
-					TextUtils.isEmpty((String) GosDeploy.infoMap.get("openAPI_URL"))?"api.gizwits.com":(String) GosDeploy.infoMap.get("openAPI_URL"));
+					TextUtils.isEmpty((String) GosDeploy.infoMap.get("openAPIDomain"))?"api.gizwits.com":(String) GosDeploy.infoMap.get("openAPI_URL"));
 			serverMap.put("siteInfo",
-					TextUtils.isEmpty((String) GosDeploy.infoMap.get("site_URL"))?"site.gizwits.com":(String) GosDeploy.infoMap.get("site_URL"));
+					TextUtils.isEmpty((String) GosDeploy.infoMap.get("siteDomain"))?"site.gizwits.com":(String) GosDeploy.infoMap.get("site_URL"));
 			serverMap.put("pushInfo",
-					(String) GosDeploy.infoMap.get("push_URL"));
+					(String) GosDeploy.infoMap.get("pushDomain"));
 			GizWifiSDK.sharedInstance().startWithAppID(c, AppID,
 					GosDeploy.setProductKeyList(), serverMap);
 
