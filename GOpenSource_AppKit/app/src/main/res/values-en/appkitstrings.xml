@@ -17,7 +17,7 @@
     <string name="register">Sign up</string>
     <string name="toast_name_empet">Username can not be empty</string>
     <string name="toast_name_wrong">please input cellphone</string>
-    <string name="toast_psw_empet">Password cannot be empty</string>
+    <string name="toast_psw_empet">Password can not be empty</string>
     <string name="toast_login_successful">Login successful</string>
     <string name="toast_login_failed">Login failed</string>
     <string name="toast_third_login_failed">Login With Third Account Failed</string>
@@ -319,4 +319,23 @@
     <string name="GIZ_PUSHAPI_PUSH_ERROR">Push Error</string>
     <string name="UNKNOWN_ERROR">Unknow Error</string>
 
+    <!-- 个人中心 -->
+    <string name="personal_center">Personal Center</string>
+    <string name="user_management">User Management</string>
+    <string name="user_account">User Account</string>
+    <string name="edit_password">Edit password</string>
+    <string name="log_out">Log out</string>
+    <string name="log_in">Log in</string>
+    <string name="enter_current_password">Enter current password</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="re_enter_new_password">Re-enter new password</string>
+
+    
+    
+     <!-- 修改密码 -->
+    <string name="oldpasserror">Current password invalid</string>
+    <string name="nosamepass">Password does not match the confirm password</string>
+    <string name="passsuccess">Password change successful</string>
+    <string name="passerror">Password change failed</string>
+     <string name="confirm">Confirm</string>
 </resources>

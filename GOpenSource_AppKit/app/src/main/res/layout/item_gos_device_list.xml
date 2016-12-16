@@ -14,11 +14,11 @@
         <LinearLayout
             android:id="@+id/llLeft"
             android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="14dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="14dp"
             android:background="@drawable/img_bg_shape"
             android:gravity="center"
             android:orientation="vertical" >
@@ -31,14 +31,14 @@
                 android:src="@drawable/device_icon" />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="14dp"
+            android:layout_marginTop="14dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:orientation="vertical" >
+           >
 
             <TextView
                 android:id="@+id/tvDeviceName"
@@ -46,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:singleLine="true"
+                android:layout_alignParentTop="true"
                 android:text="TextView"
                 android:textColor="@color/black" />
 
@@ -55,8 +56,9 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/black"
+                android:layout_alignParentBottom="true"
                 android:textSize="12sp" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"

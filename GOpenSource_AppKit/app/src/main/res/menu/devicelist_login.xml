@@ -15,11 +15,7 @@
         android:id="@+id/action_site"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/site"/>
-    <item
-        android:id="@+id/action_change_user"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/login"/>
+        android:title="@string/personal_center"/>
+   
 
 </menu>

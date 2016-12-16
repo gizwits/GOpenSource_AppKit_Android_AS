@@ -40,10 +40,8 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="19dp"
             android:background="@null"
-            android:digits="@string/name_digits"
             android:ems="10"
             android:hint="@string/name_hint"
-            android:inputType="phone"
             android:textColor="@color/black"
             android:textColorHint="@color/text_gray_light"
             android:textSize="14sp" />
@@ -74,7 +72,6 @@
             android:layout_marginLeft="22dp"
             android:layout_weight="1"
             android:background="@null"
-            android:digits="@string/psw_digits"
             android:ems="10"
             android:hint="@string/password_hint"
             android:inputType="textPassword"
@@ -193,8 +190,8 @@
         android:layout_below="@+id/btnLogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:padding="5dp"
         android:gravity="center_horizontal"
+        android:padding="5dp"
         android:text="@string/pass" />
 
 </RelativeLayout>

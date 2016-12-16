@@ -119,9 +119,10 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 			case LOGIN:
 				progressDialog.show();
 				GosDeviceListActivity.loginStatus = 0;
-				GizWifiSDK.sharedInstance()
-						.userLogin(etName.getText().toString(),
-								etPsw.getText().toString());
+
+				GizWifiSDK.sharedInstance().userLogin(
+						etName.getText().toString().trim(),
+						etPsw.getText().toString());
 				break;
 			// 自动登录
 			case AUTO_LOGIN:
@@ -138,6 +139,11 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 				GizWifiSDK.sharedInstance().loginWithThirdAccount(
 						gizThirdAccountType, thirdUid, thirdToken);
 
+				spf.edit().putString("thirdUid", thirdUid).commit();
+				spf.edit().putString("UserName", "").commit();
+				spf.edit().putString("PassWord", "").commit();
+
+				isclean = true;
 				break;
 
 			}
@@ -177,6 +183,13 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 		super.onResume();
 
 		JPushInterface.onResume(this);
+		if (isclean) {
+			etName.setText("");
+			etPsw.setText("");
+			isclean = false;
+
+		}
+
 		autoLogin();
 	}
 
@@ -187,8 +200,8 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 			return;
 		}
 
-		baseHandler.sendEmptyMessage(handler_key.AUTO_LOGIN.ordinal());
-
+		baseHandler.sendEmptyMessageDelayed(handler_key.AUTO_LOGIN.ordinal(),
+				1000);
 	}
 
 	@Override
@@ -200,6 +213,7 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 	private void initView() {
 		etName = (EditText) findViewById(R.id.etName);
 		etPsw = (EditText) findViewById(R.id.etPsw);
+
 		btnLogin = (Button) findViewById(R.id.btnLogin);
 		tvRegister = (TextView) findViewById(R.id.tvRegister);
 		tvForget = (TextView) findViewById(R.id.tvForget);
@@ -291,6 +305,8 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 			intent = new Intent(GosUserLoginActivity.this,
 					GosDeviceListActivity.class);
 			startActivity(intent);
+			spf.edit().putString("thirdUid", "").commit();
+			spf.edit().putString("UserName", "").commit();
 			break;
 
 		case R.id.llQQ:
@@ -408,7 +424,8 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 			GosPushManager.pushBindService(token);
 
 			if (!TextUtils.isEmpty(etName.getText().toString())
-					&& !TextUtils.isEmpty(etPsw.getText().toString())) {
+					&& !TextUtils.isEmpty(etPsw.getText().toString())
+					&& !isclean) {
 				spf.edit().putString("UserName", etName.getText().toString())
 						.commit();
 				spf.edit().putString("PassWord", etPsw.getText().toString())

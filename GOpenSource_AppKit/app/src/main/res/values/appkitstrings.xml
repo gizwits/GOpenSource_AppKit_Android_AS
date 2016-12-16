@@ -26,7 +26,7 @@
     <string name="QQ">QQ登录</string>
     <string name="Wechat">微信登录</string>
     <string name="double_click">再按一次退出程序</string>
-	<string name="push_type_string">推送功能仅限于企业开发者使用，目前版本暂不支持推送</string>
+    <string name="push_type_string">推送功能仅限于企业开发者使用，目前版本暂不支持推送</string>
     <!-- RegisterActivity -->
     <string name="getcode">获取验证码</string>
     <string name="getcode_again">重新获取验证码</string>
@@ -318,5 +318,23 @@
     <string name="GIZ_PUSHAPI_CHANNELID_ERROR_INVALID">Channel ID 错误</string>
     <string name="GIZ_PUSHAPI_PUSH_ERROR">推送错误</string>
     <string name="UNKNOWN_ERROR">未知错误</string>
+
+    <!-- 个人中心 -->
+    <string name="personal_center">个人中心</string>
+    <string name="user_management">用户管理</string>
+    <string name="user_account">用户账号</string>
+    <string name="edit_password">修改密码</string>
+    <string name="log_out">退出登录</string>
+    <string name="log_in">立即登录</string>
+    <string name="enter_current_password">请输入原密码</string>
+    <string name="enter_new_password">请设置新密码</string>
+    <string name="re_enter_new_password">请再次确认密码</string>
+
+    <!-- 修改密码 -->
+    <string name="oldpasserror">原密码输入有误</string>
+    <string name="nosamepass">新密码和确认密码不相同</string>
+    <string name="passsuccess">密码修改成功</string>
+    <string name="passerror">密码修改失败 </string>
+    <string name="confirm">确定</string>
 
 </resources>

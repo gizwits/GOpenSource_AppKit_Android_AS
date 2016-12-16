@@ -1,11 +1,16 @@
 package com.gizwits.opensource.appkit.ControlModule;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.gizwits.gizwifisdk.api.GizWifiDevice;
 import com.gizwits.opensource.appkit.R;
@@ -34,7 +39,9 @@ public class GosDeviceControlActivity extends GosBaseActivity {
 	private void initView() {
 		tvMAC = (TextView) findViewById(R.id.tvMAC);
 		if (null != device) {
+
 			tvMAC.setText(device.getMacAddress().toString());
+
 		}
 	}
 
