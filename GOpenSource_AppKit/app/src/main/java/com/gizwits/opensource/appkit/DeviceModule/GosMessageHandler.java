@@ -2,6 +2,7 @@ package com.gizwits.opensource.appkit.DeviceModule;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -14,10 +15,11 @@ import android.os.Looper;
 import android.os.Message;
 import android.widget.RemoteViews;
 
+import com.gizwits.opensource.appkit.R;
 import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+import com.gizwits.opensource.appkit.CommonModule.GosConstant;
 import com.gizwits.opensource.appkit.ConfigModule.GosCheckDeviceWorkWiFiActivity;
 import com.gizwits.opensource.appkit.utils.NetUtils;
-import com.gizwits.opensource.appkit.R;
 
 public class GosMessageHandler {
 
@@ -73,6 +75,7 @@ public class GosMessageHandler {
 			newDeviceList.clear();
 			List<ScanResult> currentWifiScanResult = NetUtils
 					.getCurrentWifiScanResult(mcContext);
+			GosConstant.ssidList = currentWifiScanResult;
 			int flog = 0;
 			if (currentWifiScanResult != null) {
 				for (ScanResult scanResult : currentWifiScanResult) {

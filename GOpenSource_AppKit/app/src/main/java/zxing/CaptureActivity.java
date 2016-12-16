@@ -17,6 +17,7 @@ package zxing;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+
 import zxing.camera.CameraManager;
 import zxing.decoding.DecodeThread;
 import zxing.utils.CaptureActivityHandler;
@@ -42,8 +43,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import com.gizwits.opensource.appkit.DeviceModule.GosDeviceListActivity;
+
 import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.DeviceModule.GosDeviceListActivity;
 import com.google.zxing.Result;
 
 /**
@@ -360,7 +362,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	public Rect getCropRect() {
 		return mCropRect;
 	}
-
+  
 	/**
 	 * 初始化截取的矩形区域
 	 */

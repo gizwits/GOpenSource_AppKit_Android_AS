@@ -3,40 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+    
 
     <LinearLayout
-        android:id="@+id/llAbout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp" >
-
-        <TextView
-            android:id="@+id/SSID_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:text="@string/about"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/right_icon" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/usermanager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:background="@color/white"
         android:gravity="center_vertical"
         android:paddingBottom="10dp"
@@ -47,18 +19,45 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:text="@string/user_management"
+            android:text="@string/user_account"
             android:textColor="@color/black"
             android:textSize="16sp" />
         
-         <TextView
-             android:id="@+id/phoneusername"
+        
+        <TextView
+            android:id="@+id/phoneusernumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:text="@string/user_management"
             android:gravity="right"
+            android:layout_marginRight="10dp"
+            android:text="@string/user_account"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        
+    </LinearLayout>
+    
+    
+    
+    <LinearLayout
+        android:id="@+id/changeuserpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:onClick="changeuserpassword"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="@string/edit_password"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -69,12 +68,12 @@
             android:src="@drawable/right_icon" />
     </LinearLayout>
     
-    
-    
      <LinearLayout
-        android:id="@+id/lllogin"
+        android:id="@+id/userlogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="userlogout"
+        android:clickable="true"
         android:layout_marginTop="30dp"
         android:background="@color/white"
         android:gravity="center_vertical"
@@ -86,10 +85,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/log_in"
+            android:text="@string/log_out"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
     </LinearLayout>
-
+    
+    
 </LinearLayout>

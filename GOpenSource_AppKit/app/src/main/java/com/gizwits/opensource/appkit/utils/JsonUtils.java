@@ -65,6 +65,8 @@ public class JsonUtils {
 				jsonObject = new JSONObject(line);
 			} catch (JSONException e) {
 				e.printStackTrace();
+				Log.e("HTTPS TEST", e.toString());
+				
 			}
 		}
 		Log.e("HTTPS TEST", result.toString());

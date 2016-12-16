@@ -1,10 +1,13 @@
 package com.gizwits.opensource.appkit.wxapi;
 
-import java.io.IOException;
-import org.apache.http.client.ClientProtocolException;
-import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.os.Bundle;
+import android.os.Message;
+import android.util.Log;
+
 import com.gizwits.gizwifisdk.enumration.GizThirdAccountType;
+import com.gizwits.gizwifisdk.log.SDKLog;
 import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
 import com.gizwits.opensource.appkit.UserModule.GosUserLoginActivity;
@@ -15,42 +18,47 @@ import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import android.os.Bundle;
-import android.os.Message;
-import android.util.Log;
 
-public class WXEntryActivity extends GosBaseActivity implements IWXAPIEventHandler {
+public class WXEntryActivity extends GosBaseActivity implements
+		IWXAPIEventHandler {
 
 	private static final String TAG = "WXEntryActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		IWXAPI api = WXAPIFactory.createWXAPI(this, GosDeploy.setWechatAppID(), true);
+		IWXAPI api = WXAPIFactory.createWXAPI(this, GosDeploy.setWechatAppID(),
+				true);
 		api.handleIntent(getIntent(), this);
 	}
 
 	@Override
 	public void onReq(BaseReq req) {
 		Log.e(TAG, "onReq...");
+		SDKLog.d(TAG);
 	}
 
 	@Override
 	public void onResp(BaseResp resp) {
 		Log.e(TAG, "onResp...");
 		Log.i("Apptest", "onResp...");
+		SDKLog.d(TAG + "   onResp...");
 		String code = null;
 		switch (resp.errCode) {
 		case BaseResp.ErrCode.ERR_OK:// 用户同意,只有这种情况的时候code是有效的
 			code = ((SendAuth.Resp) resp).code;
 			Log.i("Apptest", code);
+
+			SDKLog.d(TAG + "   code..." + code);
 			getResult(code);
 			break;
 		case BaseResp.ErrCode.ERR_AUTH_DENIED:// 用户拒绝授权
 			Log.e("Apptest", "用户拒绝授权");
+			SDKLog.d(TAG + "   用户拒绝授权...");
 			break;
 		case BaseResp.ErrCode.ERR_USER_CANCEL:// 用户取消
 			Log.e("Apptest", "用户取消");
+			SDKLog.d(TAG + "   用户取消...");
 			break;
 
 		default:// 发送返回
@@ -69,14 +77,21 @@ public class WXEntryActivity extends GosBaseActivity implements IWXAPIEventHandl
 	private void getResult(final String code) {
 		new Thread() {// 开启工作线程进行网络请求
 			public void run() {
-				String path = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + GosDeploy.setWechatAppID()
-						+ "&secret=" + GosDeploy.setWechatAppSecret() + "&code=" + code
+				String path = "https://api.weixin.qq.com/sns/oauth2/access_token?appid="
+						+ GosDeploy.setWechatAppID()
+						+ "&secret="
+						+ GosDeploy.setWechatAppSecret()
+						+ "&code="
+						+ code
 						+ "&grant_type=authorization_code";
 				try {
-					JSONObject jsonObject = JsonUtils.initSSLWithHttpClinet(path);// 请求https连接并得到json结果
+					JSONObject jsonObject = JsonUtils
+							.initSSLWithHttpClinet(path);// 请求https连接并得到json结果
 					if (null != jsonObject) {
-						String openid = jsonObject.getString("openid").toString().trim();
-						String access_token = jsonObject.getString("access_token").toString().trim();
+						String openid = jsonObject.getString("openid")
+								.toString().trim();
+						String access_token = jsonObject
+								.getString("access_token").toString().trim();
 						Log.i(TAG, "openid = " + openid);
 						Log.i(TAG, "access_token = " + access_token);
 
@@ -85,16 +100,17 @@ public class WXEntryActivity extends GosBaseActivity implements IWXAPIEventHandl
 						GosUserLoginActivity.thirdUid = openid;
 
 						Message msg = new Message();
-						msg.what = GosUserLoginActivity.handler_key.THRED_LOGIN.ordinal();
-						baseHandler.sendMessage(msg);
+						msg.what = GosUserLoginActivity.handler_key.THRED_LOGIN
+								.ordinal();
+
+						if (baseHandler != null) {
+							baseHandler.sendMessage(msg);
+						}
 
 					}
-				} catch (ClientProtocolException e) {
+				} catch (Exception e) {
 					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (JSONException e) {
-					e.printStackTrace();
+					SDKLog.d(TAG + "   异常捕获..." + e.toString());
 				}
 				return;
 			};

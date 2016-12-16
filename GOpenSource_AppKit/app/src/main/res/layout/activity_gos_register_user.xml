@@ -110,7 +110,6 @@
             android:layout_marginLeft="21dp"
             android:layout_weight="1"
             android:background="@null"
-            android:digits="@string/psw_digits"
             android:ems="6"
             android:hint="@string/password_hint"
             android:inputType="textPassword"

@@ -36,7 +36,7 @@
 
     <!-- 重写actionbar中 OverFlow的属性 -->
     <style name="OverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
-        <item name="android:src">@drawable/button_setting</item>
+        <item name="android:src">@drawable/icon_more</item>
     </style>
 
     <style name="EditTextStyle">

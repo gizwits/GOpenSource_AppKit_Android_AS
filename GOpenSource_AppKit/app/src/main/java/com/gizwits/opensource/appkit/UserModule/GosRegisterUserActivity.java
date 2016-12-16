@@ -25,7 +25,8 @@ import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
 @SuppressLint("HandlerLeak")
-public class GosRegisterUserActivity extends GosUserModuleBaseActivity implements OnClickListener {
+public class GosRegisterUserActivity extends GosUserModuleBaseActivity
+		implements OnClickListener {
 
 	/** The et Name */
 	private EditText etName;
@@ -44,7 +45,7 @@ public class GosRegisterUserActivity extends GosUserModuleBaseActivity implement
 
 	/** The cb Laws */
 	private CheckBox cbLaws;
-	
+
 	/** The Button Drawable */
 	GradientDrawable drawable;
 
@@ -89,22 +90,26 @@ public class GosRegisterUserActivity extends GosUserModuleBaseActivity implement
 			case GETCODE:
 				progressDialog.show();
 				String AppSecret = GosDeploy.setAppSecret();
-				GizWifiSDK.sharedInstance().requestSendPhoneSMSCode(AppSecret, msg.obj.toString());
+				GizWifiSDK.sharedInstance().requestSendPhoneSMSCode(AppSecret,
+						msg.obj.toString());
 
 				break;
 			case TOAST:
-				Toast.makeText(GosRegisterUserActivity.this, msg.obj.toString(), toastTime).show();
+				Toast.makeText(GosRegisterUserActivity.this,
+						msg.obj.toString(), toastTime).show();
 				String successfulText = (String) getText(R.string.register_successful);
 
 				if (msg.obj.toString().equals(successfulText)) {
-					spf.edit().putString("UserName", name).commit();
-					spf.edit().putString("PassWord", psw).commit();
+					// spf.edit().putString("UserName", name).commit();
+					// spf.edit().putString("PassWord", psw).commit();
+					isclean = true;
 					finish();
 				}
 				break;
 			case SENDSUCCESSFUL:
 				etName.setEnabled(false);
-				etName.setTextColor(getResources().getColor(R.color.text_gray_light));
+				etName.setTextColor(getResources().getColor(
+						R.color.text_gray_light));
 				isStartTimer();
 
 				break;
@@ -125,7 +130,8 @@ public class GosRegisterUserActivity extends GosUserModuleBaseActivity implement
 				break;
 			case REGISTER:
 				progressDialog.show();
-				GizWifiSDK.sharedInstance().registerUser(name, psw, code, GizUserAccountType.GizUserPhone);
+				GizWifiSDK.sharedInstance().registerUser(name, psw, code,
+						GizUserAccountType.GizUserPhone);
 				break;
 			}
 		}
@@ -150,7 +156,7 @@ public class GosRegisterUserActivity extends GosUserModuleBaseActivity implement
 		cbLaws = (CheckBox) findViewById(R.id.cbLaws);
 
 		// 配置文件部署
-		drawable =(GradientDrawable) GosDeploy.setButtonBackgroundColor();
+		drawable = (GradientDrawable) GosDeploy.setButtonBackgroundColor();
 		drawable.setCornerRadius(30);
 		btnGetCode.setBackgroundDrawable(drawable);
 		btnRrgister.setBackgroundDrawable(GosDeploy.setButtonBackgroundColor());
@@ -165,8 +171,9 @@ public class GosRegisterUserActivity extends GosUserModuleBaseActivity implement
 			@Override
 			public void run() {
 				etName.requestFocus();
-				InputMethodManager imm = (InputMethodManager) etName.getContext()
-						.getSystemService(Context.INPUT_METHOD_SERVICE);
+				InputMethodManager imm = (InputMethodManager) etName
+						.getContext().getSystemService(
+								Context.INPUT_METHOD_SERVICE);
 				imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED);
 				etTimer.cancel();
 
@@ -179,7 +186,8 @@ public class GosRegisterUserActivity extends GosUserModuleBaseActivity implement
 		cbLaws.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
 				String psw = etPsw.getText().toString();
 
 				if (isChecked) {
@@ -198,7 +206,8 @@ public class GosRegisterUserActivity extends GosUserModuleBaseActivity implement
 		case R.id.btnGetCode:
 			name = etName.getText().toString();
 			if (TextUtils.isEmpty(name)) {
-				Toast.makeText(GosRegisterUserActivity.this, R.string.toast_name_wrong, toastTime).show();
+				Toast.makeText(GosRegisterUserActivity.this,
+						R.string.toast_name_wrong, toastTime).show();
 				return;
 			}
 			Message msg = new Message();
@@ -212,21 +221,25 @@ public class GosRegisterUserActivity extends GosUserModuleBaseActivity implement
 			code = etCode.getText().toString();
 			psw = etPsw.getText().toString();
 			if (TextUtils.isEmpty(name)) {
-				Toast.makeText(GosRegisterUserActivity.this, R.string.toast_name_wrong, toastTime).show();
+				Toast.makeText(GosRegisterUserActivity.this,
+						R.string.toast_name_wrong, toastTime).show();
 				return;
 			}
 			if (code.length() != 6) {
-				Toast.makeText(GosRegisterUserActivity.this, R.string.no_getcode, toastTime).show();
+				Toast.makeText(GosRegisterUserActivity.this,
+						R.string.no_getcode, toastTime).show();
 				return;
 			}
 			if (TextUtils.isEmpty(psw)) {
-				Toast.makeText(GosRegisterUserActivity.this, R.string.toast_psw_wrong, toastTime).show();
+				Toast.makeText(GosRegisterUserActivity.this,
+						R.string.toast_psw_wrong, toastTime).show();
 				return;
 			}
-			if (psw.length() < 6) {
-				Toast.makeText(GosRegisterUserActivity.this, R.string.toast_psw_short, toastTime).show();
-				return;
-			}
+			/*
+			 * if (psw.length() < 6) {
+			 * Toast.makeText(GosRegisterUserActivity.this,
+			 * R.string.toast_psw_short, toastTime).show(); return; }
+			 */
 			handler.sendEmptyMessage(handler_key.REGISTER.ordinal());
 			break;
 		}
@@ -234,7 +247,8 @@ public class GosRegisterUserActivity extends GosUserModuleBaseActivity implement
 
 	/** 手机验证码回调 */
 	@Override
-	protected void didRequestSendPhoneSMSCode(GizWifiErrorCode result, String token) {
+	protected void didRequestSendPhoneSMSCode(GizWifiErrorCode result,
+			String token) {
 		progressDialog.cancel();
 		Message msg = new Message();
 		if (GizWifiErrorCode.GIZ_SDK_SUCCESS != result) {
@@ -252,7 +266,8 @@ public class GosRegisterUserActivity extends GosUserModuleBaseActivity implement
 
 	/** 用户注册回调 */
 	@Override
-	protected void didRegisterUser(GizWifiErrorCode result, String uid, String token) {
+	protected void didRegisterUser(GizWifiErrorCode result, String uid,
+			String token) {
 		progressDialog.cancel();
 		if (GizWifiErrorCode.GIZ_SDK_SUCCESS != result) {
 			Message msg = new Message();
