@@ -1,6 +1,8 @@
 # 机智云物联网开源框架App
 ================
-    
+
+此为Android Studio版本。Eclipse版本下载地址：https://github.com/gizwits/GizOpenSource_AppKit_Android
+
 # 介绍
 
     机智云开源框架（GizOpenSource_AppKit_Android_AS） 是开源的适用于物联网的软件框架，用于无缝的支持设备到设备的互联。
@@ -8,8 +10,6 @@
     能帮助开发者快速构建物联网生态系统，实现设备间互联，加速智能设备的应用开发。其包含Wi-Fi类智能硬件app通用功能的一套源码。
     
     只要是使用机智云协议的产品，开发者开发配套的app时都可以直接使用该框架的源码实现快速开发，从而缩短app的开发周期短、降低开发成本。
-    
-    此为Android Studio版本。Eclipse版本下载地址：https://github.com/gizwits/GizOpenSource_AppKit_Android
 
     请注意：
     
