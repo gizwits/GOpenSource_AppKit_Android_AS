@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.gizwits.opensource.appkit.sharingdevice.ViewPagerIndicator
+        android:id="@+id/vpi_indicator"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.gizwits.opensource.appkit.sharingdevice.ViewPagerIndicator>
+
+    <com.gizwits.opensource.appkit.CommonModule.NoScrollViewPager
+        android:id="@+id/vp_shared_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </com.gizwits.opensource.appkit.CommonModule.NoScrollViewPager>
+
+</LinearLayout>

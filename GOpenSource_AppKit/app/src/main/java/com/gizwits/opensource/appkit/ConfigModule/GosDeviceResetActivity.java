@@ -1,8 +1,8 @@
 package com.gizwits.opensource.appkit.ConfigModule;
 
+import com.gizwits.opensource.appkit.R;
 import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
 import com.gizwits.opensource.appkit.view.GifView;
-import com.gizwits.opensource.appkit.R;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
 
 public class GosDeviceResetActivity extends GosConfigModuleBaseActivity implements OnClickListener {
 

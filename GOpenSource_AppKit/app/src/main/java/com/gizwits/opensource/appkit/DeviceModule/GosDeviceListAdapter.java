@@ -61,7 +61,8 @@ public class GosDeviceListAdapter extends BaseAdapter {
 		Holder holder;
 
 		if (view == null) {
-			view = LayoutInflater.from(context).inflate(R.layout.item_gos_device_list, null);
+			view = LayoutInflater.from(context).inflate(
+					R.layout.item_gos_device_list, null);
 			holder = new Holder(view);
 			view.setTag(holder);
 		} else {
@@ -100,17 +101,21 @@ public class GosDeviceListAdapter extends BaseAdapter {
 		} else {// 设备不在线
 
 			holder.getTvDeviceMac().setText(device.getMacAddress());
-			holder.getTvDeviceMac().setTextColor(context.getResources().getColor(R.color.gray));
+			holder.getTvDeviceMac().setTextColor(
+					context.getResources().getColor(R.color.gray));
 			holder.getTvDeviceStatus().setText("");
-			holder.getTvDeviceStatus().setTextColor(context.getResources().getColor(R.color.gray));
+			holder.getTvDeviceStatus().setTextColor(
+					context.getResources().getColor(R.color.gray));
 			holder.getImgRight().setVisibility(View.GONE);
-			holder.getLlLeft().setBackgroundResource(R.drawable.btn_getcode_shape_gray);
+			holder.getLlLeft().setBackgroundResource(
+					R.drawable.btn_getcode_shape_gray);
 			if (TextUtils.isEmpty(deviceAlias)) {
 				holder.getTvDeviceName().setText(devicePN);
 			} else {
 				holder.getTvDeviceName().setText(deviceAlias);
 			}
-			holder.getTvDeviceName().setTextColor(context.getResources().getColor(R.color.gray));
+			holder.getTvDeviceName().setTextColor(
+					context.getResources().getColor(R.color.gray));
 		}
 		holder.getDelete2().setOnClickListener(new OnClickListener() {
 

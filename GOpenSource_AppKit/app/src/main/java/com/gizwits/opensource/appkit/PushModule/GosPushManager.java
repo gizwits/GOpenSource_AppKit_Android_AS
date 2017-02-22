@@ -10,6 +10,7 @@ import com.gizwits.gizwifisdk.enumration.GizPushType;
 import com.gizwits.opensource.appkit.R;
 import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
+
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;

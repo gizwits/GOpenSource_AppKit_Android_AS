@@ -6,6 +6,26 @@ import java.util.TimerTask;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.gizwits.gizwifisdk.api.GizWifiSDK;
+import com.gizwits.gizwifisdk.enumration.GizEventType;
+import com.gizwits.gizwifisdk.enumration.GizThirdAccountType;
+import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
+import com.gizwits.opensource.appkit.GosApplication;
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
+import com.gizwits.opensource.appkit.CommonModule.TipsDialog;
+import com.gizwits.opensource.appkit.DeviceModule.GosDeviceListActivity;
+import com.gizwits.opensource.appkit.DeviceModule.GosMainActivity;
+import com.gizwits.opensource.appkit.PushModule.GosPushManager;
+import com.gizwits.opensource.appkit.ThirdAccountModule.BaseUiListener;
+import com.gizwits.opensource.appkit.view.DotView;
+import com.tencent.mm.sdk.modelmsg.SendAuth;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,26 +46,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import cn.jpush.android.api.JPushInterface;
 
-import com.gizwits.gizwifisdk.api.GizWifiSDK;
-import com.gizwits.gizwifisdk.enumration.GizThirdAccountType;
-import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
-import com.gizwits.opensource.appkit.GosApplication;
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
-import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
-import com.gizwits.opensource.appkit.DeviceModule.GosDeviceListActivity;
-import com.gizwits.opensource.appkit.PushModule.GosPushManager;
-import com.gizwits.opensource.appkit.ThirdAccountModule.BaseUiListener;
-import com.gizwits.opensource.appkit.view.DotView;
-import com.tencent.mm.sdk.modelmsg.SendAuth;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.tauth.IUiListener;
-import com.tencent.tauth.Tencent;
-
 @SuppressLint("HandlerLeak")
-public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
-		OnClickListener {
+public class GosUserLoginActivity extends GosUserModuleBaseActivity implements OnClickListener {
 
 	GosPushManager gosPushManager;
 
@@ -119,31 +121,20 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 			case LOGIN:
 				progressDialog.show();
 				GosDeviceListActivity.loginStatus = 0;
-
-				GizWifiSDK.sharedInstance().userLogin(
-						etName.getText().toString().trim(),
-						etPsw.getText().toString());
+				GizWifiSDK.sharedInstance().userLogin(etName.getText().toString(), etPsw.getText().toString());
 				break;
 			// 自动登录
 			case AUTO_LOGIN:
 				progressDialog.show();
 				GosDeviceListActivity.loginStatus = 0;
-				GizWifiSDK.sharedInstance().userLogin(
-						spf.getString("UserName", ""),
-						spf.getString("PassWord", ""));
+				GizWifiSDK.sharedInstance().userLogin(spf.getString("UserName", ""), spf.getString("PassWord", ""));
 				break;
 			// 第三方登录
 			case THRED_LOGIN:
 				progressDialog.show();
 				GosDeviceListActivity.loginStatus = 0;
-				GizWifiSDK.sharedInstance().loginWithThirdAccount(
-						gizThirdAccountType, thirdUid, thirdToken);
-
+				GizWifiSDK.sharedInstance().loginWithThirdAccount(gizThirdAccountType, thirdUid, thirdToken);
 				spf.edit().putString("thirdUid", thirdUid).commit();
-				spf.edit().putString("UserName", "").commit();
-				spf.edit().putString("PassWord", "").commit();
-
-				isclean = true;
 				break;
 
 			}
@@ -158,8 +149,7 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 		if (!this.isTaskRoot()) {// 判断此activity是不是任务控件的源Activity，“非”也就是说是被系统重新实例化出来的
 			Intent mainIntent = getIntent();
 			String action = mainIntent.getAction();
-			if (mainIntent.hasCategory(Intent.CATEGORY_LAUNCHER)
-					&& action.equals(Intent.ACTION_MAIN)) {
+			if (mainIntent.hasCategory(Intent.CATEGORY_LAUNCHER) && action.equals(Intent.ACTION_MAIN)) {
 				finish();
 				return;
 			}
@@ -183,44 +173,40 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 		super.onResume();
 
 		JPushInterface.onResume(this);
+		autoLogin();
+
+		cleanuserthing();
+	}
+
+	private void cleanuserthing() {
+
 		if (isclean) {
 			etName.setText("");
+			;
 			etPsw.setText("");
-			isclean = false;
-
+			;
 		}
-
-		autoLogin();
 	}
 
 	private void autoLogin() {
 
-		if (TextUtils.isEmpty(spf.getString("UserName", ""))
-				|| TextUtils.isEmpty(spf.getString("PassWord", ""))) {
+		if (TextUtils.isEmpty(spf.getString("UserName", "")) || TextUtils.isEmpty(spf.getString("PassWord", ""))) {
 			return;
 		}
 
-		baseHandler.sendEmptyMessageDelayed(handler_key.AUTO_LOGIN.ordinal(),
-				1000);
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		JPushInterface.onPause(this);
+		baseHandler.sendEmptyMessageDelayed(handler_key.AUTO_LOGIN.ordinal(), 1000);
 	}
 
 	private void initView() {
 		etName = (EditText) findViewById(R.id.etName);
 		etPsw = (EditText) findViewById(R.id.etPsw);
-
 		btnLogin = (Button) findViewById(R.id.btnLogin);
 		tvRegister = (TextView) findViewById(R.id.tvRegister);
 		tvForget = (TextView) findViewById(R.id.tvForget);
 		tvPass = (TextView) findViewById(R.id.tvPass);
 		cbLaws = (CheckBox) findViewById(R.id.cbLaws);
 
-		DotView DotView = (com.gizwits.opensource.appkit.view.DotView) findViewById(R.id.dotView1);
+		DotView DotView = (DotView) findViewById(R.id.dotView1);
 		llQQ = (LinearLayout) findViewById(R.id.llQQ);
 		llWechat = (LinearLayout) findViewById(R.id.llWechat);
 		String setTencentAppID = GosDeploy.setTencentAppID();
@@ -260,8 +246,7 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 		cbLaws.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				String psw = etPsw.getText().toString();
 
 				if (isChecked) {
@@ -278,47 +263,43 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnLogin:
+
 			if (TextUtils.isEmpty(etName.getText().toString())) {
-				Toast.makeText(GosUserLoginActivity.this,
-						R.string.toast_name_wrong, toastTime).show();
+				Toast.makeText(GosUserLoginActivity.this, R.string.toast_name_wrong, toastTime).show();
 				return;
 			}
 			if (TextUtils.isEmpty(etPsw.getText().toString())) {
-				Toast.makeText(GosUserLoginActivity.this,
-						R.string.toast_psw_wrong, toastTime).show();
+				Toast.makeText(GosUserLoginActivity.this, R.string.toast_psw_wrong, toastTime).show();
 				return;
 			}
 			baseHandler.sendEmptyMessage(handler_key.LOGIN.ordinal());
 			break;
 
 		case R.id.tvRegister:
-			intent = new Intent(GosUserLoginActivity.this,
-					GosRegisterUserActivity.class);
+			intent = new Intent(GosUserLoginActivity.this, GosRegisterUserActivity.class);
 			startActivity(intent);
+
 			break;
 		case R.id.tvForget:
-			intent = new Intent(GosUserLoginActivity.this,
-					GosForgetPasswordActivity.class);
+			intent = new Intent(GosUserLoginActivity.this, GosForgetPasswordActivity.class);
 			startActivity(intent);
 			break;
 		case R.id.tvPass:
-			intent = new Intent(GosUserLoginActivity.this,
-					GosDeviceListActivity.class);
+
+			intent = new Intent(GosUserLoginActivity.this, GosMainActivity.class);
 			startActivity(intent);
-			spf.edit().putString("thirdUid", "").commit();
-			spf.edit().putString("UserName", "").commit();
+
+			logoutToClean();
 			break;
 
 		case R.id.llQQ:
 			String tencentAPPID = GosDeploy.setTencentAppID();
-			if (TextUtils.isEmpty(tencentAPPID)
-					|| tencentAPPID.contains("your_tencent_app_id")) {
+			if (TextUtils.isEmpty(tencentAPPID) || tencentAPPID.contains("your_tencent_app_id")) {
 				noIDAlert(this, R.string.TencentAPPID_Toast);
 				return;
 			} else {
 				// 启动QQ登录SDK
-				mTencent = Tencent.createInstance(GosDeploy.setTencentAppID(),
-						this.getApplicationContext());
+				mTencent = Tencent.createInstance(GosDeploy.setTencentAppID(), this.getApplicationContext());
 			}
 
 			listener = new BaseUiListener() {
@@ -328,14 +309,12 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 						if (values.getInt("ret") == 0) {
 							gizThirdAccountType = GizThirdAccountType.GizThirdQQ;
 							thirdUid = values.getString("openid").toString();
-							thirdToken = values.getString("access_token")
-									.toString();
+							thirdToken = values.getString("access_token").toString();
 							msg.what = handler_key.THRED_LOGIN.ordinal();
 							baseHandler.sendMessage(msg);
 						} else {
 
-							Toast.makeText(GosUserLoginActivity.this,
-									msg.obj.toString(), toastTime).show();
+							Toast.makeText(GosUserLoginActivity.this, msg.obj.toString(), toastTime).show();
 
 						}
 					} catch (JSONException e) {
@@ -348,8 +327,7 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 		case R.id.llWechat:
 			String wechatAppID = GosDeploy.setWechatAppID();
 			String wechatAppSecret = GosDeploy.setWechatAppSecret();
-			if (TextUtils.isEmpty(wechatAppID)
-					|| TextUtils.isEmpty(wechatAppSecret)
+			if (TextUtils.isEmpty(wechatAppID) || TextUtils.isEmpty(wechatAppSecret)
 					|| wechatAppID.contains("your_wechat_app_id")
 					|| wechatAppSecret.contains("your_wechat_app_secret")) {
 				noIDAlert(this, R.string.WechatAppID_Toast);
@@ -387,8 +365,7 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 	/**
 	 * 设置云端服务回调
 	 */
-	protected void didGetCurrentCloudService(
-			GizWifiErrorCode result,
+	protected void didGetCurrentCloudService(GizWifiErrorCode result,
 			java.util.concurrent.ConcurrentHashMap<String, String> cloudServiceInfo) {
 		if (GizWifiErrorCode.GIZ_SDK_SUCCESS != result) {
 			Toast.makeText(this, toastError(result), toastTime).show();
@@ -399,43 +376,35 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 	 * 用户登录回调
 	 */
 	@Override
-	protected void didUserLogin(GizWifiErrorCode result, String uid,
-			String token) {
+	protected void didUserLogin(GizWifiErrorCode result, String uid, String token) {
 
 		progressDialog.cancel();
 		Log.i("Apptest", GosDeviceListActivity.loginStatus + "\t" + "User");
-		if (GosDeviceListActivity.loginStatus == 4
-				|| GosDeviceListActivity.loginStatus == 3) {
+		if (GosDeviceListActivity.loginStatus == 4 || GosDeviceListActivity.loginStatus == 3) {
 			return;
 		}
 		Log.i("Apptest", GosDeviceListActivity.loginStatus + "\t" + "UserLogin");
 
 		if (GizWifiErrorCode.GIZ_SDK_SUCCESS != result) {// 登录失败
-			Toast.makeText(GosUserLoginActivity.this, toastError(result),
-					toastTime).show();
+			Toast.makeText(GosUserLoginActivity.this, toastError(result), toastTime).show();
 
 		} else {// 登录成功
 
 			GosDeviceListActivity.loginStatus = 1;
-			Toast.makeText(GosUserLoginActivity.this,
-					R.string.toast_login_successful, toastTime).show();
+			Toast.makeText(GosUserLoginActivity.this, R.string.toast_login_successful, toastTime).show();
 
 			// TODO 绑定推送
 			GosPushManager.pushBindService(token);
 
-			if (!TextUtils.isEmpty(etName.getText().toString())
-					&& !TextUtils.isEmpty(etPsw.getText().toString())
-					&& !isclean) {
-				spf.edit().putString("UserName", etName.getText().toString())
-						.commit();
-				spf.edit().putString("PassWord", etPsw.getText().toString())
-						.commit();
+			if (!TextUtils.isEmpty(etName.getText().toString()) && !TextUtils.isEmpty(etPsw.getText().toString())
+					&& TextUtils.isEmpty(spf.getString("thirdUid", ""))) {
+				spf.edit().putString("UserName", etName.getText().toString()).commit();
+				spf.edit().putString("PassWord", etPsw.getText().toString()).commit();
 			}
 			spf.edit().putString("Uid", uid).commit();
 			spf.edit().putString("Token", token).commit();
 
-			intent = new Intent(GosUserLoginActivity.this,
-					GosDeviceListActivity.class);
+			intent = new Intent(GosUserLoginActivity.this, GosMainActivity.class);
 			intent.putExtra("ThredLogin", true);
 			startActivity(intent);
 
@@ -489,6 +458,37 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements
 			this.finish();
 			System.exit(0);
 		}
+	}
+
+	@Override
+	protected void didNotifyEvent(GizEventType eventType, Object eventSource, GizWifiErrorCode eventID,
+			String eventMessage) {
+		super.didNotifyEvent(eventType, eventSource, eventID, eventMessage);
+
+		if (eventID != null && eventID.getResult() != 8316) {
+			String toastError = toastError(eventID);
+
+			TipsDialog dia = new TipsDialog(this, toastError);
+			dia.show();
+		}
+
+	}
+
+	/** 注销函数 */
+	void logoutToClean() {
+		spf.edit().putString("UserName", "").commit();
+		spf.edit().putString("PassWord", "").commit();
+		spf.edit().putString("Uid", "").commit();
+		spf.edit().putString("thirdUid", "").commit();
+
+		spf.edit().putString("Token", "").commit();
+
+		if (GosDeviceListActivity.loginStatus == 1) {
+			GosDeviceListActivity.loginStatus = 0;
+		} else {
+			GosDeviceListActivity.loginStatus = 4;
+		}
+
 	}
 
 }

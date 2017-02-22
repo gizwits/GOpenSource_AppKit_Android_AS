@@ -2,10 +2,6 @@ package com.gizwits.opensource.appkit.wxapi;
 
 import org.json.JSONObject;
 
-import android.os.Bundle;
-import android.os.Message;
-import android.util.Log;
-
 import com.gizwits.gizwifisdk.enumration.GizThirdAccountType;
 import com.gizwits.gizwifisdk.log.SDKLog;
 import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
@@ -18,6 +14,10 @@ import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
+
+import android.os.Bundle;
+import android.os.Message;
+import android.util.Log;
 
 public class WXEntryActivity extends GosBaseActivity implements
 		IWXAPIEventHandler {

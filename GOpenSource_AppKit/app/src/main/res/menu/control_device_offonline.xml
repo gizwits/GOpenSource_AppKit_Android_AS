@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <item
+	    android:id="@+id/get_device_thing"
+	    android:orderInCategory="101"
+	    android:showAsAction="never"
+	    android:title="@string/get_device_thing"/>
+    
+    
+    <item android:id="@+id/set_device_remark"
+	    android:orderInCategory="103"
+	    android:showAsAction="never"
+	    android:title="@string/set_device_remark"/>
+    
+  
+
+</menu>

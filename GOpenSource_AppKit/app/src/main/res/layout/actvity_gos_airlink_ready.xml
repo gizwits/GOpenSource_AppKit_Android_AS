@@ -46,6 +46,16 @@
         android:layout_margin="10dp"
         android:gravity="center_horizontal"
         android:text="@string/airlink_ready_message" />
+    
+    
+    <TextView
+        android:id="@+id/moudlechoose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:text="@string/moudlechoose" />
 
     <com.gizwits.opensource.appkit.view.GifView
         android:id="@+id/softreset"

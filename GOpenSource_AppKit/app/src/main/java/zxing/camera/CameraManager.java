@@ -18,7 +18,6 @@ package zxing.camera;
 
 import java.io.IOException;
 
-import zxing.camera.open.OpenCameraInterface;
 import android.content.Context;
 import android.graphics.Point;
 import android.hardware.Camera;
@@ -26,6 +25,7 @@ import android.hardware.Camera.Size;
 import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
+import zxing.camera.open.OpenCameraInterface;
 
 
 /**

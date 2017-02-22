@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="tring_join_device">Trying to connect with the device</string>
+    <string name="about_title">About</string>
+    <string name="msg_notice">News announcements</string>
+    <string name="opinion_feedback">Feedback</string>
+    <string name="no_notice">no news announcements</string>
+
+    <!-- 部署 -->
+    <string name="Independent_deployment">Stand-alone deployment</string>
+    <string name="Independent">Independent deployment</string>
+    <string name="Describe_01">This feature for Independent deployment.</string>
+    <string name="Describe_02">Enter the domain name server and port to establish a connection with the private server.</string>
+    <string name="back">back</string>
+    <string name="surechangge">Sure change the configuration?</string>
+    <string name="btn_yes">OK</string>
+    <string name="btn_initialize">Initialize</string>
+    <string name="normal">Default setting</string>
+    <string name="single_01">Privatization is a Independent deployment customization provided by Gizwits. Through the entire \n IOT platform deployed on company own server, providing different from Public server.</string>
+    <string name="single_02">Change the domain name and the server port to make IOE Demo switched to the independent server deployments. \n And you must modify the App ID and App Secret, IOE Demo to work.</string>
+    <string name="single_03">Button to initialize all the parameters of the current page restore the default values.</string>
+    <string name="sitedomain">site domain</string>
+    <string name="apidomain">api domain</string>
+    <string name="port">port</string>
+    <string name="appidandappsecret">Please input AppID and AppSecret</string>
+    <string name=" domainandport"> Please input domain and port</string>
+    <string name="waitfordevice">Waiting for device ready</string>
+    <string name="get_device_thing">get device status</string>
+    <string name="get_device_hardware_information">get device hardware info</string>
+    <string name="set_device_remark">set device info</string>
+    <string name="set_device_remark_name">set remark</string>
+    <string name="device_detail">Hardware information</string>
+    <string name="sure">Confirm</string>
+    <string name="changesuccess">Change success</string>
+    <string name="changefailed">Change failed</string>
+    <string name="download_fail">Failed to download the Profile</string>
+    <string name="nosupport_device">Unsupported components</string>
+    <string name="remark_name">remark</string>
+    <string name="device_alias">alias</string>
+    <string name="send_msg">send</string>
+    <string name="devicedisconnected">device disconnected</string>
+
+    <!-- 独立部署设置 -->
+    <string name="Stand_alone_deployment">Stand-alone deployment</string>
+    <string name="Deployment_by_region">Deployment by region</string>
+    <string name="Mainland_China">Mainland China (Default)</string>
+    <string name="Eastern_United_States">Eastern United States</string>
+    <string name="Europe">Europe</string>
+    <string name="Custom_deployment">Custom deployment</string>
+    <string name="Custom_deployment_setting">Custom deployment setting</string>
+    <string name="API_domain">API domain</string>
+    <string name="Site_domain">Site domain</string>
+    <string name="App_ID">App ID  </string>
+    <string name="App_Secret">App Secret  </string>
+    <string name="App_ID_with_32">Enter App ID with 32 characters long</string>
+    <string name="App_Secret_with_32">Enter App Secret with 32 characters long</string>
+
+    <!-- 通用区域部署 -->
+    <string name="Stand_alone_deployment_01">Gizwits provides users with servers in Mainland China,Eastern United States and Europe.It is convenient for users to debug and test their devices without entering server domain name,port,App ID and App Secret.</string>
+
+    <!-- 自定义部署设置 -->
+
+    <string name="Custom_setting">Custom deployment setting</string>
+    <string name="Custom_setting_01">Custom deployment is a customized service provided by Gizwits, in which user can deploy the solution of IoT cloud platform offered by Gizwits on its own server.It is different from the public server of Gizwits.</string>
+
+    <!-- 如何自定义部署 -->
+
+    <string name="How_to_customize_deployment">How to customize deployment</string>
+    <string name="Enter_the_server_domain">• Enter the server domain name and port to switch to the sever of custom deployment.(80 being the default port)</string>
+    <string name="Enter_the_valid">• Enter the valid App ID and App Secret.</string>
+    <string name="information_above">Gizwits App can function properly after correctly filling in the information above.</string>
+
+    <!-- 提示框 -->
+    <string name="tip1">The edited content will not be saved if leave the current page.</string>
+    <string name="tip2">Are you sure to switch to the other region?</string>
+    <string name="tip3">Please enter the valid App ID and App Secret.</string>
+    <string name="tip4">Please check the info below.\r\nClick confirm button to switch to the custom deployment</string>
+    <string name="Deployment_by_region_setting">Deployment by region setting</string>
+    <string name="no_api">Please enter API domain</string>
+    <string name="no_site">Pleases enter Site domain</string>
+    
+     <string name="mozhu">Module mall</string>
+     
+     
+     <string name="gizwitsgonggao">Gizwits Messages</string>
+
+</resources>

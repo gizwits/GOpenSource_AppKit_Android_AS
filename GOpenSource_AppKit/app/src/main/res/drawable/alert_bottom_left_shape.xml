@@ -4,7 +4,6 @@
     <!-- 设置左下角为弧形 （半径）--> 
     <corners android:bottomLeftRadius="15dp" />
     
-    
     <!-- 设置填充颜色 -->
     <solid android:color="@color/white"/>
     

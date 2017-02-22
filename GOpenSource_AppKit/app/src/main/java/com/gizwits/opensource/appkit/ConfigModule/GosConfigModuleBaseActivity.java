@@ -5,16 +5,16 @@ import java.util.Timer;
 import com.gizwits.gizwifisdk.api.GizWifiSDK;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
 import com.gizwits.gizwifisdk.listener.GizWifiSDKListener;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -91,7 +91,12 @@ public class GosConfigModuleBaseActivity extends GosBaseActivity {
 
 			@Override
 			public void onClick(View v) {
+				
+				if(dialog.isShowing()){
+					dialog.cancel();
+				}
 				finish();
+				
 			}
 		});
 	}
@@ -130,6 +135,9 @@ public class GosConfigModuleBaseActivity extends GosBaseActivity {
 			public void onClick(View v) {
 				if (timer != null) {
 					timer.cancel();
+				}
+				if(dialog.isShowing()){
+					dialog.cancel();
 				}
 				finish();
 			}

@@ -4,10 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ListView
+    <GridView
         android:id="@+id/lvMode"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
-    </ListView>
+        android:layout_height="fill_parent"
+        android:layout_marginTop="20dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:verticalSpacing="20dp" >
+    </GridView>
 
 </LinearLayout>

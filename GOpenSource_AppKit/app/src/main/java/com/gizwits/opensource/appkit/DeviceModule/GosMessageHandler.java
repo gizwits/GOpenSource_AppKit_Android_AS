@@ -3,6 +3,12 @@ package com.gizwits.opensource.appkit.DeviceModule;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+import com.gizwits.opensource.appkit.CommonModule.GosConstant;
+import com.gizwits.opensource.appkit.ConfigModule.GosCheckDeviceWorkWiFiActivity;
+import com.gizwits.opensource.appkit.utils.NetUtils;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -14,12 +20,6 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.widget.RemoteViews;
-
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
-import com.gizwits.opensource.appkit.CommonModule.GosConstant;
-import com.gizwits.opensource.appkit.ConfigModule.GosCheckDeviceWorkWiFiActivity;
-import com.gizwits.opensource.appkit.utils.NetUtils;
 
 public class GosMessageHandler {
 

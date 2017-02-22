@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="usertype">
+        <item>Normal User</item>
+        <item>Phone User</item>
+        <item>email User</item>
+        <item>Other User</item>
+    </string-array>
+
+</resources>

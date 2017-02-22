@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gizwits.opensource.appkit"
     android:versionCode="1"
-    android:versionName="2.3.0.102812" >
+    android:versionName="2.5.0.022212" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -66,7 +66,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".UserModule.GosUserLoginActivity"
+            android:name="com.gizwits.opensource.appkit.UserModule.GosUserLoginActivity"
             android:label="@string/app_name"
             android:theme="@style/My_Start" >
             <intent-filter>
@@ -86,7 +86,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="QQ的appkey" />
+                <data android:scheme="1105509702" />
             </intent-filter>
         </activity>
         <activity
@@ -110,6 +110,7 @@
         </activity>
         <activity android:name=".DeviceModule.GosDeviceListActivity" >
         </activity>
+        <activity android:name=".UserModule.GosChangeUserPasswordActivity"></activity>
         <activity
             android:name="zxing.CaptureActivity"
             android:theme="@android:style/Theme.NoTitleBar" />
@@ -129,6 +130,18 @@
         </activity>
         <activity android:name=".ConfigModule.GosAirlinkConfigCountdownActivity" >
         </activity>
+        <activity android:name=".UserModule.GosUserManager"></activity>
+        <activity android:name="com.gizwits.opensource.appkit.sharingdevice.SharedDeviceListAcitivity"></activity>
+
+        <activity android:name="com.gizwits.opensource.appkit.sharingdevice.SharedDeviceManagerActivity"></activity>
+        
+        <activity android:name="com.gizwits.opensource.appkit.sharingdevice.addSharedActivity"></activity>
+        <activity android:name="com.gizwits.opensource.appkit.sharingdevice.twoSharedActivity"></activity>
+        <activity android:name="com.gizwits.opensource.appkit.sharingdevice.userSharedActivity"></activity>
+        <activity android:name="com.gizwits.opensource.appkit.DeviceModule.GosMainActivity"></activity>
+        <activity android:name="com.gizwits.opensource.appkit.sharingdevice.messageCenterActivity"></activity>
+        <activity android:name="com.gizwits.opensource.appkit.sharingdevice.deviceSharedMessageActivity"></activity>
+        <activity android:name="com.gizwits.opensource.appkit.sharingdevice.gosZxingDeviceSharingActivity"></activity>
 
         <!-- 极光推送 -->
         <!-- Required SDK 核心功能 -->
@@ -160,8 +173,7 @@
 
                 <category android:name="com.gizwits.opensource.appkit" />
             </intent-filter>
-        </service>
-
+        </service>
         -->
 
 
@@ -242,7 +254,7 @@
         <!-- Required. AppKey copied from Portal -->
         <meta-data
             android:name="JPUSH_APPKEY"
-            android:value="请在这填写" />
+            android:value="4c9f1e9d391d8dbbe343a1bb" />
 
         <!-- 百度推送 -->
         <!-- push service start -->

@@ -2,11 +2,13 @@ package com.gizwits.opensource.appkit.UserModule;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
 import com.gizwits.gizwifisdk.api.GizWifiSDK;
 import com.gizwits.gizwifisdk.enumration.GizUserAccountType;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
-import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
 import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
@@ -20,9 +22,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
 @SuppressLint("HandlerLeak")
 public class GosRegisterUserActivity extends GosUserModuleBaseActivity

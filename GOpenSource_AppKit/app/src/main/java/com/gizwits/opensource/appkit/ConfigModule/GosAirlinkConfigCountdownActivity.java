@@ -5,6 +5,13 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.gizwits.gizwifisdk.api.GizWifiSDK;
+import com.gizwits.gizwifisdk.enumration.GizWifiConfigureMode;
+import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
+import com.gizwits.gizwifisdk.enumration.GizWifiGAgentType;
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.view.RoundProgressBar;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,13 +24,6 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.gizwits.gizwifisdk.api.GizWifiSDK;
-import com.gizwits.gizwifisdk.enumration.GizWifiConfigureMode;
-import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
-import com.gizwits.gizwifisdk.enumration.GizWifiGAgentType;
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.view.RoundProgressBar;
 
 @SuppressLint("HandlerLeak")
 public class GosAirlinkConfigCountdownActivity extends

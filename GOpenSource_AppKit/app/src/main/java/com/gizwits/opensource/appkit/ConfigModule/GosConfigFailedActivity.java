@@ -1,7 +1,7 @@
 package com.gizwits.opensource.appkit.ConfigModule;
 
-import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
 import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
 
 import android.content.Intent;
 import android.os.Bundle;

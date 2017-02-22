@@ -16,10 +16,18 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:actionBarStyle">@style/my_actionbar_style</item>
         <item name="android:actionOverflowButtonStyle">@style/OverFlow</item>
+        <item name="android:windowIsTranslucent">true</item> 
         <item name="android:typeface">sans</item>
+         <item name="android:actionMenuTextAppearance">@style/MyMenuTextStyle</item>  
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    
+    <style name="MyMenuTextStyle">  
+    <item name="android:textColor">@android:color/black</item>  
+    <item name="android:textSize">16sp</item>  
+</style> 
+    
     <style name="my_actionbar_style" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/transparent_half</item>
         <item name="android:titleTextStyle">@style/AcBar_titleStyle</item>
@@ -36,7 +44,7 @@
 
     <!-- 重写actionbar中 OverFlow的属性 -->
     <style name="OverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
-        <item name="android:src">@drawable/icon_more</item>
+        <item name="android:src">@drawable/button_setting</item>
     </style>
 
     <style name="EditTextStyle">
@@ -66,7 +74,14 @@
         <item name="android:layout_marginBottom">20dp</item>
     </style>
     -->
-
+ 
+    <style name="LinearlayoutStyle">
+        <item name="android:background">@drawable/button_shape</item>
+        <item name="android:layout_marginLeft">40dp</item>
+        <item name="android:layout_marginRight">40dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
     <style name="Widget_GifView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

@@ -18,12 +18,12 @@ package zxing;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
-import zxing.camera.CameraManager;
-import zxing.decoding.DecodeThread;
-import zxing.utils.CaptureActivityHandler;
-import zxing.utils.InactivityTimer;
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+import com.gizwits.opensource.appkit.DeviceModule.GosDeviceListActivity;
+import com.google.zxing.Result;
+
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
@@ -43,10 +43,10 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.DeviceModule.GosDeviceListActivity;
-import com.google.zxing.Result;
+import zxing.camera.CameraManager;
+import zxing.decoding.DecodeThread;
+import zxing.utils.CaptureActivityHandler;
+import zxing.utils.InactivityTimer;
 
 /**
  * This activity opens the camera and does the actual scanning on a background
@@ -57,7 +57,7 @@ import com.google.zxing.Result;
  * @author dswitkin@google.com (Daniel Switkin)
  * @author Sean Owen
  */
-public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
+public final class CaptureActivity extends GosBaseActivity implements SurfaceHolder.Callback {
 
 	private static final String TAG = CaptureActivity.class.getSimpleName();
 
@@ -194,7 +194,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	}
 
 	@Override
-	protected void onPause() {
+	public void onPause() {
 		if (handler != null) {
 			handler.quitSynchronously();
 			handler = null;
@@ -258,6 +258,48 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			msg.what = handler_key.START_BIND.ordinal();
 			msg.obj = strings;
 			mHandler.sendMessage(msg);
+		} else if (text.contains("type=") && text.contains("code=")) {
+			String[] split = text.split("&");
+			String[] split2 = split[1].split("=");
+			final String code = split2[1];
+
+//			GizDeviceSharing.checkDeviceSharingInfoByQRCode(spf.getString("Token", ""), code);
+//
+//			GizDeviceSharing.setListener(new GizDeviceSharingListener() {
+//
+//				@Override
+//				public void didCheckDeviceSharingInfoByQRCode(GizWifiErrorCode result, String userName,
+//						String productName, String deviceAlias, String expiredAt) {
+//					// TODO Auto-generated method stub
+//					super.didCheckDeviceSharingInfoByQRCode(result, userName, productName, deviceAlias, expiredAt);
+//
+//					if (result.ordinal() == 0) {
+//
+//						Intent tent = new Intent(CaptureActivity.this, gosZxingDeviceSharingActivity.class);
+//						tent.putExtra("userName", userName);
+//						tent.putExtra("productName", productName);
+//						tent.putExtra("deviceAlias", deviceAlias);
+//						tent.putExtra("expiredAt", expiredAt);
+//						tent.putExtra("code", code);
+//
+//						startActivity(tent);
+//
+//						finish();
+//					}
+//				}
+//			});
+//			
+			String[] strings = { "", "",code };
+			
+			msg.what = handler_key.START_BIND.ordinal();
+			msg.obj = strings;
+			mHandler.sendMessage(msg);
+			// Intent tent = new Intent(CaptureActivity.this,
+			// gosZxingDeviceSharingActivity.class);
+			// tent.putExtra("code", code);
+			// startActivity(tent);
+			//
+			// finish();
 		}
 		// else if (text.contains("uid") && text.contains("token") &&
 		// text.contains("productKey")
@@ -281,7 +323,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			msg.what = handler_key.START_BIND.ordinal();
 			msg.obj = strings;
 			mHandler.sendMessage(msg);
-		
 
 		}
 	}
@@ -362,7 +403,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	public Rect getCropRect() {
 		return mCropRect;
 	}
-  
+
 	/**
 	 * 初始化截取的矩形区域
 	 */
