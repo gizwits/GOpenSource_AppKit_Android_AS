@@ -1,8 +1,8 @@
 package com.gizwits.opensource.appkit.SettingsModule;
 
 import com.gizwits.gizwifisdk.api.GizWifiSDK;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 
 import android.app.ActionBar;
 import android.content.Context;

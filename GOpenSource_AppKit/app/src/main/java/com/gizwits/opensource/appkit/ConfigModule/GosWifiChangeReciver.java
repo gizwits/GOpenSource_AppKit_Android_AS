@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 
+
 public class GosWifiChangeReciver extends BroadcastReceiver {
 
 	SharedPreferences spf;

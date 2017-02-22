@@ -1,7 +1,7 @@
 package com.gizwits.opensource.appkit.view;
 
-import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
 import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,7 +11,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -117,7 +116,6 @@ public class RoundProgressBar extends View {
 		paint.setAntiAlias(true); // 消除锯齿
 		canvas.drawCircle(centre, centre, radius, paint); // 画出圆环
 
-		Log.e("log", centre + "");
 
 		/**
 		 * 画进度百分比

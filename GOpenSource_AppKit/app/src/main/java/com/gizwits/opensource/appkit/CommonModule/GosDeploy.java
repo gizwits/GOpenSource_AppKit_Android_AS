@@ -15,8 +15,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.utils.AssetsUtils;
+
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -24,9 +26,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.utils.AssetsUtils;
 
 public class GosDeploy {
 
@@ -66,6 +65,9 @@ public class GosDeploy {
 
 	/** The Module_Select_Switch Key */
 	private static final String Module_Select_On_Key = "wifi_type_select";
+
+	/** The UsingTabSet_Switch Key */
+	private static final String UsingTabSet = "UsingTabSet";
 
 	/** The Tencent_App_ID Key */
 	private static final String Tencent_App_ID_Key = "tencent_app_id";
@@ -213,6 +215,23 @@ public class GosDeploy {
 
 		return modeOnOff;
 	}
+	
+	
+	/**
+	 * 设置模组类型开关
+	 * 
+	 * @return
+	 */
+	public static int setUsingTabSetOn() {
+		int modeOnOff = View.INVISIBLE;
+
+		String moduleSelectOn = infoMap.get(UsingTabSet).toString();
+		if (Boolean.parseBoolean(moduleSelectOn)) {
+			modeOnOff = View.VISIBLE;
+		}
+
+		return modeOnOff;
+	}
 
 	/**
 	 * 设置TencentID
@@ -252,20 +271,13 @@ public class GosDeploy {
 	public static int setPushType() {
 		int pushType = 0;
 
-		int PushType_FromMap = Integer.parseInt(infoMap.get(Push_Type_Key)
-				.toString());
+		int PushType_FromMap = Integer.parseInt(infoMap.get(Push_Type_Key).toString());
 		if (PushType_FromMap == 1) {
 
-			Toast.makeText(
-					context,
-					context.getResources().getString(R.string.push_type_string),
-					1).show();
+			Toast.makeText(context, context.getResources().getString(R.string.push_type_string), 1).show();
 			pushType = PushType_FromMap;
 		} else if (PushType_FromMap == 2) {
-			Toast.makeText(
-					context,
-					context.getResources().getString(R.string.push_type_string),
-					1).show();
+			Toast.makeText(context, context.getResources().getString(R.string.push_type_string), 1).show();
 			pushType = PushType_FromMap;
 		}
 
@@ -409,8 +421,7 @@ public class GosDeploy {
 	 */
 	public static int setButtonTextColor() {
 		int buttonTextcolor = context.getResources().getColor(R.color.black);
-		String ButtonTextColor_FromMap = infoMap.get(ButtonTextColor_Key)
-				.toString();
+		String ButtonTextColor_FromMap = infoMap.get(ButtonTextColor_Key).toString();
 		if (!TextUtils.isEmpty(ButtonTextColor_FromMap)) {
 			buttonTextcolor = Color.parseColor("#" + ButtonTextColor_FromMap);
 		}
@@ -427,14 +438,11 @@ public class GosDeploy {
 		GradientDrawable drawable = new GradientDrawable();
 		drawable.setShape(GradientDrawable.RECTANGLE);
 
-		int navigationBarColor = context.getResources()
-				.getColor(R.color.yellow);
+		int navigationBarColor = context.getResources().getColor(R.color.yellow);
 
-		String NavigationBarColor_FromMap = infoMap.get(NavigationBarColor_Key)
-				.toString();
+		String NavigationBarColor_FromMap = infoMap.get(NavigationBarColor_Key).toString();
 		if (!TextUtils.isEmpty(NavigationBarColor_FromMap)) {
-			navigationBarColor = Color.parseColor("#"
-					+ NavigationBarColor_FromMap);
+			navigationBarColor = Color.parseColor("#" + NavigationBarColor_FromMap);
 		}
 		drawable.setColor(navigationBarColor);
 
@@ -447,13 +455,10 @@ public class GosDeploy {
 	 * @return
 	 */
 	public static int setNavigationBarTextColor() {
-		int navigationBarTextColor = context.getResources().getColor(
-				R.color.black);
-		String NavigationBarTextColor_FromMap = infoMap.get(
-				NavigationBarTextColor_Key).toString();
+		int navigationBarTextColor = context.getResources().getColor(R.color.black);
+		String NavigationBarTextColor_FromMap = infoMap.get(NavigationBarTextColor_Key).toString();
 		if (!TextUtils.isEmpty(NavigationBarTextColor_FromMap)) {
-			navigationBarTextColor = Color.parseColor("#"
-					+ NavigationBarTextColor_FromMap);
+			navigationBarTextColor = Color.parseColor("#" + NavigationBarTextColor_FromMap);
 		}
 		return navigationBarTextColor;
 	}
@@ -464,14 +469,11 @@ public class GosDeploy {
 	 * @return
 	 */
 	public static int setConfigProgressViewColor() {
-		int configProgressViewColor = context.getResources().getColor(
-				R.color.black);
+		int configProgressViewColor = context.getResources().getColor(R.color.black);
 
-		String ConfigProgressViewColor_FromMap = infoMap.get(
-				ConfigProgressViewColor_Key).toString();
+		String ConfigProgressViewColor_FromMap = infoMap.get(ConfigProgressViewColor_Key).toString();
 		if (!TextUtils.isEmpty(ConfigProgressViewColor_FromMap)) {
-			configProgressViewColor = Color.parseColor("#"
-					+ ConfigProgressViewColor_FromMap);
+			configProgressViewColor = Color.parseColor("#" + ConfigProgressViewColor_FromMap);
 		}
 
 		return configProgressViewColor;
@@ -484,10 +486,8 @@ public class GosDeploy {
 	 */
 	public static String setAddDeviceTitle() {
 
-		String addDeviceTitle = context.getResources().getString(
-				R.string.addDeviceTitle);
-		String AddDeviceTitle_FromMap = infoMap.get(AddDeviceTitle_Key)
-				.toString();
+		String addDeviceTitle = context.getResources().getString(R.string.addDeviceTitle);
+		String AddDeviceTitle_FromMap = infoMap.get(AddDeviceTitle_Key).toString();
 		if (!TextUtils.isEmpty(AddDeviceTitle_FromMap)) {
 			addDeviceTitle = AddDeviceTitle_FromMap;
 		}
@@ -502,10 +502,8 @@ public class GosDeploy {
 	private void readJSON() {
 		try {
 			FileInputStream input = new FileInputStream(fileOutName);
-			InputStreamReader inputStreamReader = new InputStreamReader(input,
-					"UTF-8");
-			BufferedReader bufferedReader = new BufferedReader(
-					inputStreamReader);
+			InputStreamReader inputStreamReader = new InputStreamReader(input, "UTF-8");
+			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 			String line;
 			StringBuilder stringBuilder = new StringBuilder();
 			while ((line = bufferedReader.readLine()) != null) {
@@ -549,4 +547,4 @@ public class GosDeploy {
 		}
 
 	}
-}	
+}

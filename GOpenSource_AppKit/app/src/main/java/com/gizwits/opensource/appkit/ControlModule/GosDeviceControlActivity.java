@@ -1,20 +1,15 @@
 package com.gizwits.opensource.appkit.ControlModule;
 
-import java.util.concurrent.ConcurrentHashMap;
+import com.gizwits.gizwifisdk.api.GizWifiDevice;
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import android.widget.ToggleButton;
-
-import com.gizwits.gizwifisdk.api.GizWifiDevice;
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 
 public class GosDeviceControlActivity extends GosBaseActivity {
 

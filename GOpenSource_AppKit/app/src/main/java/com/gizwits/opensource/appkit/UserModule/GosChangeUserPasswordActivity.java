@@ -1,5 +1,10 @@
 package com.gizwits.opensource.appkit.UserModule;
 
+import com.gizwits.gizwifisdk.api.GizWifiSDK;
+import com.gizwits.gizwifisdk.listener.GizWifiSDKListener;
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
@@ -11,11 +16,6 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.gizwits.gizwifisdk.api.GizWifiSDK;
-import com.gizwits.gizwifisdk.listener.GizWifiSDKListener;
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 
 public class GosChangeUserPasswordActivity extends GosBaseActivity {
 

@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import android.content.Context;
-
 import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
+
+import android.content.Context;
 
 public class AssetsUtils {
 

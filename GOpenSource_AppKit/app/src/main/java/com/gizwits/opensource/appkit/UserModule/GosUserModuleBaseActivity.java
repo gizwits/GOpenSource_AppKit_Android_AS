@@ -4,6 +4,8 @@ import com.gizwits.gizwifisdk.api.GizWifiSDK;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
 import com.gizwits.gizwifisdk.listener.GizWifiSDKListener;
 import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+
+import android.os.Bundle;
 import android.view.MenuItem;
 
 public class GosUserModuleBaseActivity extends GosBaseActivity {
@@ -40,6 +42,13 @@ public class GosUserModuleBaseActivity extends GosBaseActivity {
 		public void didGetCurrentCloudService(GizWifiErrorCode result,
 				java.util.concurrent.ConcurrentHashMap<String, String> cloudServiceInfo) {
 			GosUserModuleBaseActivity.this.didGetCurrentCloudService(result, cloudServiceInfo);
+		};
+
+		public void didNotifyEvent(com.gizwits.gizwifisdk.enumration.GizEventType eventType, Object eventSource,
+				GizWifiErrorCode eventID, String eventMessage) {
+			
+			GosUserModuleBaseActivity.this.didNotifyEvent(eventType, eventSource, eventID, eventMessage);
+
 		};
 
 	};
@@ -110,6 +119,13 @@ public class GosUserModuleBaseActivity extends GosBaseActivity {
 	protected void didGetCurrentCloudService(GizWifiErrorCode result,
 			java.util.concurrent.ConcurrentHashMap<String, String> cloudServiceInfo) {
 	}
+	
+	
+	
+	protected void didNotifyEvent(com.gizwits.gizwifisdk.enumration.GizEventType eventType, Object eventSource,
+			GizWifiErrorCode eventID, String eventMessage) {
+
+	};
 
 	@Override
 	protected void onResume() {
@@ -117,6 +133,7 @@ public class GosUserModuleBaseActivity extends GosBaseActivity {
 		// 每次返回activity都要注册一次sdk监听器，保证sdk状态能正确回调
 		GizWifiSDK.sharedInstance().setListener(gizWifiSDKListener);
 	}
+	
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

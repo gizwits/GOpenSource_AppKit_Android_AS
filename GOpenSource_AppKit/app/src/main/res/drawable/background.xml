@@ -7,13 +7,13 @@
             android:src="@drawable/mydefault" >
         </bitmap>
     </item>
-    <!-- <item android:top="100dp">
+   <!--   <item android:top="100dp">
         <bitmap
             android:id="@+id/bitmap_splash"
-            android:gravity="top"
+            android:gravity="center"
             android:src="@drawable/gizwitslogo" >
         </bitmap>
-    </item> -->
+    </item>  -->
     
  
 </layer-list>

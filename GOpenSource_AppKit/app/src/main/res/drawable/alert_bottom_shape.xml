@@ -3,6 +3,8 @@
 
     <!-- 设置左下角为弧形 （半径）--> 
     <corners android:bottomLeftRadius="15dp"
+        android:topLeftRadius="15dp"
+        android:topRightRadius="15dp"
         android:bottomRightRadius="15dp" />
     
     

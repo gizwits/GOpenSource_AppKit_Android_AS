@@ -88,6 +88,7 @@
     <string name="prompt">tip</string>
     <string name="cancel_besure">Discard your configuration?</string>
     <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
     <string name="besure">OK</string>
     <string name="device_connect">Phone is configured device to connect to internet</string>
     <string name="timer_text">After the device connected to the network, the phone can be remotely controlled device</string>
@@ -318,7 +319,31 @@
     <string name="GIZ_PUSHAPI_CHANNELID_ERROR_INVALID">ChannelId Param Error</string>
     <string name="GIZ_PUSHAPI_PUSH_ERROR">Push Error</string>
     <string name="UNKNOWN_ERROR">Unknow Error</string>
-
+    <string name="GIZ_OPENAPI_REGISTER_IS_BUSY">Register already in progress!</string>
+    <string name="GIZ_OPENAPI_CANNOT_SHARE_TO_SELF">can not share device to self!</string>
+    <string name="GIZ_OPENAPI_ONLY_OWNER_CAN_SHARE">guest or normal user can not share device!</string>
+    <string name="GIZ_OPENAPI_NOT_FOUND_GUEST">guest user not found!</string>
+    <string name="GIZ_OPENAPI_GUEST_ALREADY_BOUND">guest user alread bound!</string>
+    <string name="GIZ_OPENAPI_NOT_FOUND_SHARING_INFO">sharing record not found!</string>
+    <string name="GIZ_OPENAPI_NOT_FOUND_THE_MESSAGE">message record not found!</string>
+    <string name="GIZ_OPENAPI_SHARING_IS_WAITING_FOR_ACCEPT">sharing alread created, waiting for the guest to accept!</string>
+    <string name="GIZ_OPENAPI_SHARING_IS_EXPIRED">sharing record expired!</string>
+    <string name="GIZ_OPENAPI_SHARING_IS_COMPLETED">sharing record status is not unaccept!</string>
+    <string name="GIZ_OPENAPI_INVALID_SHARING_BECAUSE_UNBINDING">owner binding disabled!</string>
+    <string name="GIZ_OPENAPI_ONLY_OWNER_CAN_BIND">owner exist, guest can not bind!</string>
+    <string name="GIZ_OPENAPI_ONLY_OWNER_CAN_OPERATE">permission denied, you are not owner!</string>
+    <string name="GIZ_OPENAPI_SHARING_ALREADY_CANCELLED">sharing already canceled!</string>
+    <string name="GIZ_OPENAPI_OWNER_CANNOT_UNBIND_SELF">can not unbind self!</string>
+    <string name="GIZ_OPENAPI_ONLY_GUEST_CAN_CHECK_QRCODE">permission denied, you are not guest!</string>
+    <string name="GIZ_OPENAPI_MESSAGE_ALREADY_DELETED">message already deleted!</string>
+    <string name="GIZ_SDK_NO_AVAILABLE_DEVICE">There‘s no available device to set server info</string>
+    <string name="GIZ_OPENAPI_BINDING_NOTIFY_FAILED">notify delele binding failed!</string>
+    <string name="GIZ_OPENAPI_ONLY_SELF_CAN_MODIFY_ALIAS">permission denied, you are not owner or guest!</string>
+    <string name="GIZ_OPENAPI_ONLY_RECEIVER_CAN_MARK_MESSAGE">permission denied, you are not the receiver!</string>
+    <string name="GIZ_SDK_HTTP_SERVER_NOT_SUPPORT_API">Cloud Service does not support the API</string>
+    <string name="GIZ_SDK_ADD_SUBDEVICE_FAILED">Add subdevice failed</string>
+    <string name="GIZ_SDK_DELETE_SUBDEVICE_FAILED">Delete subdevice failed</string>
+    <string name="GIZ_SDK_GET_SUBDEVICES_FAILED">Get subdevice list failed</string>
     <!-- 个人中心 -->
     <string name="personal_center">Personal Center</string>
     <string name="user_management">User Management</string>
@@ -330,12 +355,70 @@
     <string name="enter_new_password">Enter new password</string>
     <string name="re_enter_new_password">Re-enter new password</string>
 
-    
-    
-     <!-- 修改密码 -->
+    <!-- 修改密码 -->
     <string name="oldpasserror">Current password invalid</string>
     <string name="nosamepass">Password does not match the confirm password</string>
     <string name="passsuccess">Password change successful</string>
     <string name="passerror">Password change failed</string>
-     <string name="confirm">Confirm</string>
+    <string name="confirm">Confirm</string>
+    <!-- 设备分享 -->
+    <string name="cancel_sharing">Cancel Sharing</string>
+    <string name="deleteuserpremiss">Are you sure to delete the device permission of user xxx？</string>
+    <string name="timeout">Timeout</string>
+    <string name="sharedagain">Sharing Again</string>
+    <string name="ignore">Ignore</string>
+    <string name="tipthings">Tips: The device sharing will be expired in xx minutes </string>
+    <string name="whoshared">User xxx shared the device xxx to you, are you sure to accept?</string>
+    <string name="messagecenter">Messages</string>
+    <string name="devicesharedmess">Device Sharing</string>
+    <string name="sharedlist">Sharing List</string>
+    <string name="shared">Sharing</string>
+    <string name="invited">Invited</string>
+    <string name="you_have_no_device">You have no device</string>
+    <string name="you_have_no_invited_message">You have no invited message</string>
+    <string name="tomeshareddevice">User xxx shared to you</string>
+    <string name="accept">Accepted</string>
+    <string name="refuse">Refused</string>
+    <string name="requsettimeout">Timeout</string>
+    <string name="accepted">Accept</string>
+    <string name="refused">Refuse</string>
+    <string name="your_request_is_failed">Your request is failed</string>
+    <string name="sharedmanager">Sharing Manager</string>
+    <string name="sharedstated">Sharing Status</string>
+    <string name="boundusers">Bound Users</string>
+    <string name="addshared">Add Sharing</string>
+    <string name="sharedto">shared to</string>
+    <string name="have_not_been_shared">have not been shared</string>
+    <string name="have_no_bound_users">have no bound users</string>
+    <string name="cancel_failed">Cancel failed</string>
+    <string name="account_shared">Account Sharing</string>
+    <string name="scan_code_sharing">QRCode Scan Sharing</string>
+    <string name="friends">, using with your friend together</string>
+    <string name="useraccountshared">User Account Sharing</string>
+    <string name="usersharedhint">Input user name/phone/email</string>
+    <string name="user_account_can_not_be_empty">User account can not be empty</string>
+    <string name="alawyssend">Send successfully</string>
+    <string name="send_failed1">Send failed</string>
+    <string name="waitforaccept">Waiting Accepting</string>
+    <string name="deviceshared">Device Sharing</string>
+    <string name="devicetwoshared">Device QRCode Sharing</string>
+    <string name="zxingtimeout">QRCode will be expired in 15 minutes</string>
+    <string name="saomatianjia">Using smart App or Gizwits App scan</string>
+    <string name="bounduser"> bound users</string>
+    <string name="manual_disposition">Manual Config</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="twosharedtimeout">Sorry unable sharing device, please check your internet connection</string>
+    <string name="sharedfailed">Failed to sharing device</string>
+    <string name="sorry">Sorry unable to get sharing info. Please check your internet connection</string>
+    <string name="verysorry">Sorry unable to get sharing info. Please check your QR code</string>
+    <string name="requestoutoftime">Tips: The device sharing have been expired</string>
+    <string name="questerror">Your request is failed</string>
+    <string name="twofailed">QR code has been expired</string>
+    <string name="gizwitsmessage">Gizwits Messages</string>
+    <string name="renameremark">Rename The Sharing Alias</string>
+    <string name="delete">Delete</string>
+    <string name="chooseusertype">Select user type</string>
+    <string name="mycancel">Cancel</string>
+    <string name="moudlechoose">You select the module xx </string>
+
 </resources>

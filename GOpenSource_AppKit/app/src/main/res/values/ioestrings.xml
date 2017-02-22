@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- IOE demo -->
+    <string name="nosupport_device">不支持该控件</string>
+    <string name="download_fail">下载配置文件失败</string>
+    <string name="device_detail">设备硬件信息</string>
+    <string name="sure">确定</string>
+    <string name="get_device_thing">获取设备状态</string>
+    <string name="get_device_hardware_information">获取硬件信息</string>
+    <string name="set_device_remark">设置设备信息</string>
+    <string name="set_device_remark_name">设置别名</string>
+    <string name="remark_name">备注</string>
+    <string name="device_alias">别名</string>
+    <string name="send_msg">发送</string>
+    <string name="about_title">关于</string>
+    <string name="msg_notice">消息公告</string>
+    <string name="opinion_feedback">意见反馈</string>
+    <string name="no_notice">暂无消息公告</string>
+    <string name="Independent_deployment">独立部署设置</string>
+    <string name="Independent">独立部署</string>
+    <string name="Describe_01">此功能为独立部署使用。</string>
+    <string name="Describe_02">输入服务器域名和端口，与私有服务器建立连接。</string>
+    <string name="back">返回</string>
+    <string name="surechangge">确定更改配置吗？</string>
+    <string name="btn_yes">确定</string>
+    <string name="btn_initialize">初始化</string>
+    <string name="normal">恢复默认设置</string>
+    <string name="single_01">独立部署是机智云提供的一套私有化定制服务。通过把整套机智云的物联网云平台方案部署在厂商自有的服务器上，区别于机智云的提供的公有服务器。</string>
+    <string name="single_02">更改服务器域名和端口使IOE Demo切换到独立部署的服务器上。\n并且必须修改厂商自有项目的App ID和App Secret, IOE Demo才能正常运作。</string>
+    <string name="single_03">初始化按钮可以把当前页面的所有参数恢复默认值。</string>
+    <string name="sitedomain">site域名</string>
+    <string name="apidomain">api域名</string>
+    <string name="port">端口</string>
+    <string name="appidandappsecret">请输入有效的AppID和AppSecret</string>
+    <string name=" domainandport">请输入有效域名和端口</string>
+    <string name="waitfordevice">等待设备就绪</string>
+    <string name="changesuccess">更改成功</string>
+    <string name="changefailed">更改失败</string>
+    <string name="devicedisconnected">设备已断开</string>
+
+    <!-- 独立部署设置 -->
+    <string name="Stand_alone_deployment">独立部署设置</string>
+    <string name="Deployment_by_region">通用区域部署</string>
+    <string name="Mainland_China">国内地区（默认）</string>
+    <string name="Eastern_United_States">美东地区</string>
+    <string name="Europe">欧洲地区</string>
+    <string name="Custom_deployment">自定义区域部署</string>
+    <string name="Custom_deployment_setting">自定义区域部署设置</string>
+    <string name="API_domain">API域名</string>
+    <string name="Site_domain">Site域名</string>
+    <string name="App_ID">App ID  </string>
+    <string name="App_Secret">App Secret  </string>
+    <string name="App_ID_with_32">请输入32位的App ID</string>
+    <string name="App_Secret_with_32">请输入32位的App Secret</string>
+
+    <!-- 通用区域部署 -->
+    <string name="Stand_alone_deployment_01">现阶段机智云为用户提供国内、美东和欧洲地区的服务器。用户无须输入服务器域名、端口、App ID和App Secret即可对设备进行调试。</string>
+
+    <!-- 自定义部署设置 -->
+
+    <string name="Custom_setting">自定义部署设置</string>
+    <string name="Custom_setting_01">自定义区域部署是机智云提供的一套私有化定制服务，可以把整套机智云的物联网云平台方案部署在厂商自有的服务器上，区别于机智云提供的公有服务器。</string>
+
+    <!-- 如何自定义部署 -->
+
+    <string name="How_to_customize_deployment">如何自定义部署</string>
+    <string name="Enter_the_server_domain">• 输入服务器域名和端口，使机智云App切换到独立部署的服务器上。（默认端口为80）</string>
+    <string name="Enter_the_valid">• 输入厂商自有项目的有效App ID和App Secret。</string>
+    <string name="information_above">以上信息填写无误后，自定义部署的机智云App就能正常运行。</string>
+
+    <!-- 提示框 -->
+    <string name="tip1">若离开当前页面，已编辑内容将不被保存。</string>
+    <string name="tip2">确定切换到其他区域?</string>
+    <string name="tip3">请输入有效的App ID和App Secret。</string>
+    <string name="tip4">请您核对以下信息，确认后将切换到自定义部署</string>
+    <string name="Deployment_by_region_setting">通用区域设置</string>
+    <string name="no_api">请填写API域名</string>
+    <string name="no_site">请填写Site域名</string>
+    <string name="mozhu">模组商城</string>
+    <string name="gizwitsgonggao">机智云公告</string>
+
+</resources>

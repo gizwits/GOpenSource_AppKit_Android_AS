@@ -3,8 +3,11 @@ package com.gizwits.opensource.appkit.CommonModule;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
+import com.gizwits.opensource.appkit.MessageCenter;
+import com.gizwits.opensource.appkit.R;
+
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -15,6 +18,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -25,11 +29,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
-import com.gizwits.opensource.appkit.MessageCenter;
-import com.gizwits.opensource.appkit.R;
-
-public class GosBaseActivity extends Activity {
+public class GosBaseActivity extends FragmentActivity {
 
 	/** 设备热点默认密码 */
 	public static String SoftAP_PSW = "123456789";
@@ -54,11 +54,8 @@ public class GosBaseActivity extends Activity {
 
 	/** 实现WXEntryActivity与GosUserLoginActivity共用 */
 	public static Handler baseHandler;
-	
-	
+
 	public static boolean isclean = false;
-	
-	
 
 	public void setBaseHandler(Handler basehandler) {
 		if (null != basehandler) {
@@ -82,6 +79,9 @@ public class GosBaseActivity extends Activity {
 		// 初始化
 		setProgressDialog();
 	}
+	
+	
+	
 
 	/**
 	 * 添加ProductKeys
@@ -605,6 +605,106 @@ public class GosBaseActivity extends Activity {
 		case GIZ_PUSHAPI_PUSH_ERROR:
 			errorString = (String) getText(R.string.GIZ_PUSHAPI_PUSH_ERROR);
 			break;
+
+		case GIZ_OPENAPI_REGISTER_IS_BUSY:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_REGISTER_IS_BUSY);
+			break;
+
+		case GIZ_OPENAPI_CANNOT_SHARE_TO_SELF:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_CANNOT_SHARE_TO_SELF);
+			break;
+
+		case GIZ_OPENAPI_ONLY_OWNER_CAN_SHARE:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_ONLY_OWNER_CAN_SHARE);
+			break;
+
+		case GIZ_OPENAPI_NOT_FOUND_GUEST:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_NOT_FOUND_GUEST);
+			break;
+
+		case GIZ_OPENAPI_GUEST_ALREADY_BOUND:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_GUEST_ALREADY_BOUND);
+			break;
+
+		case GIZ_OPENAPI_NOT_FOUND_SHARING_INFO:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_NOT_FOUND_SHARING_INFO);
+			break;
+
+		case GIZ_OPENAPI_NOT_FOUND_THE_MESSAGE:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_NOT_FOUND_THE_MESSAGE);
+			break;
+
+		case GIZ_OPENAPI_SHARING_IS_WAITING_FOR_ACCEPT:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_SHARING_IS_WAITING_FOR_ACCEPT);
+			break;
+
+		case GIZ_OPENAPI_SHARING_IS_COMPLETED:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_SHARING_IS_COMPLETED);
+			break;
+
+		case GIZ_OPENAPI_INVALID_SHARING_BECAUSE_UNBINDING:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_INVALID_SHARING_BECAUSE_UNBINDING);
+			break;
+
+		case GIZ_OPENAPI_ONLY_OWNER_CAN_BIND:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_ONLY_OWNER_CAN_BIND);
+			break;
+
+		case GIZ_OPENAPI_ONLY_OWNER_CAN_OPERATE:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_ONLY_OWNER_CAN_OPERATE);
+			break;
+
+		case GIZ_OPENAPI_SHARING_ALREADY_CANCELLED:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_SHARING_ALREADY_CANCELLED);
+			break;
+
+		case GIZ_OPENAPI_OWNER_CANNOT_UNBIND_SELF:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_OWNER_CANNOT_UNBIND_SELF);
+			break;
+
+		case GIZ_OPENAPI_ONLY_GUEST_CAN_CHECK_QRCODE:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_ONLY_GUEST_CAN_CHECK_QRCODE);
+			break;
+
+		case GIZ_OPENAPI_MESSAGE_ALREADY_DELETED:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_MESSAGE_ALREADY_DELETED);
+			break;
+
+		case GIZ_OPENAPI_BINDING_NOTIFY_FAILED:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_BINDING_NOTIFY_FAILED);
+			break;
+
+		case GIZ_OPENAPI_ONLY_SELF_CAN_MODIFY_ALIAS:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_ONLY_SELF_CAN_MODIFY_ALIAS);
+			break;
+
+		case GIZ_OPENAPI_ONLY_RECEIVER_CAN_MARK_MESSAGE:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_ONLY_RECEIVER_CAN_MARK_MESSAGE);
+			break;
+
+		case GIZ_OPENAPI_SHARING_IS_EXPIRED:
+			errorString = (String) getText(R.string.GIZ_OPENAPI_SHARING_IS_EXPIRED);
+			break;
+
+		case GIZ_SDK_NO_AVAILABLE_DEVICE:
+			errorString = (String) getText(R.string.GIZ_SDK_NO_AVAILABLE_DEVICE);
+			break;
+
+		case GIZ_SDK_HTTP_SERVER_NOT_SUPPORT_API:
+			errorString = (String) getText(R.string.GIZ_SDK_HTTP_SERVER_NOT_SUPPORT_API);
+			break;
+
+		case GIZ_SDK_ADD_SUBDEVICE_FAILED:
+			errorString = (String) getText(R.string.GIZ_SDK_ADD_SUBDEVICE_FAILED);
+			break;
+
+		case GIZ_SDK_DELETE_SUBDEVICE_FAILED:
+			errorString = (String) getText(R.string.GIZ_SDK_DELETE_SUBDEVICE_FAILED);
+			break;
+
+		case GIZ_SDK_GET_SUBDEVICES_FAILED:
+			errorString = (String) getText(R.string.GIZ_SDK_GET_SUBDEVICES_FAILED);
+			break;
 		default:
 			errorString = (String) getText(R.string.UNKNOWN_ERROR);
 			break;
@@ -642,4 +742,6 @@ public class GosBaseActivity extends Activity {
 			}
 		});
 	}
+
+
 }

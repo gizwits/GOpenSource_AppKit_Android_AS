@@ -1,8 +1,11 @@
 package com.gizwits.opensource.appkit.ConfigModule;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.gizwits.opensource.appkit.R;
 import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
 import com.gizwits.opensource.appkit.view.GifView;
-import com.gizwits.opensource.appkit.R;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +16,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
 
 public class GosAirlinkReadyActivity extends GosConfigModuleBaseActivity implements OnClickListener {
 
@@ -27,6 +30,10 @@ public class GosAirlinkReadyActivity extends GosConfigModuleBaseActivity impleme
 	/** The btn Next */
 	Button btnNext;
 
+	private TextView moudlechoose;
+
+	private List<String> modeList;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,14 +41,47 @@ public class GosAirlinkReadyActivity extends GosConfigModuleBaseActivity impleme
 		// 设置ActionBar
 		setActionBar(true, true, R.string.airlink_ready_title);
 
+		initData();
 		initView();
 		initEvent();
+	}
+
+	private void initData() {
+		// workSSID = spf.getString("workSSID", "");
+
+		modeList = new ArrayList<String>();
+		String[] modes = this.getResources().getStringArray(R.array.mode);
+		for (String string : modes) {
+			modeList.add(string);
+		}
 	}
 
 	private void initView() {
 		cbSelect = (CheckBox) findViewById(R.id.cbSelect);
 		tvSelect = (TextView) findViewById(R.id.tvSelect);
 		btnNext = (Button) findViewById(R.id.btnNext);
+
+		moudlechoose = (TextView) findViewById(R.id.moudlechoose);
+
+		String mdchoose = getResources().getString(R.string.moudlechoose);
+
+		String[] split = mdchoose.split("xx");
+
+		int setModuleSelectOn = GosDeploy.setModuleSelectOn();
+
+		if (setModuleSelectOn == 0) {
+			moudlechoose.setVisibility(View.VISIBLE);
+		} else {
+			moudlechoose.setVisibility(View.INVISIBLE);
+		}
+
+		if (split.length > 1) {
+			moudlechoose.setText(
+					split[0] + " " + modeList.get(GosAirlinkChooseDeviceWorkWiFiActivity.modeNum) + " " + split[1]);
+		} else {
+			moudlechoose.setText(
+					split[0] + " " + modeList.get(GosAirlinkChooseDeviceWorkWiFiActivity.modeNum) + " " );
+		}
 
 		/** 加载Gif */
 		GifView gif = (GifView) findViewById(R.id.softreset);

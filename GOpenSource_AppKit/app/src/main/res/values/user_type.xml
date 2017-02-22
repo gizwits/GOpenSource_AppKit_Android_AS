@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="usertype">
+        <item>普通用户</item>
+        <item>手机用户</item>
+        <item>邮箱用户</item>
+        <item>其他用户</item>
+    </string-array>
+
+</resources>

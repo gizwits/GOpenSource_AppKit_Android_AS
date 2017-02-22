@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp" >
+
+
+        <Button
+            android:id="@+id/btnSure"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shape_button"
+            android:gravity="center"
+            android:text="@string/sure" />
+
+        <ImageView
+            android:id="@+id/ivLine"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_alignTop="@id/btnSure"
+            android:background="@color/background_gray" />
+
+        <TextView
+            android:id="@+id/tvTips"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ivLine"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="heihei"
+            android:textColor="@color/text_gray"
+            android:textSize="16sp" />
+
+</RelativeLayout>

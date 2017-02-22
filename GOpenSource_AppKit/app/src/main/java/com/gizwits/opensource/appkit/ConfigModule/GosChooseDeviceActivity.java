@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.GosConstant;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.wifi.ScanResult;
@@ -20,9 +23,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.GosConstant;
 
 @SuppressLint({ "InflateParams", "HandlerLeak" })
 public class GosChooseDeviceActivity extends GosConfigModuleBaseActivity implements OnClickListener {
@@ -86,7 +86,7 @@ public class GosChooseDeviceActivity extends GosConfigModuleBaseActivity impleme
 	}
 
 	@Override
-	protected void onPause() {
+	public void onPause() {
 		super.onPause();
 		timer.cancel();
 	}

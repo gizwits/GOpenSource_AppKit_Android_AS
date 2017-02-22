@@ -28,7 +28,7 @@
                 android:layout_width="46dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:src="@drawable/device_icon" />
+                android:src="@drawable/fourth" />
         </LinearLayout>
 
         <RelativeLayout
@@ -58,6 +58,9 @@
                 android:textColor="@color/black"
                 android:layout_alignParentBottom="true"
                 android:textSize="12sp" />
+
+            
+
         </RelativeLayout>
 
         <LinearLayout

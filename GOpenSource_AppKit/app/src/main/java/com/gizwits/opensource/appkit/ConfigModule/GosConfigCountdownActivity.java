@@ -3,6 +3,15 @@ package com.gizwits.opensource.appkit.ConfigModule;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.gizwits.gizwifisdk.api.GizWifiSDK;
+import com.gizwits.gizwifisdk.enumration.GizWifiConfigureMode;
+import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.CommonModule.WifiAutoConnectManager;
+import com.gizwits.opensource.appkit.CommonModule.WifiAutoConnectManager.WifiCipherType;
+import com.gizwits.opensource.appkit.utils.NetUtils;
+import com.gizwits.opensource.appkit.view.RoundProgressBar;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -13,20 +22,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.KeyEvent;
-import android.view.WindowManager;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.gizwits.gizwifisdk.api.GizWifiSDK;
-import com.gizwits.gizwifisdk.enumration.GizWifiConfigureMode;
-import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.WifiAutoConnectManager;
-import com.gizwits.opensource.appkit.CommonModule.WifiAutoConnectManager.WifiCipherType;
-import com.gizwits.opensource.appkit.utils.NetUtils;
-import com.gizwits.opensource.appkit.view.RoundProgressBar;
 
 @SuppressLint("HandlerLeak")
 public class GosConfigCountdownActivity extends GosConfigModuleBaseActivity {
@@ -127,7 +127,7 @@ public class GosConfigCountdownActivity extends GosConfigModuleBaseActivity {
 		/**
 		 * 配置失败
 		 */
-		FAILED,
+		FAILED, OFFTIME,
 
 	}
 
@@ -160,6 +160,11 @@ public class GosConfigCountdownActivity extends GosConfigModuleBaseActivity {
 				Intent intent = new Intent(GosConfigCountdownActivity.this, GosConfigFailedActivity.class);
 				startActivity(intent);
 				finish();
+				break;
+				
+			case OFFTIME:
+				GizWifiSDK.sharedInstance().setDeviceOnboarding(workSSID, workSSIDPsw,
+						GizWifiConfigureMode.GizWifiSoftAP, presentSSID, 60, null);
 				break;
 
 			default:
@@ -235,11 +240,13 @@ public class GosConfigCountdownActivity extends GosConfigModuleBaseActivity {
 			String presentSSID = NetUtils.getCurentWifiSSID(GosConfigCountdownActivity.this);
 			if (!TextUtils.isEmpty(presentSSID) && presentSSID.contains(SoftAP_Start)) {
 				if (checkNetwork(GosConfigCountdownActivity.this)) {
-					GizWifiSDK.sharedInstance().setDeviceOnboarding(workSSID, workSSIDPsw,
-							GizWifiConfigureMode.GizWifiSoftAP, presentSSID, 60, null);
+					
 					progressDialog.cancel();
 					isChecked = false;
 					handler.sendEmptyMessage(handler_key.START_TIMER.ordinal());
+					GizWifiSDK.sharedInstance().setDeviceOnboarding(workSSID, workSSIDPsw,
+							GizWifiConfigureMode.GizWifiSoftAP, presentSSID, 60, null);
+				//	handler.sendEmptyMessageDelayed(handler_key.OFFTIME.ordinal(), 2000);
 				}
 				if(broadcase==null){
 					broadcase = new GosWifiChangeReciver();

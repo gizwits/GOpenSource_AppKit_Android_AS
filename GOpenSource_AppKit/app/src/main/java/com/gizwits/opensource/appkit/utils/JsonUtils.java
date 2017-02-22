@@ -25,7 +25,6 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import android.util.Log;
 
 /**
