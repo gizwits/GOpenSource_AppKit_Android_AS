@@ -134,7 +134,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置SDK参数--AppID（必填）
-	 * 
+	 *
 	 * @return
 	 */
 	public static String setAppID() {
@@ -144,7 +144,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置SDK参数--AppSecret（必填且必须与上述AppKey匹配）
-	 * 
+	 *
 	 * @return
 	 */
 	public static String setAppSecret() {
@@ -154,7 +154,7 @@ public class GosDeploy {
 
 	/**
 	 * 用来判断是否需要打开QQ登录
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public static boolean setQQ() {
@@ -163,7 +163,7 @@ public class GosDeploy {
 
 	/**
 	 * 用来判断是否需要打开Wechat登录
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public static boolean setWechat() {
@@ -172,7 +172,7 @@ public class GosDeploy {
 
 	/**
 	 * 用来判断是否需要打开匿名登录
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public static boolean setAnonymousLogin() {
@@ -181,7 +181,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置ProductKey
-	 * 
+	 *
 	 * @return
 	 */
 	public static List<String> setProductKeyList() {
@@ -202,7 +202,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置模组类型开关
-	 * 
+	 *
 	 * @return
 	 */
 	public static int setModuleSelectOn() {
@@ -215,15 +215,14 @@ public class GosDeploy {
 
 		return modeOnOff;
 	}
-	
-	
+
 	/**
 	 * 设置模组类型开关
-	 * 
+	 *
 	 * @return
 	 */
 	public static int setUsingTabSetOn() {
-		int modeOnOff = View.INVISIBLE;
+		int modeOnOff = View.GONE;
 
 		String moduleSelectOn = infoMap.get(UsingTabSet).toString();
 		if (Boolean.parseBoolean(moduleSelectOn)) {
@@ -235,7 +234,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置TencentID
-	 * 
+	 *
 	 * @return
 	 */
 	public static String setTencentAppID() {
@@ -245,7 +244,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置WechatAppID
-	 * 
+	 *
 	 * @return
 	 */
 	public static String setWechatAppID() {
@@ -255,7 +254,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置WeChatAppSecret
-	 * 
+	 *
 	 * @return
 	 */
 	public static String setWechatAppSecret() {
@@ -265,7 +264,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置推送类型开关（0：不开启，1：极光推送，2：百度推送。默认为0）
-	 * 
+	 *
 	 * @return
 	 */
 	public static int setPushType() {
@@ -286,7 +285,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置BaiDuPushApp
-	 * 
+	 *
 	 * @return
 	 */
 	public static String setBaiDuPushAppKey() {
@@ -296,7 +295,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置openAPI_URL
-	 * 
+	 *
 	 * @return
 	 */
 	public static String[] setApiURL() {
@@ -319,7 +318,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置SITE_URL
-	 * 
+	 *
 	 * @return
 	 */
 
@@ -343,7 +342,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置GDMS_URL
-	 * 
+	 *
 	 * @return
 	 */
 	public static String[] setGDMSURL() {
@@ -366,7 +365,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置cloudService
-	 * 
+	 *
 	 * @return
 	 */
 	public static ConcurrentHashMap<String, String> setCloudService() {
@@ -396,7 +395,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置Button背景颜色
-	 * 
+	 *
 	 * @return
 	 */
 	public static Drawable setButtonBackgroundColor() {
@@ -416,7 +415,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置Button文字颜色
-	 * 
+	 *
 	 * @return
 	 */
 	public static int setButtonTextColor() {
@@ -431,7 +430,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置导航栏背景颜色
-	 * 
+	 *
 	 * @return
 	 */
 	public static Drawable setNavigationBarColor() {
@@ -451,7 +450,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置导航栏文字颜色
-	 * 
+	 *
 	 * @return
 	 */
 	public static int setNavigationBarTextColor() {
@@ -465,7 +464,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置ConfigProgressView颜色
-	 * 
+	 *
 	 * @return
 	 */
 	public static int setConfigProgressViewColor() {
@@ -481,7 +480,7 @@ public class GosDeploy {
 
 	/**
 	 * 设置添加设备标题
-	 * 
+	 *
 	 * @return
 	 */
 	public static String setAddDeviceTitle() {
@@ -528,8 +527,15 @@ public class GosDeploy {
 			Iterator actions = root.keys();
 			while (actions.hasNext()) {
 				String param = actions.next().toString();
-				Object value = root.get(param);
-				infoMap.put(param, value);
+
+				if (param.equals("product_key")) {
+					JSONArray myarray = (JSONArray) root.get(param);
+					infoMap.put(param, myarray);
+				} else {
+					Object value = root.get(param);
+					infoMap.put(param, value);
+				}
+
 			}
 
 		} catch (JSONException e) {

@@ -33,7 +33,7 @@
     <string name="apidomain">api域名</string>
     <string name="port">端口</string>
     <string name="appidandappsecret">请输入有效的AppID和AppSecret</string>
-    <string name=" domainandport">请输入有效域名和端口</string>
+    <string name="domainandport">请输入有效域名和端口</string>
     <string name="waitfordevice">等待设备就绪</string>
     <string name="changesuccess">更改成功</string>
     <string name="changefailed">更改失败</string>
