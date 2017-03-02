@@ -24,7 +24,7 @@
     <string name="apidomain">api domain</string>
     <string name="port">port</string>
     <string name="appidandappsecret">Please input AppID and AppSecret</string>
-    <string name=" domainandport"> Please input domain and port</string>
+    <string name="domainandport"> Please input domain and port</string>
     <string name="waitfordevice">Waiting for device ready</string>
     <string name="get_device_thing">get device status</string>
     <string name="get_device_hardware_information">get device hardware info</string>
