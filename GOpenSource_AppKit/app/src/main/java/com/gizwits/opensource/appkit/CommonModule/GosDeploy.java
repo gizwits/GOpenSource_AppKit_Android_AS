@@ -216,14 +216,13 @@ public class GosDeploy {
 		return modeOnOff;
 	}
 
-
 	/**
 	 * 设置模组类型开关
 	 *
 	 * @return
 	 */
 	public static int setUsingTabSetOn() {
-		int modeOnOff = View.INVISIBLE;
+		int modeOnOff = View.GONE;
 
 		String moduleSelectOn = infoMap.get(UsingTabSet).toString();
 		if (Boolean.parseBoolean(moduleSelectOn)) {
@@ -528,8 +527,15 @@ public class GosDeploy {
 			Iterator actions = root.keys();
 			while (actions.hasNext()) {
 				String param = actions.next().toString();
-				Object value = root.get(param);
-				infoMap.put(param, value);
+
+				if (param.equals("product_key")) {
+					JSONArray myarray = (JSONArray) root.get(param);
+					infoMap.put(param, myarray);
+				} else {
+					Object value = root.get(param);
+					infoMap.put(param, value);
+				}
+
 			}
 
 		} catch (JSONException e) {
