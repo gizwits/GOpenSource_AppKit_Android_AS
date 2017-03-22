@@ -50,7 +50,6 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 乐鑫配置库中使用的权限（WIFI组播） -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
 
@@ -173,7 +172,8 @@
 
                 <category android:name="com.gizwits.opensource.appkit" />
             </intent-filter>
-        </service>
+        </service>
+
         -->
 
 

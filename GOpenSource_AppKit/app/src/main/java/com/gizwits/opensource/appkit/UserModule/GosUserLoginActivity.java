@@ -1,5 +1,6 @@
 package com.gizwits.opensource.appkit.UserModule;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,12 +26,18 @@ import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.PermissionListener;
+import com.yanzhenjie.permission.Rationale;
+import com.yanzhenjie.permission.RationaleListener;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -48,6 +55,7 @@ import cn.jpush.android.api.JPushInterface;
 
 @SuppressLint("HandlerLeak")
 public class GosUserLoginActivity extends GosUserModuleBaseActivity implements OnClickListener {
+
 
 	GosPushManager gosPushManager;
 
@@ -162,11 +170,16 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements O
 		gosPushManager = new GosPushManager(GosDeploy.setPushType(), this);
 
 		setContentView(R.layout.activity_gos_user_login);
+
+
 		// 设置actionBar
 		setActionBar(false, false, R.string.app_company);
 		initView();
 		initEvent();
 	}
+
+
+
 
 	@Override
 	protected void onResume() {
@@ -490,5 +503,10 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements O
 		}
 
 	}
+
+
+
+
+
 
 }
