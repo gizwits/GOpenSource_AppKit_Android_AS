@@ -19,11 +19,16 @@ import com.gizwits.opensource.appkit.ConfigModule.GosCheckDeviceWorkWiFiActivity
 import com.gizwits.opensource.appkit.ControlModule.GosDeviceControlActivity;
 import com.gizwits.opensource.appkit.PushModule.GosPushManager;
 import com.gizwits.opensource.appkit.SettingsModule.GosSettiingsActivity;
+import com.gizwits.opensource.appkit.UserModule.GosUserLoginActivity;
 import com.gizwits.opensource.appkit.sharingdevice.gosZxingDeviceSharingActivity;
 import com.gizwits.opensource.appkit.utils.NetUtils;
 import com.gizwits.opensource.appkit.view.SlideListView2;
 import com.gizwits.opensource.appkit.view.VerticalSwipeRefreshLayout;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Rationale;
+import com.yanzhenjie.permission.RationaleListener;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -31,6 +36,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.text.TextUtils;
 import android.util.Log;
@@ -163,6 +169,8 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 
 	private VerticalSwipeRefreshLayout mSwipeLayout1;
 
+	private static final  int REQUEST_CODE_SETTING = 100;
+
 	Handler handler = new Handler() {
 		private AlertDialog myDialog;
 		private TextView dialog_name;
@@ -292,18 +300,23 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gos_device_list);
+
+
 		// 设置ActionBar
 		// setActionBar(true, true, R.string.devicelist_title);
 		// actionBar.setIcon(R.drawable.button_refresh);
 
+
+
 		handler.sendEmptyMessage(GETLIST);
-		GosMessageHandler.getSingleInstance().StartLooperWifi(this);
+
 		softNameList = new ArrayList<String>();
 		initData();
 		initView();
 		initEvent();
 
 	}
+
 
 	/*
 	 * @Override public void onWindowFocusChanged(boolean hasFocus) {
@@ -623,6 +636,7 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 			}
 			break;
 		case R.id.action_QR_code:
+
 			intent = new Intent(GosDeviceListActivity.this, CaptureActivity.class);
 			startActivity(intent);
 			break;
@@ -866,6 +880,11 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 
 	}
 
-	
+
+
+
+
+
+
 
 }

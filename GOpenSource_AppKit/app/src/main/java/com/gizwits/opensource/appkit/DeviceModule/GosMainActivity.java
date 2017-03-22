@@ -13,7 +13,11 @@ import com.gizwits.opensource.appkit.ConfigModule.GosAirlinkChooseDeviceWorkWiFi
 import com.gizwits.opensource.appkit.PushModule.GosPushManager;
 import com.gizwits.opensource.appkit.SettingsModule.GosSettiingsActivity;
 import com.gizwits.opensource.appkit.sharingdevice.messageCenterActivity;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Rationale;
+import com.yanzhenjie.permission.RationaleListener;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.LocalActivityManager;
 import android.content.Context;
@@ -77,6 +81,9 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 	private TextView tx1;
 	private TextView tx2;
 	private TextView tx3;
+	private static final  int REQUEST_CODE_SETTING = 100;
+
+	private static final  int REQUEST_ZXINGCODE_SETTING = 200;
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -92,9 +99,18 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 		initTextView();
 		initPagerViewer();
 		initHandler();
-		
-		
-		
+
+
+		AndPermission.with(this)
+				.requestCode(REQUEST_CODE_SETTING)
+				.permission(Manifest.permission.ACCESS_FINE_LOCATION).rationale(new RationaleListener() {
+
+			@Override
+			public void showRequestPermissionRationale(int arg0, Rationale arg1) {
+				AndPermission.rationaleDialog(GosMainActivity.this, arg1).show();
+			}
+		})
+				.send();
 	
 
 	}
@@ -244,8 +260,19 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 			// finish();
 			break;
 		case R.id.action_QR_code:
-			intent = new Intent(GosMainActivity.this, CaptureActivity.class);
-			startActivity(intent);
+
+
+			AndPermission.with(this)
+					.requestCode(REQUEST_ZXINGCODE_SETTING)
+					.permission(Manifest.permission.CAMERA).rationale(new RationaleListener() {
+
+				@Override
+				public void showRequestPermissionRationale(int arg0, Rationale arg1) {
+					AndPermission.rationaleDialog(GosMainActivity.this, arg1).show();
+				}
+			})
+					.send();
+
 			break;
 		case R.id.action_addDevice:
 			if (!checkNetwork(GosMainActivity.this)) {
@@ -584,4 +611,64 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 	 * 双击退出函数
 	 */
 	private static Boolean isExit = false;
+
+
+
+	@Override
+	public void onSucceed(int requestCode, List<String> grantPermissions) {
+		super.onSucceed(requestCode, grantPermissions);
+
+
+	switch (requestCode){
+
+
+
+		case REQUEST_CODE_SETTING:
+			GosMessageHandler.getSingleInstance().StartLooperWifi(this);
+			break;
+
+
+		case REQUEST_ZXINGCODE_SETTING:
+			Intent	intent = new Intent(GosMainActivity.this, CaptureActivity.class);
+			startActivity(intent);
+			break;
+
+
+		default:
+
+			break;
+	}
+
+
+	}
+
+	@Override
+	public void onFailed(int requestCode, List<String> deniedPermissions) {
+		super.onFailed(requestCode, deniedPermissions);
+		{
+			// 权限申请失败回调。
+
+			// 用户否勾选了不再提示并且拒绝了权限，那么提示用户到设置中授权。
+			if (AndPermission.hasAlwaysDeniedPermission(GosMainActivity.this, deniedPermissions)) {
+				// 第一种：用默认的提示语。
+				AndPermission.defaultSettingDialog(GosMainActivity.this, REQUEST_CODE_SETTING).show();
+
+				// 第二种：用自定义的提示语。
+				// AndPermission.defaultSettingDialog(this, REQUEST_CODE_SETTING)
+				// .setTitle("权限申请失败")
+				// .setMessage("我们需要的一些权限被您拒绝或者系统发生错误申请失败，请您到设置页面手动授权，否则功能无法正常使用！")
+				// .setPositiveButton("好，去设置")
+				// .show();
+
+				// 第三种：自定义dialog样式。
+				// SettingService settingService =
+				//    AndPermission.defineSettingDialog(this, REQUEST_CODE_SETTING);
+				// 你的dialog点击了确定调用：
+				// settingService.execute();
+				// 你的dialog点击了取消调用：
+				// settingService.cancel();
+			}
+
+		}
+	}
 }

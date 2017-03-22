@@ -6,6 +6,9 @@ import java.util.List;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
 import com.gizwits.opensource.appkit.MessageCenter;
 import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.UserModule.GosUserLoginActivity;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.PermissionListener;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -18,6 +21,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -239,7 +243,7 @@ public class GosBaseActivity extends FragmentActivity {
 		case GIZ_SDK_DEVICE_MAC_INVALID:
 			errorString = (String) getText(R.string.GIZ_SDK_DEVICE_MAC_INVALID);
 			break;
-		case GIZ_SDK_SUBDEVICE_DID_INVALID:
+		case GIZ_SDK_SUBDEVICE_INVALID:
 			errorString = (String) getText(R.string.GIZ_SDK_SUBDEVICE_DID_INVALID);
 			break;
 		case GIZ_SDK_DEVICE_PASSCODE_INVALID:
@@ -348,13 +352,13 @@ public class GosBaseActivity extends FragmentActivity {
 		case GIZ_SDK_GROUP_PRODUCTKEY_INVALID:
 			errorString = (String) getText(R.string.GIZ_SDK_GROUP_PRODUCTKEY_INVALID);
 			break;
-		case GIZ_SDK_GROUP_FAILED_DELETE_DEVICE:
+		case GIZ_SDK_GROUP_DELETE_FAILED:
 			errorString = (String) getText(R.string.GIZ_SDK_GROUP_FAILED_DELETE_DEVICE);
 			break;
-		case GIZ_SDK_GROUP_FAILED_ADD_DEVICE:
+		case GIZ_SDK_GROUP_EDIT_FAILED:
 			errorString = (String) getText(R.string.GIZ_SDK_GROUP_FAILED_ADD_DEVICE);
 			break;
-		case GIZ_SDK_GROUP_GET_DEVICE_FAILED:
+		case GIZ_SDK_GROUP_LIST_UPDATE_FAILED:
 			errorString = (String) getText(R.string.GIZ_SDK_GROUP_GET_DEVICE_FAILED);
 			break;
 		case GIZ_SDK_DATAPOINT_NOT_DOWNLOAD:
@@ -694,15 +698,15 @@ public class GosBaseActivity extends FragmentActivity {
 			errorString = (String) getText(R.string.GIZ_SDK_HTTP_SERVER_NOT_SUPPORT_API);
 			break;
 
-		case GIZ_SDK_ADD_SUBDEVICE_FAILED:
+		case GIZ_SDK_SUBDEVICE_ADD_FAILED:
 			errorString = (String) getText(R.string.GIZ_SDK_ADD_SUBDEVICE_FAILED);
 			break;
 
-		case GIZ_SDK_DELETE_SUBDEVICE_FAILED:
+		case GIZ_SDK_SUBDEVICE_DELETE_FAILED:
 			errorString = (String) getText(R.string.GIZ_SDK_DELETE_SUBDEVICE_FAILED);
 			break;
 
-		case GIZ_SDK_GET_SUBDEVICES_FAILED:
+		case GIZ_SDK_SUBDEVICE_LIST_UPDATE_FAILED:
 			errorString = (String) getText(R.string.GIZ_SDK_GET_SUBDEVICES_FAILED);
 			break;
 		default:
@@ -743,5 +747,32 @@ public class GosBaseActivity extends FragmentActivity {
 		});
 	}
 
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+		AndPermission.onRequestPermissionsResult(requestCode,permissions,grantResults,mypermissionlistener);
+
+	}
+
+
+	PermissionListener mypermissionlistener = new PermissionListener() {
+		@Override
+		public void onSucceed(int requestCode, List<String> grantPermissions) {
+			GosBaseActivity.this.onSucceed(requestCode,grantPermissions);
+		}
+
+		@Override
+		public void onFailed(int requestCode, List<String> deniedPermissions) {
+			GosBaseActivity.this.onFailed(requestCode,deniedPermissions);
+		}
+	};
+
+
+
+	public void onFailed(int requestCode, List<String> deniedPermissions) {}
+
+	public void onSucceed(int requestCode, List<String> grantPermissions) {}
 
 }
