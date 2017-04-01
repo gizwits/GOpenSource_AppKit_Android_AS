@@ -208,7 +208,7 @@ public class GosConfigCountdownActivity extends GosConfigModuleBaseActivity {
 	private void readyToSoftAP() {
 
 		// 切换至设备热点
-		WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+		WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 		WifiCipherType cipherType = WifiAutoConnectManager.getCipherType(GosConfigCountdownActivity.this, softSSID);
 		WifiAutoConnectManager manager = new WifiAutoConnectManager(wifiManager);
 		manager.connect(softSSID, SoftAP_PSW, cipherType);

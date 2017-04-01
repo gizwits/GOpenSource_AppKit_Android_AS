@@ -5,7 +5,7 @@
 	"openAPI_URL": "",
 	"site_URL": "",
 	"push_URL": "",
-	"UsingTabSet": false,
+	"UsingTabSet": true,
 	"wifi_type_select": true,
 	"tencent_app_id": "your_tencent_app_id",
 	"wechat_app_id": "your_wechat_app_id",

@@ -365,8 +365,6 @@
 
     <!-- 设备分享 -->
 
-    <string name="message">消息</string>
-    <string name="onlyone">个人</string>
     <string name="shared">共享</string>
     <string name="invited">受邀</string>
     <string name="accept">已接受</string>
@@ -375,7 +373,6 @@
     <string name="accepted">接受</string>
     <string name="refused">拒绝</string>
     <string name="sharedlist">共享列表</string>
-    <string name="bcp">批量操作</string>
     <string name="sharedmanager">共享管理</string>
     <string name="sharedstated">共享状态</string>
     <string name="boundusers">已绑用户</string>
@@ -397,7 +394,6 @@
     <string name="tomeshareddevice">xxx向您共享设备</string>
     <string name="friends">,与小伙伴一起使用</string>
     <string name="chooseusertype">选择用户类型</string>
-    <string name="waitfor">已发送邀请\r\n等待对方处理</string>
     <string name="alawyssend">发送成功</string>
     <string name="waitforaccept">等待接受</string>
     <string name="cancel_sharing">取消共享</string>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="tring_join_device">Trying to connect with the device</string>
     <string name="about_title">About</string>
     <string name="msg_notice">News announcements</string>
     <string name="opinion_feedback">Feedback</string>
