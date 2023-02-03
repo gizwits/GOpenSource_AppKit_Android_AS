@@ -1,13 +1,6 @@
 <resources>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="item_deivce_height">70dip</dimen>    
-    <dimen name="item_title_height">40dip</dimen>
-    <dimen name="title_height">50dip</dimen>
-    <dimen name="item_wifi_height">50dip</dimen>
-    <dimen name="item_cmd">40dip</dimen>
-    <dimen name="item_height">50dip</dimen>
-    <dimen name="title_size">7dip</dimen>
+    <dimen name="toolbar_hight">50dp</dimen>
+
 </resources>

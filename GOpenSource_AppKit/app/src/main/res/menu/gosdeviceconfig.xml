@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/airlink_config" android:orderInCategory="101" android:title="@string/airlink_config"
+        app:showAsAction="never" />
+
+
+    <item android:id="@+id/softap_config" android:orderInCategory="103" android:title="@string/softap_config"
+        app:showAsAction="never" />
+
+</menu>

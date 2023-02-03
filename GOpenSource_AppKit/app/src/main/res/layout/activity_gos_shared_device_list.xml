@@ -2,21 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@color/background_color"
+    android:orientation="vertical">
 
-    <com.gizwits.opensource.appkit.sharingdevice.ViewPagerIndicator
-        android:id="@+id/vpi_indicator"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+    <include layout="@layout/header_toolbar"/>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </com.gizwits.opensource.appkit.sharingdevice.ViewPagerIndicator>
+        android:layout_height="1dp"
+        android:background="@color/border_color" />
+
+
+    <com.gizwits.opensource.appkit.view.ViewPagerIndicator
+        android:id="@+id/vpi_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:background="@color/white"></com.gizwits.opensource.appkit.view.ViewPagerIndicator>
+
 
     <com.gizwits.opensource.appkit.CommonModule.NoScrollViewPager
         android:id="@+id/vp_shared_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
-    </com.gizwits.opensource.appkit.CommonModule.NoScrollViewPager>
+        android:layout_weight="1"></com.gizwits.opensource.appkit.CommonModule.NoScrollViewPager>
 
 </LinearLayout>

@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white" >
-    
-    <ListView 
-        android:id="@+id/lvNotice"
-        android:padding="10dp"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:listSelector="@android:color/transparent"
-        android:divider="@color/white">
-        
-    </ListView>
-    
-    <TextView 
-        android:id="@+id/tvNoNotice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="16sp"
-        android:textColor="@color/text_gray"
-        android:text="@string/no_notice"/>
+    android:background="@color/white"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <include layout="@layout/header_toolbar" />
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.gizwits.opensource.appkit.view.VerticalSwipeRefreshLayout
+            android:id="@+id/id_swipe_ly"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ListView android:id="@+id/lvNotice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:divider="@color/white"
+                android:listSelector="@android:color/transparent"
+                android:padding="10dp"
+                android:visibility="gone">
+
+            </ListView>
+        </com.gizwits.opensource.appkit.view.VerticalSwipeRefreshLayout>
+
+        <TextView
+            android:id="@+id/tvNoNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="@string/no_notice"
+            android:textColor="@color/text_color"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</LinearLayout>

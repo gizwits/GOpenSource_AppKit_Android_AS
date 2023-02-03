@@ -2,32 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top" >
+    android:gravity="top">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_alignParentLeft="true" >
+        android:layout_alignParentLeft="true">
 
         <LinearLayout
-            android:id="@+id/llLeft"
-            android:layout_width="50dp"
-            android:layout_height="42dp"
-            android:layout_marginBottom="14dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/img_bg_shape"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="17.5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="17.5dp"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgLeft"
-                android:layout_width="46dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/fourth" />
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/common_device_lan_online" />
         </LinearLayout>
 
         <RelativeLayout
@@ -36,7 +33,7 @@
             android:layout_marginBottom="14dp"
             android:layout_marginTop="14dp"
             android:layout_weight="1"
-            android:gravity="center_vertical" >
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/tvDeviceName"
@@ -46,7 +43,8 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="TextView"
-                android:textColor="@color/black" />
+                android:textColor="@color/text_color"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvDeviceMac"
@@ -54,72 +52,56 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:text="TextView"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color_gray"
                 android:textSize="12sp" />
 
-         
+
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/shap"
-            android:layout_marginRight="20dp"
-            android:gravity="center_vertical" >
+            android:orientation="horizontal"
+            android:visibility="visible">
 
-            <ImageView
-                android:id="@+id/imgRight"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="15dp"
-                android:src="@drawable/button_more" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
-        </LinearLayout>
-        
-        
-        
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            android:id="@+id/descrip"
-            android:gravity="center_vertical" >
+                <TextView
+                    android:id="@+id/tvDeviceStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/not_sharing"
+                    android:textColor="@color/text_state"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/description"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="15dp"
-                android:text="@string/requsettimeout"
-                android:visibility="gone" />
-        
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/imgRight"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/common_arrow_right" />
+            </LinearLayout>
         </LinearLayout>
-        
-        
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/click"
-            android:visibility="gone"
-            android:layout_marginRight="20dp"
-            android:gravity="center_vertical" >
 
-         
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/img_bg_shape"
-                android:text="@string/accepted"
-                android:visibility="gone" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/img_bg_shape"
-                android:text="@string/refused"
-                android:visibility="gone" />
-        </LinearLayout>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="70dp"
+        android:background="@color/background_color"></View>
 </RelativeLayout>

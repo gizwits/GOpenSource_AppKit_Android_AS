@@ -1,7 +1,5 @@
 package com.gizwits.opensource.appkit.CommonModule;
 
-import com.gizwits.opensource.appkit.R;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
@@ -9,13 +7,11 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-
-
-
+import com.gizwits.opensource.appkit.R;
 
 
 public class TipsDialog extends Dialog implements
-		android.view.View.OnClickListener {
+		View.OnClickListener {
 
 	private Button btnSure;
 	private TextView tvTips;

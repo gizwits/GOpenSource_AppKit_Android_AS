@@ -8,12 +8,14 @@
         <item>RTK</item>
         <item>WM</item>
         <item>QCA</item>
+        <item>FlyLink</item>
         <item>TI</item>
         <item>FSK</item>
-        <item>MXCHIP3</item>
+        <item>MXCHIP_V3</item>
         <item>BL</item>
         <item>AtmelEE</item>
         <item>Other</item>
     </string-array>
+
 
 </resources>

@@ -2,30 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_color" />
 
     <com.gizwits.opensource.appkit.view.VerticalSwipeRefreshLayout
         android:id="@+id/id_swipe_ly1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <ScrollView
             android:id="@+id/llNoDevice"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imgNoDevice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="100dp"
-                    android:src="@drawable/nodevice" />
+                    android:src="@drawable/device_none" />
 
                 <Button
                     android:id="@+id/btnNoDevice"
@@ -47,36 +52,35 @@
     <com.gizwits.opensource.appkit.view.VerticalSwipeRefreshLayout
         android:id="@+id/id_swipe_ly"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <ScrollView
             android:id="@+id/svListGroup"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <include
                     android:id="@+id/icBoundDevices"
+                    layout="@layout/view_gos_title_listview"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    layout="@layout/view_gos_title_listview" />
+                    android:layout_height="wrap_content" />
 
                 <include
                     android:id="@+id/icFoundDevices"
+                    layout="@layout/view_gos_title_listview"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    layout="@layout/view_gos_title_listview" />
+                    android:layout_height="wrap_content" />
 
-                <include
-                    android:id="@+id/icOfflineDevices"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    layout="@layout/view_gos_title_listview" />
+
+
+
+
             </LinearLayout>
         </ScrollView>
     </com.gizwits.opensource.appkit.view.VerticalSwipeRefreshLayout>

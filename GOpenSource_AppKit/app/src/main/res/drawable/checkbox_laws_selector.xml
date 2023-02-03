@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 选中状态的背景图片 -->
-    <item android:drawable="@drawable/button_visible" android:state_checked="true"/>
+    <item android:drawable="@drawable/common_password_show" android:state_checked="true"/>
     <!-- 未选中状态的背景图片 -->
-    <item android:drawable="@drawable/button_invisible"/>
+    <item android:drawable="@drawable/common_password_hide"/>
 
 </selector>

@@ -1,19 +1,20 @@
 package com.gizwits.opensource.appkit.sharingdevice;
 
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+import com.gizwits.opensource.appkit.R;
+
 
 /**
  * Created by Sunny on 2015年6月25日
  *
  * @author Sunny
  */
-public class MsgNoticeActivity extends GosBaseActivity{
+public class MsgNoticeActivity extends GosBaseActivity {
 
 	private ListView lvNotice;
 	private TextView tvNoNotice;
@@ -23,7 +24,7 @@ public class MsgNoticeActivity extends GosBaseActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_notice);
 		
-//		setActionBar(true, true, R.string.msg_notice);
+//		setActionBar(true, true, R.string.msg_xnotice);
 		initView();
 //		initData();
 	}

@@ -1,214 +1,235 @@
 package com.gizwits.opensource.appkit.sharingdevice;
 
-import com.gizwits.gizwifisdk.api.GizDeviceSharing;
-import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
-import com.gizwits.gizwifisdk.listener.GizDeviceSharingListener;
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
-import com.gizwits.opensource.appkit.utils.DateUtil;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gizwits.gizwifisdk.api.GizDeviceSharing;
+import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
+import com.gizwits.gizwifisdk.listener.GizDeviceSharingListener;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.utils.DateUtil;
+
 public class gosZxingDeviceSharingActivity extends GosBaseActivity {
 
-	private String code;
-	private int time = 15;
+    private String code;
+    private int time = 15;
+    private String[] split2s;
+    private String tip;
+    private TextView tiptext;
+    private String token;
+    private Button yes;
+    private Button no;
+    private TextView zxingtext;
+    private String whoshared;
+    private String[] splits;
+    private String userName;
+    private String productName;
+    private String deviceAlias;
+    private String expiredAt;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.gos_devicesharing_zxing_activity);
-		setActionBar(true, true, R.string.QR_code);
-		initData();
-		initView();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	private void initData() {
+        setContentView(R.layout.gos_devicesharing_zxing_activity);
+        setToolBar(true, R.string.QR_code);
+        initData();
+        initView();
+    }
 
-		Intent intent = getIntent();
-		code = intent.getStringExtra("code");
-		userName = intent.getStringExtra("userName");
-		productName = intent.getStringExtra("productName");
-		deviceAlias = intent.getStringExtra("deviceAlias");
-		expiredAt = intent.getStringExtra("expiredAt");
+    private void initView() {
 
-		token = spf.getString("Token", "");
+        zxingtext = (TextView) findViewById(R.id.zxingtext);
 
-	}
+        yes = (Button) findViewById(R.id.yes);
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
-		if (time > 0) {
-			tip = split2s[0] + time + split2s[1];
+        no = (Button) findViewById(R.id.no);
 
-			tiptext.setText(tip);
-		} else {
-			tiptext.setText(getResources().getString(R.string.requestoutoftime));
-			yes.setClickable(false);
-			yes.setTextColor(getResources().getColor(R.color.gray));
-		}
+        whoshared = getResources().getString(R.string.whoshared);
 
-		GizDeviceSharing.setListener(new GizDeviceSharingListener() {
-			@Override
-			public void didAcceptDeviceSharingByQRCode(GizWifiErrorCode result) {
-				super.didAcceptDeviceSharingByQRCode(result);
+        splits = whoshared.split("xxx");
+        // [, 向你共享, ，你接受并绑定设备吗？]
+        whoshared = userName + splits[1] + productName + splits[splits.length - 1];
+        zxingtext.setText(whoshared);
 
-				if (result.ordinal() == 0) {
-					Toast.makeText(gosZxingDeviceSharingActivity.this, "success", 1).show();
+        String timeByFormat = DateUtil.getCurTimeByFormat("yyyy-MM-dd HH:mm:ss");
+        expiredAt = DateUtil.utc2Local(expiredAt);
+        long diff = DateUtil.getDiff(expiredAt, timeByFormat);
+        if (diff >= 0) {
+            double c = diff / 60.0;
+            time = (int) Math.ceil(c);
+        } else {
+            tiptext.setText(getResources().getString(R.string.requestoutoftime));
+            yes.setClickable(false);
+            yes.setTextColor(getResources().getColor(R.color.gray));
+            return;
+        }
+        tiptext = (TextView) findViewById(R.id.tiptext);
+        tip = getResources().getString(R.string.tipthings);
+        split2s = tip.split("xx");
 
-					finish();
-				} else {
-					Toast.makeText(gosZxingDeviceSharingActivity.this, toastError(result), 1).show();
+        tip = split2s[0] + time + split2s[1];
 
-					finish();
-				}
-			}
+        tiptext.setText(tip);
 
-			@Override
-			public void didCheckDeviceSharingInfoByQRCode(GizWifiErrorCode result, String userName, String productName,
-					String deviceAlias, String expiredAt) {
-				super.didCheckDeviceSharingInfoByQRCode(result, userName, productName, deviceAlias, expiredAt);
+        hand.sendEmptyMessageDelayed(1, diff % 60 * 1000);
 
-				int errorcode = result.ordinal();
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GizDeviceSharing.acceptDeviceSharingByQRCode(spf.getString("Token", ""), code);
+            }
+        });
 
-				if (8041 <= errorcode && errorcode <= 8050 || errorcode == 8308) {
-					tiptext.setVisibility(View.GONE);
-					yes.setClickable(false);
-					no.setClickable(false);
-					yes.setTextColor(getResources().getColor(R.color.gray));
-					no.setTextColor(getResources().getColor(R.color.gray));
-					zxingtext.setText(getResources().getString(R.string.sorry));
-				} else if (errorcode != 0) {
-					tiptext.setVisibility(View.GONE);
-					yes.setClickable(false);
-					no.setClickable(false);
-					yes.setTextColor(getResources().getColor(R.color.gray));
-					no.setTextColor(getResources().getColor(R.color.gray));
-					zxingtext.setText(getResources().getString(R.string.verysorry));
-				} else {
-					tiptext.setVisibility(View.VISIBLE);
-					yes.setClickable(true);
-					no.setClickable(true);
-					yes.setTextColor(getResources().getColor(R.color.black));
-					no.setTextColor(getResources().getColor(R.color.black));
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
 
-					whoshared = userName + splits[1] + productName + splits[splits.length - 1];
-					zxingtext.setText(whoshared);
+    private void initData() {
 
-					String timeByFormat = DateUtil.getCurTimeByFormat("yyyy-MM-dd HH:mm:ss");
-					expiredAt = DateUtil.utc2Local(expiredAt);
-					long diff = DateUtil.getDiff(expiredAt, timeByFormat);
+        Intent intent = getIntent();
+        code = intent.getStringExtra("code");
+        userName = intent.getStringExtra("userName");
+        productName = intent.getStringExtra("productName");
+        deviceAlias = intent.getStringExtra("deviceAlias");
+        expiredAt = intent.getStringExtra("expiredAt");
 
-					if (diff >= 0) {
-						time = (int) Math.ceil(diff / 60);
-					} else {
+        token = spf.getString("Token", "");
 
-					}
-					Toast.makeText(gosZxingDeviceSharingActivity.this, diff % 60 + "", 1).show();
+    }
 
-				}
-			}
-		});
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-	}
+        if (time > 0) {
+            tip = split2s[0] + time + split2s[1];
 
-	private void initView() {
+            tiptext.setText(tip);
+        } else {
+            tiptext.setText(getResources().getString(R.string.requestoutoftime));
+            yes.setClickable(false);
+            yes.setTextColor(getResources().getColor(R.color.gray));
+        }
 
-		zxingtext = (TextView) findViewById(R.id.zxingtext);
+        GizDeviceSharing.setListener(new GizDeviceSharingListener() {
 
-		yes = (TextView) findViewById(R.id.yes);
+            @Override
+            public void didAcceptDeviceSharing(GizWifiErrorCode result, int sharingID) {
+                super.didAcceptDeviceSharing(result, sharingID);
+                if (result.ordinal() == 0) {
+                    finish();
+                } else {
+                    Toast.makeText(gosZxingDeviceSharingActivity.this, toastError(result), 1).show();
+                    finish();
+                }
+            }
 
-		no = (TextView) findViewById(R.id.no);
+            @Override
+            public void didAcceptDeviceSharingByQRCode(GizWifiErrorCode result) {
+                super.didAcceptDeviceSharingByQRCode(result);
+                if (result.ordinal() == 0) {
+                    Toast.makeText(gosZxingDeviceSharingActivity.this, "success", 1).show();
 
-		whoshared = getResources().getString(R.string.whoshared);
+                    finish();
+                } else {
+                    Toast.makeText(gosZxingDeviceSharingActivity.this, toastError(result), 1).show();
 
-		splits = whoshared.split("xxx");
-		// [, 向你共享, ，你接受并绑定设备吗？]
-		whoshared = userName + splits[1] + productName + splits[splits.length - 1];
-		zxingtext.setText(whoshared);
+                    finish();
+                }
+            }
 
-		String timeByFormat = DateUtil.getCurTimeByFormat("yyyy-MM-dd HH:mm:ss");
-		expiredAt = DateUtil.utc2Local(expiredAt);
-		long diff = DateUtil.getDiff(expiredAt, timeByFormat);
+            @Override
+            public void didCheckDeviceSharingInfoByQRCode(GizWifiErrorCode result, String userName, String productName,
+                                                          String deviceAlias, String expiredAt) {
+                super.didCheckDeviceSharingInfoByQRCode(result, userName, productName, deviceAlias, expiredAt);
 
-		if (diff >= 0) {
-			double c = diff / 60.0;
-			time = (int) Math.ceil(c);
-		} else {
-			tiptext.setText(getResources().getString(R.string.requestoutoftime));
-			yes.setClickable(false);
-			yes.setTextColor(getResources().getColor(R.color.gray));
-			return;
-		}
-		tiptext = (TextView) findViewById(R.id.tiptext);
-		tip = getResources().getString(R.string.tipthings);
-		split2s = tip.split("xx");
+                int errorcode = result.ordinal();
 
-		tip = split2s[0] + time + split2s[1];
+                if (8041 <= errorcode && errorcode <= 8050 || errorcode == 8308) {
+                    tiptext.setVisibility(View.GONE);
+                    yes.setClickable(false);
+                    no.setClickable(false);
+                    yes.setTextColor(getResources().getColor(R.color.gray));
+                    no.setTextColor(getResources().getColor(R.color.gray));
+                    zxingtext.setText(getResources().getString(R.string.sorry));
+                } else if (errorcode != 0) {
+                    tiptext.setVisibility(View.GONE);
+                    yes.setClickable(false);
+                    no.setClickable(false);
+                    yes.setTextColor(getResources().getColor(R.color.gray));
+                    no.setTextColor(getResources().getColor(R.color.gray));
+                    zxingtext.setText(getResources().getString(R.string.verysorry));
+                } else {
+                    tiptext.setVisibility(View.VISIBLE);
+                    yes.setClickable(true);
+                    no.setClickable(true);
+                    yes.setTextColor(getResources().getColor(R.color.text_color));
+                    no.setTextColor(getResources().getColor(R.color.text_color));
 
-		tiptext.setText(tip);
+                    whoshared = userName + splits[1] + productName + splits[splits.length - 1];
+                    zxingtext.setText(whoshared);
 
-		hand.sendEmptyMessageDelayed(1, diff % 60 * 1000);
-	}
+                    String timeByFormat = DateUtil.getCurTimeByFormat("yyyy-MM-dd HH:mm:ss");
+                    expiredAt = DateUtil.utc2Local(expiredAt);
+                    long diff = DateUtil.getDiff(expiredAt, timeByFormat);
 
-	public void yes(View v) {
-		GizDeviceSharing.acceptDeviceSharingByQRCode(spf.getString("Token", ""), code);
+                    if (diff >= 0) {
+                        time = (int) Math.ceil(diff / 60);
+                    } else {
 
-	}
+                    }
+                    Toast.makeText(gosZxingDeviceSharingActivity.this, diff % 60 + "", 1).show();
 
-	public void no(View v) {
-		finish();
-	}
+                }
+            }
+        });
 
-	Handler hand = new Handler() {
-		public void handleMessage(android.os.Message msg) {
+    }
 
-			time = time - 1;
 
-			if (time > 0) {
-				tip = split2s[0] + time + split2s[1];
+    Handler hand = new Handler() {
+        public void handleMessage(android.os.Message msg) {
 
-				tiptext.setText(tip);
-				hand.sendEmptyMessageDelayed(1, 60000);
-			} else {
-				tiptext.setText(getResources().getString(R.string.requestoutoftime));
-				yes.setClickable(false);
-				yes.setTextColor(getResources().getColor(R.color.gray));
-			}
+            time = time - 1;
 
-		};
-	};
-	private String[] split2s;
-	private String tip;
-	private TextView tiptext;
-	private String token;
-	private TextView yes;
-	private TextView no;
-	private TextView zxingtext;
-	private String whoshared;
-	private String[] splits;
-	private String userName;
-	private String productName;
-	private String deviceAlias;
-	private String expiredAt;
+            if (time > 0) {
+                tip = split2s[0] + time + split2s[1];
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			this.finish();
-			break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+                tiptext.setText(tip);
+                hand.sendEmptyMessageDelayed(1, 60000);
+            } else {
+                tiptext.setText(getResources().getString(R.string.requestoutoftime));
+                yes.setClickable(false);
+                yes.setTextColor(getResources().getColor(R.color.gray));
+            }
+
+        }
+
+        ;
+    };
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

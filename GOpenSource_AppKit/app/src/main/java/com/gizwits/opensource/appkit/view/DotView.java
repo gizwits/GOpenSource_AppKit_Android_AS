@@ -1,13 +1,14 @@
 package com.gizwits.opensource.appkit.view;
 
-import com.gizwits.opensource.appkit.R;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.gizwits.opensource.appkit.R;
+
 
 public class DotView extends View {
 	private Paint p;
@@ -27,7 +28,7 @@ public class DotView extends View {
 	private void init(Context context){
 		p = new Paint(Paint.ANTI_ALIAS_FLAG);  
 		p.setStyle(Style.FILL);  
-		p.setColor(context.getResources().getColor(R.color.line_gray)); 
+		p.setColor(context.getResources().getColor(R.color.line_gray));
 		
 		final float scale = context.getResources().getDisplayMetrics().density;
 		dash=(int) (3 * scale + 0.5f);

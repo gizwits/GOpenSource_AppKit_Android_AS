@@ -1,14 +1,17 @@
 package com.gizwits.opensource.appkit.utils;
 
+import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
+
+import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
-
-import android.content.Context;
+import java.util.Locale;
 
 public class AssetsUtils {
 
@@ -16,11 +19,11 @@ public class AssetsUtils {
 			String fileInPutName, Context context) throws IOException {
 		InputStream myInput;
 		File file = new File(fileOutPutName);
-		/*if (!file.exists()) {
+		if (!file.exists()) {
 		    file.createNewFile();
 		   }else {
 			return;
-		}*/
+		}
 		OutputStream myOutput = new FileOutputStream(fileOutPutName);
 		myInput = context.getAssets().open(fileInPutName);
 		byte[] buffer = new byte[1024];
@@ -59,5 +62,50 @@ public class AssetsUtils {
 			e.printStackTrace();
 		}
 }
-	
+	/**
+	 * 将dip或dp值转换为px值，保证尺寸大小不变
+	 *
+	 * @param dipValue
+	 * @param scale
+	 *            （DisplayMetrics类中属性density）
+	 * @return
+	 */
+	public static int diptopx(Context context, float dipValue) {
+		final float scale = context.getResources().getDisplayMetrics().density;
+		return (int) (dipValue * scale + 0.5f);
+	}
+
+
+	/**
+	 * 将sp值转换为px值，保证文字大小不变
+	 *
+	 * @param spValue
+	 * @param fontScale
+	 *            （DisplayMetrics类中属性scaledDensity）
+	 * @return
+	 */
+	public static int sptopx(Context context, float spValue) {
+		final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+		return (int) (spValue * fontScale + 0.5f);
+	}
+
+	public  static boolean isZh(Context context) {
+		Locale locale = context.getResources().getConfiguration().locale;
+		String language = locale.getLanguage();
+		if (language.endsWith("zh"))
+			return true;
+		else
+			return false;
+	}
+
+	public static int getScreenWidth(Context context)
+	{
+		WindowManager wm = (WindowManager) context
+				.getSystemService(Context.WINDOW_SERVICE );
+		DisplayMetrics outMetrics = new DisplayMetrics();
+		wm.getDefaultDisplay().getMetrics( outMetrics);
+		return outMetrics .widthPixels ;
+	}
+
+
 }

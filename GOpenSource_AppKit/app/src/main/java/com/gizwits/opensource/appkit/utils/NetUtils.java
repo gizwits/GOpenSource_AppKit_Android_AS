@@ -17,8 +17,6 @@
  */
 package com.gizwits.opensource.appkit.utils;
 
-import java.util.List;
-
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -29,11 +27,14 @@ import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.text.TextUtils;
 import android.util.Log;
+
+import java.util.List;
 
 /**
  * 网络工具类.
- *
+ * 
  * @author Sunny Ding
  * 
  *         *
@@ -42,7 +43,7 @@ public class NetUtils {
 
 	/**
 	 * 判断当前手机是否连上Wifi.
-	 *
+	 * 
 	 * @param context
 	 *            上下文
 	 * @return boolean 是否连上网络
@@ -67,7 +68,7 @@ public class NetUtils {
 
 	/**
 	 * 判断当前手机的网络是否可用.
-	 *
+	 * 
 	 * @param context
 	 *            上下文
 	 * @return boolean 是否连上网络
@@ -92,7 +93,7 @@ public class NetUtils {
 
 	/**
 	 * 判断当前网络是手机网络还是WIFI.
-	 *
+	 * 
 	 * @param context
 	 *            上下文
 	 * @return ConnectedType 数据类型
@@ -115,7 +116,7 @@ public class NetUtils {
 
 	/**
 	 * 获取当前WIFI的SSID.
-	 *
+	 * 
 	 * @param context
 	 *            上下文
 	 * @return ssid
@@ -127,36 +128,45 @@ public class NetUtils {
 		if (context != null) {
 			WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
 			WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-			
-			if(wifiInfo!=null){
+
+			if (wifiInfo != null) {
 				ssid = wifiInfo.getSSID();
-				if (ssid.substring(0, 1).equals("\"") && ssid.substring(ssid.length() - 1).equals("\"")) {
+
+				if (!TextUtils.isEmpty(ssid) && ssid.substring(0, 1).equals("\"")
+						&& ssid.substring(ssid.length() - 1).equals("\"")) {
 					ssid = ssid.substring(1, ssid.length() - 1);
 				}
 			}
-			
+
 		}
 		return ssid;
 	}
 
 	/**
 	 * 用来获得手机扫描到的所有wifi的信息.
-	 *
+	 * 
 	 * @param c
 	 *            上下文
 	 * @return the current wifi scan result
 	 */
-	static public List<ScanResult> getCurrentWifiScanResult(Context c) {
+	public static List<ScanResult> getCurrentWifiScanResult(Context c) {
 		WifiManager wifiManager = (WifiManager) c.getSystemService(Context.WIFI_SERVICE);
 		wifiManager.startScan();
+
 		return wifiManager.getScanResults();
+
+	}
+
+	public interface WifiSsidList {
+
+		public void ssidList(List<ScanResult> list);
 	}
 
 	static public String getConnectWifiSsid(Context c) {
 		String ssid = "";
 		WifiManager wifiManager = (WifiManager) c.getSystemService(Context.WIFI_SERVICE);
 		WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-		if(wifiInfo!=null){
+		if (wifiInfo != null) {
 			ssid = wifiInfo.getSSID();
 		}
 		return ssid;

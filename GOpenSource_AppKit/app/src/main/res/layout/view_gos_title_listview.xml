@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tvListViewTitle"
@@ -11,10 +11,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         android:text="TextView"
-        android:textColor="@color/title_gray"
+        android:textColor="@color/text_state"
         android:textSize="12sp" />
 
     <LinearLayout
@@ -25,15 +25,13 @@
         android:layout_below="@+id/tvListViewTitle"
         android:background="@color/white"
         android:gravity="center_vertical"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+        <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
             android:text="@string/havenot_device"
-            android:textColor="@color/black" />
+            android:textColor="@color/text_color" />
     </LinearLayout>
 
     <com.gizwits.opensource.appkit.view.SlideListView2
@@ -45,7 +43,6 @@
         android:background="@color/white"
         android:divider="@color/line_gray"
         android:dividerHeight="0.5dp"
-        android:listSelector="@drawable/devicelist_item_selector" >
-    </com.gizwits.opensource.appkit.view.SlideListView2>
+        android:listSelector="@drawable/devicelist_item_selector"></com.gizwits.opensource.appkit.view.SlideListView2>
 
 </RelativeLayout>

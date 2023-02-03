@@ -1,26 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>  
-<resources>  
-  
-    <declare-styleable name="GifView">  
-        <attr name="gif" format="reference" />  
-        <attr name="paused" format="boolean" />  
-    </declare-styleable>  
-    <declare-styleable name="CustomTheme">  
-        <attr name="gifViewStyle" format="reference" />  
-    </declare-styleable>  
-  
-    <declare-styleable name="RoundProgressBar">  
-        <attr name="roundColor" format="color"/>
-        <attr name="roundProgressColor" format="color"/>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="GifView">
+        <attr name="gif" format="reference" />
+        <attr name="paused" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="CustomTheme">
+        <attr name="gifViewStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundProgressBar">
+        <attr name="roundColor" format="color" />
+        <attr name="roundProgressColor" format="color" />
         <attr name="roundWidth" format="dimension"></attr>
-        <attr name="textColor" format="color" />  
-        <attr name="textSize" format="dimension" /> 
-        <attr name="max" format="integer"></attr> 
+        <attr name="textColor" />
+        <attr name="textSize" />
+        <attr name="max" format="integer"></attr>
+        <attr name="text" format="string"></attr>
         <attr name="textIsDisplayable" format="boolean"></attr>
         <attr name="style">
             <enum name="STROKE" value="0"></enum>
             <enum name="FILL" value="1"></enum>
         </attr>
-    </declare-styleable>  
-    
+    </declare-styleable>
+    <attr name="textSize" format="dimension" />
+    <attr name="textColor" format="color" />
+    <declare-styleable name="SwitchButton">
+        <attr name="kswThumbDrawable" format="reference" />
+        <attr name="kswThumbColor" format="color|reference" />
+        <attr name="kswThumbMargin" format="dimension|reference" />
+        <attr name="kswThumbMarginTop" format="dimension|reference" />
+        <attr name="kswThumbMarginBottom" format="dimension|reference" />
+        <attr name="kswThumbMarginLeft" format="dimension|reference" />
+        <attr name="kswThumbMarginRight" format="dimension|reference" />
+        <attr name="kswThumbWidth" format="dimension|reference" />
+        <attr name="kswThumbHeight" format="dimension|reference" />
+        <attr name="kswThumbRadius" format="dimension|reference" />
+        <attr name="kswBackRadius" format="dimension|reference" />
+        <attr name="kswBackDrawable" format="reference" />
+        <attr name="kswBackColor" format="color|reference" />
+        <attr name="kswFadeBack" format="boolean" />
+        <attr name="kswBackMeasureRatio" format="float" />
+        <attr name="kswAnimationDuration" format="integer" />
+        <attr name="kswTintColor" format="color|reference" />
+        <attr name="kswTextOn" format="string" />
+        <attr name="kswTextOff" format="string" />
+        <attr name="kswTextMarginH" format="dimension" />
+        <attr name="kswAutoAdjustTextPosition" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color" />
+    </declare-styleable>
+
+
+
+
+    <declare-styleable name="CircleProgress">
+        <attr name="numOfCircles" format="integer" />
+        <attr name="maxRadius" format="dimension" />
+        <attr name="minRadius" format="dimension" />
+        <attr name="rotateSpeedInMillis" format="integer" />
+        <attr name="isClockwise" format="boolean" />
+        <attr name="circleColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="SwitchView">
+        <attr name="hasShadow" format="boolean" />
+        <attr name="primaryColor" format="color" />
+        <attr name="primaryColorDark" format="color" />
+        <attr name="isOpened" format="boolean" />
+    </declare-styleable>
+
 </resources>  

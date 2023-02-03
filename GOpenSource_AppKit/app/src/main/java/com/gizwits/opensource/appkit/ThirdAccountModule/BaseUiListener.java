@@ -1,9 +1,9 @@
 package com.gizwits.opensource.appkit.ThirdAccountModule;
 
-import org.json.JSONObject;
-
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.UiError;
+
+import org.json.JSONObject;
 
 public class BaseUiListener implements IUiListener {
 

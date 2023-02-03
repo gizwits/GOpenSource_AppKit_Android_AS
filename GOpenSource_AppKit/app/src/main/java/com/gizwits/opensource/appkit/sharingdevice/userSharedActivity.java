@@ -1,18 +1,6 @@
 package com.gizwits.opensource.appkit.sharingdevice;
 
-import com.gizwits.gizwifisdk.api.GizDeviceSharing;
-import com.gizwits.gizwifisdk.enumration.GizDeviceSharingWay;
-import com.gizwits.gizwifisdk.enumration.GizUserAccountType;
-import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
-import com.gizwits.gizwifisdk.listener.GizDeviceSharingListener;
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
-import com.gizwits.opensource.appkit.CommonModule.TipsDialog;
-
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -20,144 +8,138 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gizwits.gizwifisdk.api.GizDeviceSharing;
+import com.gizwits.gizwifisdk.enumration.GizDeviceSharingWay;
+import com.gizwits.gizwifisdk.enumration.GizUserAccountType;
+import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
+import com.gizwits.gizwifisdk.listener.GizDeviceSharingListener;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
+import com.gizwits.opensource.appkit.CommonModule.TipsDialog;
+import com.gizwits.opensource.appkit.R;
+
 public class userSharedActivity extends GosBaseActivity {
 
-	private String productname;
-	private EditText username;
-	private int chooseitem = 0;
-	private String did;
+    private String productname;
+    private EditText username;
+    private int chooseitem = 0;
+    private String did;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_gos_user_shared);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gos_user_shared);
 
-		setActionBar(true, true, R.string.account_shared);
+        setToolBar(true, R.string.account_shared);
 
-		initData();
-		initView();
-	}
+        initData();
+        initView();
+    }
 
-	private void initView() {
-		TextView usersharedtext = (TextView) findViewById(R.id.usersharedtext);
+    private void initView() {
+        TextView usersharedtext = (TextView) findViewById(R.id.usersharedtext);
+        Button button = (Button) findViewById(R.id.button);
+        button.setBackgroundDrawable(GosDeploy.appConfig_BackgroundColor());
+        button.setTextColor(GosDeploy.appConfig_Contrast());
 
-		username = (EditText) findViewById(R.id.username);
-		usersharedtext.setText(
-				getResources().getString(R.string.shared) + productname + getResources().getString(R.string.friends));
-	}
+        username = (EditText) findViewById(R.id.username);
+        usersharedtext.setText(
+                getResources().getString(R.string.shared) + productname + getResources().getString(R.string.friends));
+    }
 
-	private void initData() {
+    private void initData() {
 
-		Intent tent = getIntent();
-		productname = tent.getStringExtra("productname");
-		did = tent.getStringExtra("did");
-	}
+        Intent tent = getIntent();
+        productname = tent.getStringExtra("productname");
+        did = tent.getStringExtra("did");
+    }
 
-	public void usershared(View v) {
+    public void usershared(View v) {
 
-		final String usernametext = username.getText().toString();
-		if (TextUtils.isEmpty(usernametext)) {
+        final String usernametext = username.getText().toString();
+        if (TextUtils.isEmpty(usernametext)) {
 
-			// Toast.makeText(this,
-			// getResources().getString(R.string.toast_name_empet), 0).show();
+            // Toast.makeText(this,
+            // getResources().getString(R.string.toast_name_empet), 0).show();
 
-			TipsDialog dia = new TipsDialog(this, getResources().getString(R.string.toast_name_empet));
-			dia.show();
-			return;
-		}
+            TipsDialog dia = new TipsDialog(this, getResources().getString(R.string.toast_name_empet));
+            dia.show();
+            return;
+        }
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setIcon(R.drawable.friends);
-		chooseitem = 0;
-		builder.setTitle(getResources().getString(R.string.chooseusertype));
-		builder.setSingleChoiceItems(R.array.usertype, 0, new OnClickListener() {
+        SharedPreferences spf = getSharedPreferences("set", Context.MODE_PRIVATE);
+        String token = spf.getString("Token", "");
+        if (usernametext.length() < 32) {
+            if (usernametext.matches("[0-9]+")) {
+                GizDeviceSharing.sharingDevice(token, did, GizDeviceSharingWay.GizDeviceSharingByNormal, usernametext,
+                        GizUserAccountType.GizUserPhone);
+                return;
+            }
 
-			@Override
-			public void onClick(DialogInterface arg0, int arg1) {
-				chooseitem = arg1;
-			}
-		});
+        }
+        if (usernametext.contains("@")) {
+            GizDeviceSharing.sharingDevice(token, did, GizDeviceSharingWay.GizDeviceSharingByNormal, usernametext,
+                    GizUserAccountType.GizUserEmail);
+            return;
+        }
+        if (usernametext.length() == 32) {
+            if (usernametext.matches("[a-zA-Z0-9]+")) {
+                GizDeviceSharing.sharingDevice(token, did, GizDeviceSharingWay.GizDeviceSharingByNormal, usernametext,
+                        GizUserAccountType.GizUserOther);
+                return;
+            }
 
-		builder.setPositiveButton(getResources().getString(R.string.confirm), new OnClickListener() {
+        }
+        Toast.makeText(this, getString(R.string.account_incorrect), Toast.LENGTH_LONG).show();
 
-			@Override
-			public void onClick(DialogInterface arg0, int arg1) {
 
-				SharedPreferences spf = getSharedPreferences("set", Context.MODE_PRIVATE);
-				String token = spf.getString("Token", "");
-				GizUserAccountType gizuser = null;
-				switch (chooseitem) {
-				case 0:
-					gizuser = GizUserAccountType.GizUserNormal;
-					break;
+    }
 
-				case 1:
-					gizuser = GizUserAccountType.GizUserPhone;
-					break;
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-				case 2:
-					gizuser = GizUserAccountType.GizUserEmail;
-					break;
+        GizDeviceSharing.setListener(new GizDeviceSharingListener() {
 
-				case 3:
-					gizuser = GizUserAccountType.GizUserOther;
-					break;
+            @Override
+            public void didSharingDevice(GizWifiErrorCode result, String deviceID, int sharingID,
+                                         Bitmap QRCodeImage) {
+                super.didSharingDevice(result, deviceID, sharingID, QRCodeImage);
 
-				default:
-					break;
-				}
-				GizDeviceSharing.sharingDevice(token, did, GizDeviceSharingWay.GizDeviceSharingByNormal, usernametext,
-						gizuser);
+                if (result.ordinal() == 0) {
+                    Toast.makeText(userSharedActivity.this, getResources().getString(R.string.alawyssend), 1).show();
+                    finish();
+                } else if (result == GizWifiErrorCode.GIZ_OPENAPI_GUEST_ALREADY_BOUND) {
+                    Toast.makeText(userSharedActivity.this, getResources().getString(R.string.account_shared2), toastTime).show();
+                } else if (result == GizWifiErrorCode.GIZ_OPENAPI_NOT_FOUND_GUEST) {
+                    Toast.makeText(userSharedActivity.this, getResources().getString(R.string.user_not_exist), toastTime).show();
+                } else if (result == GizWifiErrorCode.GIZ_OPENAPI_CANNOT_SHARE_TO_SELF) {
+                    Toast.makeText(userSharedActivity.this, getResources().getString(R.string.not_shared_self), toastTime).show();
+                } else {
+                    Toast.makeText(userSharedActivity.this, getResources().getString(R.string.send_failed1), 2).show();
+                }
 
-				arg0.dismiss();
-			}
-		});
+            }
 
-		builder.setNegativeButton(getResources().getString(R.string.no), null);
+        });
+    }
 
-		builder.show();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
 
-	}
+                finish();
+                break;
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-
-		GizDeviceSharing.setListener(new GizDeviceSharingListener() {
-
-			@Override
-			public void didSharingDevice(GizWifiErrorCode result, String deviceID, int sharingID,
-					Bitmap QRCodeImage) {
-				super.didSharingDevice(result, deviceID, sharingID, QRCodeImage);
-
-				if (result.ordinal() == 0) {
-					Toast.makeText(userSharedActivity.this, getResources().getString(R.string.alawyssend), 1).show();
-					finish();
-				} else {
-					Toast.makeText(userSharedActivity.this, getResources().getString(R.string.send_failed1), 2).show();
-
-				}
-
-			}
-
-		});
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-
-			finish();
-			break;
-
-		}
-		return super.onOptionsItemSelected(item);
-	}
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

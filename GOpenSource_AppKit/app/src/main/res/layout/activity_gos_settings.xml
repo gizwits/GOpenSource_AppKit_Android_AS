@@ -2,27 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/border_color" />
 
     <LinearLayout
         android:id="@+id/deviceshared"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:background="@color/white"
         android:clickable="true"
         android:gravity="center_vertical"
         android:onClick="deviceshared"
         android:paddingBottom="10dp"
-        android:paddingTop="10dp" >
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/personal_sharing_icon" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:text="@string/deviceshared"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
 
         <ImageView
@@ -32,115 +42,34 @@
             android:src="@drawable/right_icon" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/bushu"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
-        android:clipChildren="true"
-        android:gravity="center_vertical"
-        android:onClick="bushu"
-        android:visibility="gone"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp" >
+        android:layout_height="1dp"
+        android:background="@color/line_color" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:text="@string/Independent_deployment"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/right_icon" />
-    </LinearLayout>
-    
-    
-    
-    
-    
-    <LinearLayout
-        android:id="@+id/mozu"
-          android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:onClick="mozu"
-        android:visibility="gone"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp" >
-
-        <TextView
-           android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:text="@string/mozhu"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/right_icon" />
-    </LinearLayout>
-
-    <LinearLayout
-          android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/opinion_feedback"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:onClick="faceback"
-        android:visibility="gone"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp" >
-
-        <TextView
-           android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:text="@string/opinion_feedback"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/right_icon" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llAbout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:background="@color/white"
         android:gravity="center_vertical"
         android:paddingBottom="10dp"
-        android:paddingTop="10dp" >
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/about_logo" />
 
         <TextView
             android:id="@+id/SSID_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:text="@string/about"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
 
         <ImageView
@@ -151,23 +80,33 @@
             android:src="@drawable/right_icon" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color" />
+
     <LinearLayout
         android:id="@+id/usermanager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="24dp"
         android:background="@color/white"
         android:gravity="center_vertical"
         android:paddingBottom="10dp"
-        android:paddingTop="10dp" >
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:layout_width="51dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/personalcenter_usermanger_icon" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:text="@string/user_management"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
 
         <TextView
@@ -176,9 +115,11 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
+            android:ellipsize="end"
             android:gravity="right"
+            android:singleLine="true"
             android:text="@string/user_management"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
 
         <ImageView
@@ -188,7 +129,12 @@
             android:src="@drawable/right_icon" />
     </LinearLayout>
 
-    <LinearLayout
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color" />
+
+    <RelativeLayout
         android:id="@+id/lllogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -196,16 +142,21 @@
         android:background="@color/white"
         android:gravity="center_vertical"
         android:paddingBottom="10dp"
-        android:paddingTop="10dp" >
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:layout_width="51dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/personalcenter_usermanger_icon" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_centerInParent="true"
             android:text="@string/log_in"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

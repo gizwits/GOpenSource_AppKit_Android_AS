@@ -2,21 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
-    <ScrollView
+    <include layout="@layout/header_toolbar" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent">
 
-        <com.gizwits.opensource.appkit.view.SlideListView2
-            android:id="@+id/devicelist"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/border_color" />
+
+
+        <TextView
+            android:id="@+id/tvNoMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="@string/no_message"
+            android:textColor="@color/text_state"
+            android:textSize="16sp" />
+
+        <com.gizwits.opensource.appkit.view.VerticalSwipeRefreshLayout
+            android:id="@+id/id_swipe_ly"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:divider="@color/line_gray"
-            android:dividerHeight="0.5dp"
-            android:listSelector="@drawable/devicelist_item_selector" >
-        </com.gizwits.opensource.appkit.view.SlideListView2>
-    </ScrollView>
+            android:layout_marginTop="10dp">
 
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.gizwits.opensource.appkit.view.SlideListView2
+                    android:id="@+id/devicelist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:divider="@color/line_gray"
+                    android:dividerHeight="0.5dp"
+                    android:listSelector="@drawable/devicelist_item_selector"></com.gizwits.opensource.appkit.view.SlideListView2>
+            </ScrollView>
+        </com.gizwits.opensource.appkit.view.VerticalSwipeRefreshLayout>
+    </RelativeLayout>
 </LinearLayout>

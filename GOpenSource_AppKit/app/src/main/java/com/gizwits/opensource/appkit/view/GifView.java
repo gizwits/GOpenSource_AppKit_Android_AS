@@ -1,7 +1,5 @@
 package com.gizwits.opensource.appkit.view;
 
-import com.gizwits.opensource.appkit.R;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,6 +8,9 @@ import android.graphics.Movie;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.gizwits.opensource.appkit.R;
+
 
 @SuppressLint("Override")
 public class GifView extends View {

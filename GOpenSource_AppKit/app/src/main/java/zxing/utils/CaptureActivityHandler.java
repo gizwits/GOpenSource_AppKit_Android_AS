@@ -16,17 +16,19 @@
 
 package zxing.utils;
 
-import com.gizwits.opensource.appkit.R;
-import com.google.zxing.Result;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+
+import com.gizwits.opensource.appkit.R;
+import com.google.zxing.Result;
+
 import zxing.CaptureActivity;
 import zxing.camera.CameraManager;
 import zxing.decoding.DecodeThread;
+
 
 /**
  * This class handles all the messaging which comprises the state machine for

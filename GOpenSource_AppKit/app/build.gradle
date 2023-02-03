@@ -1,16 +1,35 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 25
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        applicationId "appkit.opensource.gizwits.com.myapplication"
-        minSdkVersion 16
-        targetSdkVersion 23
+        applicationId "com.gizwits.opensource.appkit"
+        minSdkVersion 21
+        targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "2.5.1.072715"
         multiDexEnabled true
+
+        manifestPlaceholders = [
+            JPUSH_PKGNAME : applicationId,
+            //JPush 上注册的包名对应的 Appkey.
+            JPUSH_APPKEY : "你的 Appkey ",
+            //暂时填写默认值即可.
+            JPUSH_CHANNEL : "developer-default",
+
+            //若不集成厂商通道，可直接跳过以下配置
+            MEIZU_APPKEY : "MZ-魅族的APPKEY",
+            MEIZU_APPID : "MZ-魅族的APPID",
+            XIAOMI_APPID : "MI-小米的APPID",
+            XIAOMI_APPKEY : "MI-小米的APPKEY",
+            OPPO_APPKEY : "OP-oppo的APPKEY",
+            OPPO_APPID : "OP-oppo的APPID",
+            OPPO_APPSECRET : "OP-oppo的APPSECRET",
+            VIVO_APPKEY : "vivo的APPKEY",
+            VIVO_APPID : "vivo的APPID",
+            HONOR_APPID : "Honor的APP ID",
+        ]
     }
     buildTypes {
         release {
@@ -18,28 +37,38 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile files('libs/BLEasyConfig.jar')
-    compile files('libs/easylink2.0.jar')
-    compile files('libs/hiflying-iots-android-smartlink7.0.2.jar')
-    compile files('libs/GizWifiSDK.jar')
-    compile files('libs/jpush-android-2.1.5.jar')
-    compile files('libs/Lark7618SDK_noudp1606031910_0101.jar')
-    compile files('libs/libammsdk.jar')
-    compile files('libs/libEsptouch_v0.3.3.4_3.jar')
-    compile files('libs/libForEElink.jar')
-    compile files('libs/LSFSK_1.0.jar')
-    compile files('libs/mta-sdk-1.6.2.jar')
-    compile files('libs/OneShotConfig.jar')
-    compile files('libs/open_sdk_r5756.jar')
-    compile files('libs/pushservice-5.0.0.66.jar')
-    compile files('libs/simpleconfigwizardlib.jar')
-    compile files('libs/xUtils-2.6.14.jar')
-    compile files('libs/zxing.jar')
-    compile 'com.yanzhenjie:permission:1.0.5'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':jiguang')
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:25.4.0'
+    implementation files('libs/BLEasyConfig.jar')
+    implementation files('libs/easylink2.0.jar')
+    implementation files('libs/GizWifiSDK.jar')
+    implementation files('libs/Lark7618SDK_noudp1606031910_0101.jar')
+    implementation files('libs/libammsdk.jar')
+    implementation files('libs/libForEElink.jar')
+    implementation files('libs/LSFSK_1.0.jar')
+    implementation files('libs/ltlink2.jar')
+    implementation files('libs/mta-sdk-1.6.2.jar')
+    implementation files('libs/OneShotConfig.jar')
+    implementation files('libs/open_sdk_r5756.jar')
+    implementation files('libs/pushservice-5.6.0.30.jar')
+    implementation files('libs/simpleconfigwizardlib.jar')
+    implementation files('libs/xUtils-2.6.14.jar')
+    implementation files('libs/zxing.jar')
+    implementation 'com.android.support:design:25.3.0'
+    implementation 'com.yanzhenjie:permission:1.0.5'
 }

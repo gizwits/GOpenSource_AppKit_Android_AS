@@ -1,5 +1,7 @@
 package com.gizwits.opensource.appkit.utils;
 
+import android.annotation.SuppressLint;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -9,8 +11,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
-
-import android.annotation.SuppressLint;
 
 /**
  * 日期操作工具类，主要实现了日期的常用操作。

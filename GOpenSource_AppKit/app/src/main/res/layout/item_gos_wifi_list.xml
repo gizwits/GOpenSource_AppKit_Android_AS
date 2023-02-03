@@ -19,14 +19,14 @@
             android:layout_weight="1"
             android:text="TextView"
             android:textSize="16sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/text_color" />
 
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginRight="20dp"
-            android:src="@drawable/button_more" />
+            android:src="@drawable/common_arrow_right" />
     </LinearLayout>
 
 </LinearLayout>

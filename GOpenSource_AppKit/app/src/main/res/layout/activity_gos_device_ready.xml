@@ -1,69 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnNext"
-        style="@style/ButtonStyle"
+    <include layout="@layout/header_toolbar"/>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="0dp"
-        android:text="@string/next" />
+        android:layout_height="1dp"
+        android:background="@color/border_color" />
 
     <TextView
-        android:id="@+id/tvNoRedLight"
+        android:id="@+id/tvDeviceTip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_alignTop="@+id/textView1"
-        android:layout_marginTop="33dp"
-        android:text="@string/noredlight"
-        android:textColor="@color/text_blue" />
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/power_on"
+        android:textColor="@color/text_color"
+        android:textSize="30sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_above="@+id/btnNext"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="0dp"
-        android:gravity="center" >
+    <TextView
+        android:id="@+id/tvReady"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/common_ready_message"
+        android:textSize="16sp" />
 
-        <CheckBox
-            android:id="@+id/cbSelect"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:background="@drawable/checkbox_hook_selector"
-            android:button="@null" />
-
-        <TextView
-            android:id="@+id/tvSelect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="@string/finished"
-            android:textColor="@color/black" />
-    </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/mymyshoft" />
-
-    <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/ivReady"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:text="@string/like_img" />
+        android:layout_marginTop="20dp"
+        android:src="@drawable/deviceonboarding_softap_tips" />
 
-</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btnNext"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:text="@string/complete" />
+    </RelativeLayout>
+
+
+</LinearLayout>

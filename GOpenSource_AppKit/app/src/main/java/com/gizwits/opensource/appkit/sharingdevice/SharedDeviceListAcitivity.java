@@ -1,26 +1,5 @@
 package com.gizwits.opensource.appkit.sharingdevice;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import com.gizwits.gizwifisdk.api.GizDeviceSharing;
-import com.gizwits.gizwifisdk.api.GizDeviceSharingInfo;
-import com.gizwits.gizwifisdk.api.GizMessage;
-import com.gizwits.gizwifisdk.enumration.GizDeviceSharingType;
-import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
-import com.gizwits.gizwifisdk.listener.GizDeviceSharingListener;
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
-import com.gizwits.opensource.appkit.CommonModule.GosConstant;
-import com.gizwits.opensource.appkit.CommonModule.NoScrollViewPager;
-import com.gizwits.opensource.appkit.sharingdevice.ViewPagerIndicator.PageChangeListener;
-import com.gizwits.opensource.appkit.sharingdevice.mySharedFragment2.myadapter;
-import com.gizwits.opensource.appkit.utils.DateUtil;
-
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -30,6 +9,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gizwits.gizwifisdk.api.GizDeviceSharing;
+import com.gizwits.gizwifisdk.api.GizDeviceSharingInfo;
+import com.gizwits.gizwifisdk.enumration.GizDeviceSharingType;
+import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
+import com.gizwits.gizwifisdk.listener.GizDeviceSharingListener;
+import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+import com.gizwits.opensource.appkit.CommonModule.GosConstant;
+import com.gizwits.opensource.appkit.CommonModule.NoScrollViewPager;
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.utils.DateUtil;
+import com.gizwits.opensource.appkit.view.ViewPagerIndicator;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class SharedDeviceListAcitivity extends GosBaseActivity {
 
@@ -43,7 +39,7 @@ public class SharedDeviceListAcitivity extends GosBaseActivity {
 
 		setContentView(R.layout.activity_gos_shared_device_list);
 
-		setActionBar(true, true, R.string.sharedlist);
+		setToolBar(true, R.string.sharedlist);
 		initData();
 		initView();
 	}
@@ -51,14 +47,14 @@ public class SharedDeviceListAcitivity extends GosBaseActivity {
 	// 初始化tab标签中应该显示的文字
 	private void initData() {
 
-		SharedPreferences spf = getSharedPreferences("set", Context.MODE_PRIVATE);
 		token = spf.getString("Token", "");
 
 		myfragmentlist = new ArrayList<Fragment>();
 
-		mySharedFragment ment1 = new mySharedFragment();
+		SharedFragment ment1 = new SharedFragment();
 
-		mySharedFragment2 ment2 = new mySharedFragment2();
+		InvitedFragment ment2 = new InvitedFragment();
+
 
 		myfragmentlist.add(ment1);
 		myfragmentlist.add(ment2);
@@ -70,7 +66,7 @@ public class SharedDeviceListAcitivity extends GosBaseActivity {
 
 	private void initView() {
 
-		com.gizwits.opensource.appkit.sharingdevice.ViewPagerIndicator indicator = (ViewPagerIndicator) findViewById(
+		ViewPagerIndicator indicator = (ViewPagerIndicator) findViewById(
 				R.id.vpi_indicator);
 
 		indicator.setVisibleTabCount(2);
@@ -83,7 +79,7 @@ public class SharedDeviceListAcitivity extends GosBaseActivity {
 
 		indicator.setViewPager(vp_shared, 0);
 
-		indicator.setOnPageChangeListener(new PageChangeListener() {
+		indicator.setOnPageChangeListener(new ViewPagerIndicator.PageChangeListener() {
 
 			@Override
 			public void onPageSelected(int position) {
@@ -125,11 +121,11 @@ public class SharedDeviceListAcitivity extends GosBaseActivity {
 		public Fragment getItem(int arg0) {
 
 			if (arg0 == 0) {
-				mySharedFragment shared = new mySharedFragment();
+				SharedFragment shared = new SharedFragment();
 
 				return shared;
 			} else {
-				mySharedFragment2 shared = (mySharedFragment2) myfragmentlist.get(arg0);
+				InvitedFragment shared = (InvitedFragment) myfragmentlist.get(arg0);
 
 				return shared;
 
@@ -180,6 +176,7 @@ public class SharedDeviceListAcitivity extends GosBaseActivity {
 					List<GizDeviceSharingInfo> deviceSharingInfos) {
 				super.didGetDeviceSharingInfos(result, deviceID, deviceSharingInfos);
 
+
 				if (deviceSharingInfos != null) {
 					Collections.sort(deviceSharingInfos, new Comparator<GizDeviceSharingInfo>() {
 
@@ -196,24 +193,26 @@ public class SharedDeviceListAcitivity extends GosBaseActivity {
 
 					});
 				}
+
 				GosConstant.newmydeviceSharingInfos = deviceSharingInfos;
 
-				mySharedFragment2 fragment = (mySharedFragment2) myfragmentlist.get(1);
+				InvitedFragment fragment = (InvitedFragment) myfragmentlist.get(1);
 				TextView myview = fragment.getmyview();
 				if (deviceSharingInfos.size() == 0) {
 
 					myview.setVisibility(View.VISIBLE);
-					myview.setText(getResources().getString(R.string.you_have_no_invited_message));
+					myview.setText(getResources().getString(R.string.no_guest_users));
 				} else {
 					myview.setVisibility(View.GONE);
 				}
 
-				myadapter getmyadapter = fragment.getmyadapter();
+				InvitedFragment.myadapter getmyadapter = fragment.getmyadapter();
 				getmyadapter.notifyDataSetChanged();
 
 				if (result.ordinal() != 0) {
 					Toast.makeText(SharedDeviceListAcitivity.this, toastError(result), 2).show();
 				}
+
 
 			}
 

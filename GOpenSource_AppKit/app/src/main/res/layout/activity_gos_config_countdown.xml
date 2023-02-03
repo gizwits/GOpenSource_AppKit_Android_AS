@@ -1,36 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/white" android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/layoutparms"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:gravity="center_vertical"
-        android:paddingLeft="80dp"
-        android:paddingRight="80dp"
-        android:paddingTop="80dp" >
+    <include layout="@layout/header_toolbar" />
 
-        <com.gizwits.opensource.appkit.view.RoundProgressBar
-            android:id="@+id/rpbConfig"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="16dp" />
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/border_color" />
+
+
+        <RelativeLayout android:id="@+id/params" android:layout_width="match_parent"
+            android:layout_height="280dp" android:gravity="center_vertical"
+            android:paddingLeft="85dp" android:paddingRight="85dp" android:paddingTop="50dp">
+
+            <com.gizwits.opensource.appkit.view.RoundProgressBar android:id="@+id/rpbConfig"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:layout_centerInParent="true" android:layout_marginLeft="16dp" />
+        </RelativeLayout>
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_centerVertical="true"
+            android:gravity="center_horizontal" android:text="@string/closer_to" />
+
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp" android:orientation="vertical">
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View android:layout_width="4dp" android:layout_height="4dp"
+                    android:background="@drawable/round_dot" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp" android:text="@string/search_device"
+                    android:textColor="@color/text_color" android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View android:layout_width="4dp" android:layout_height="4dp"
+                    android:background="@drawable/round_dot" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp" android:text="@string/register_gizwits"
+                    android:textColor="@color/text_color" android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:gravity="center_vertical" android:orientation="horizontal">
+
+                <View android:layout_width="4dp" android:layout_height="4dp"
+                    android:background="@drawable/round_dot" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp" android:text="@string/add_complete"
+                    android:textColor="@color/text_color" android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/device_connect" />
-
-    <TextView
-        android:id="@+id/tvTimer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal" />
-
 </LinearLayout>

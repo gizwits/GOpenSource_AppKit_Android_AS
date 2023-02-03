@@ -1,129 +1,139 @@
 package com.gizwits.opensource.appkit.ConfigModule;
 
-import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
-import com.gizwits.opensource.appkit.utils.NetUtils;
-
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.gizwits.opensource.appkit.CommonModule.GosDeploy;
+import com.gizwits.opensource.appkit.DeviceModule.GosMainActivity;
+import com.gizwits.opensource.appkit.R;
+import com.gizwits.opensource.appkit.utils.AssetsUtils;
+import com.gizwits.opensource.appkit.utils.ToolUtils;
 
 public class GosDeviceReadyActivity extends GosConfigModuleBaseActivity implements OnClickListener {
 
-	/** The cb Select */
-	CheckBox cbSelect;
+    /**
+     * The tv Ready
+     */
+    TextView tvReady;
 
-	/** The tv Select */
-	TextView tvSelect;
+    /**
+     * The tv DeviceTip
+     */
+    TextView tvDeviceTips;
 
-	/** The btn Next */
-	Button btnNext;
+    /**
+     * The btn Next
+     */
+    Button btnNext;
 
-	/** The tv NoRedLight */
-	TextView tvNoRedLight;
+    private int sum = 0;
+    /**
+     * The flag
+     */
+    boolean flag = false;
 
-	/** The flag */
-	boolean flag = false;
+    boolean isAirLink = false;
+    private ImageView ivReady;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_gos_device_ready);
-		// 设置ActionBar
-		setActionBar(true, true, R.string.join_by_hands);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gos_device_ready);
+        // 设置ActionBar
+        setToolBar(true, R.string.model_confirmation);
+        /**   判断是否是从一键配置界面传过去的  */
+        isAirLink = getIntent().getBooleanExtra("isAirLink", false);
 
-		initView();
-		initEvent();
-	}
+        initView();
+        initEvent();
+    }
 
-	private void initView() {
-		cbSelect = (CheckBox) findViewById(R.id.cbSelect);
-		btnNext = (Button) findViewById(R.id.btnNext);
-		tvNoRedLight = (TextView) findViewById(R.id.tvNoRedLight);
-		tvSelect = (TextView) findViewById(R.id.tvSelect);
+    private void initView() {
+        tvReady = (TextView) findViewById(R.id.tvReady);
+        tvDeviceTips = (TextView) findViewById(R.id.tvDeviceTip);
+        btnNext = (Button) findViewById(R.id.btnNext);
+        ivReady = (ImageView) findViewById(R.id.ivReady);
+        SpannableString spannableString = new SpannableString(getString(R.string.common_ready_message));
+        if (AssetsUtils.isZh(this)) {
+            spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FF9500")), 9, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        } else {
+            spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FF9500")), 28, 45, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
 
-		// 配置文件部署
-		btnNext.setBackgroundDrawable(GosDeploy.setButtonBackgroundColor());
-		btnNext.setTextColor(GosDeploy.setButtonTextColor());
+        tvReady.setText(spannableString);
 
-	}
+        // 配置文件部署
+        btnNext.setBackgroundDrawable(GosDeploy.appConfig_BackgroundColor());
+        btnNext.setTextColor(GosDeploy.appConfig_Contrast());
 
-	private void initEvent() {
-		tvNoRedLight.setOnClickListener(this);
-		tvSelect.setOnClickListener(this);
-		btnNext.setOnClickListener(this);
-		btnNext.setClickable(false);
-		btnNext.setBackgroundResource(R.drawable.btn_next_shape_gray);
+    }
 
-		cbSelect.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+    private void initEvent() {
+        btnNext.setOnClickListener(this);
+        tvDeviceTips.setOnClickListener(this);
+        ivReady.setOnClickListener(this);
+    }
 
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if (isChecked) {
-					btnNext.setBackgroundDrawable(GosDeploy.setButtonBackgroundColor());;
-					btnNext.setClickable(true);
-				} else {
-					btnNext.setBackgroundResource(R.drawable.btn_next_shape_gray);
-					btnNext.setClickable(false);
-				}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
 
-			}
-		});
-	}
+            case R.id.btnNext:
+                if (ToolUtils.noDoubleClick()) {
+                    sum = 0;
+                    Intent intent2 = new Intent(GosDeviceReadyActivity.this, GosChooseDeviceActivity.class);
+                    startActivity(intent2);
+                }
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.tvNoRedLight:
-			Intent intent = new Intent(GosDeviceReadyActivity.this, GosDeviceResetActivity.class);
-			intent.putExtra("flag", "");
-			startActivity(intent);
-			finish();
-			break;
+                break;
 
-		case R.id.btnNext:
-			Intent intent2 = new Intent(GosDeviceReadyActivity.this, GosChooseDeviceActivity.class);
-			startActivity(intent2);
-			finish();
-			break;
-		case R.id.tvSelect:
-			if (cbSelect.isChecked()) {
-				cbSelect.setChecked(false);
-			} else {
-				cbSelect.setChecked(true);
-			}
-			break;
+            default:
+                break;
+        }
+    }
 
-		default:
-			break;
-		}
-	}
+    // 屏蔽掉返回键
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            sum = 0;
+            if (isAirLink) {
+                Intent intent = new Intent(GosDeviceReadyActivity.this, GosMainActivity.class);
+                startActivity(intent);
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return false;
+    }
 
-	// 屏蔽掉返回键
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			quitAlert(this);
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                sum = 0;
+                if (isAirLink) {
+                    Intent intent = new Intent(GosDeviceReadyActivity.this, GosMainActivity.class);
+                    startActivity(intent);
+                } else {
+                    finish();
+                }
+                break;
+        }
+        return true;
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			quitAlert(this);
-			break;
-		}
-		return true;
-	}
+
 }

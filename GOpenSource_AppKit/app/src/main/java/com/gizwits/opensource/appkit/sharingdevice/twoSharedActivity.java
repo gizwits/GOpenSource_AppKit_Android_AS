@@ -1,24 +1,23 @@
 package com.gizwits.opensource.appkit.sharingdevice;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.gizwits.gizwifisdk.api.GizDeviceSharing;
 import com.gizwits.gizwifisdk.enumration.GizDeviceSharingWay;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
 import com.gizwits.gizwifisdk.listener.GizDeviceSharingListener;
-import com.gizwits.opensource.appkit.R;
 import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
+import com.gizwits.opensource.appkit.R;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class twoSharedActivity extends GosBaseActivity {
 
@@ -36,7 +35,7 @@ public class twoSharedActivity extends GosBaseActivity {
 
 		setContentView(R.layout.activity_gos_two_shared);
 
-		setActionBar(true, true, R.string.scan_code_sharing);
+		setToolBar(true, R.string.scan_code_sharing);
 
 		initData();
 		initView();
@@ -144,7 +143,6 @@ public class twoSharedActivity extends GosBaseActivity {
 
 			// time = time - 1;
 
-			Log.e("ssssssss", "sssssss" + time);
 			if (time > 0) {
 				timeout2 = splits[0] + time + splits[1];
 

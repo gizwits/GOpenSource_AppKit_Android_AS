@@ -4,14 +4,14 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="40dp"
     android:layout_marginRight="40dp"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/alert_top_shape"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView3"
@@ -19,8 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="15dp"
+            android:gravity="center"
             android:text="@string/prompt"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -29,15 +30,18 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_prompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:gravity="center"
-            android:layout_marginBottom="2dp"
             android:text="@string/cancel_besure"
+            android:textColor="@color/text_color"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -45,14 +49,13 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/line_gray"
-        android:orientation="vertical" >
-    </LinearLayout>
+        android:orientation="vertical"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginBottom="10dp"
-        android:gravity="center" >
+        android:gravity="center">
 
         <LinearLayout
             android:id="@+id/llNo"
@@ -61,13 +64,13 @@
             android:layout_weight="1"
             android:background="@drawable/alert_bottom_left_shape"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/no"
+                android:text="@string/cancel"
                 android:textColor="@color/alert_blue" />
         </LinearLayout>
 
@@ -75,8 +78,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/line_gray"
-            android:orientation="vertical" >
-        </LinearLayout>
+            android:orientation="vertical"></LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSure"
@@ -85,11 +87,9 @@
             android:layout_weight="1"
             android:background="@drawable/alert_bottom_right_shape"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+            <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/besure"
                 android:textColor="@color/alert_blue" />

@@ -16,8 +16,13 @@
 
 package zxing.decoding;
 
-import java.io.ByteArrayOutputStream;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.hardware.Camera.Size;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 import com.gizwits.opensource.appkit.R;
 import com.google.zxing.BinaryBitmap;
@@ -28,14 +33,11 @@ import com.google.zxing.ReaderException;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.hardware.Camera.Size;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import java.io.ByteArrayOutputStream;
+import java.util.Map;
+
 import zxing.CaptureActivity;
+
 
 public class DecodeHandler extends Handler {
 

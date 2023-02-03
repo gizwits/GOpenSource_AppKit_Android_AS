@@ -1,49 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background_color" android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/usersharedtext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:text="共享旺旺健康宠物记录仪，与小伙伴一起使用。" />
+    <include layout="@layout/header_toolbar" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@color/white" android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/timeout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="@string/zxingtimeout" />
+        <TextView android:id="@+id/usersharedtext" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="10dp"
+            android:layout_marginLeft="18dp" android:layout_marginTop="30dp"
+            android:text="共享旺旺健康宠物记录仪，与小伙伴一起使用。" android:textColor="@color/text_state" />
 
-    <ImageView
-        android:id="@+id/myimageview"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp" />
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/line_color" />
 
-    <TextView
-        android:id="@+id/bottomtext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:gravity="center_horizontal"
-        android:text="@string/saomatianjia" />
+        <TextView android:id="@+id/timeout" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="30dp"
+            android:gravity="center_horizontal" android:text="@string/zxingtimeout"
+            android:textColor="@color/text_state" android:textSize="16sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray" />
+        <ImageView android:id="@+id/myimageview" android:layout_width="200dp"
+            android:layout_height="200dp" android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp" android:layout_marginTop="10dp" />
 
+        <TextView android:id="@+id/bottomtext" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="30dp"
+            android:gravity="center_horizontal" android:text="@string/saomatianjia"
+            android:textColor="@color/text_state" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/line_color" />
+    </LinearLayout>
 </LinearLayout>

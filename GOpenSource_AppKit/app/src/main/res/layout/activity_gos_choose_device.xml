@@ -2,24 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@color/background_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/header_toolbar"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_color" />
 
     <TextView
-        android:id="@+id/nodevice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
         android:layout_marginBottom="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/nodevice"
-        android:textColor="@color/text_blue" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/itemtext_start"
+        android:textColor="@color/text_state"
+        android:textSize="15sp" />
 
     <ListView
         android:id="@+id/list_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scrollbars="none" >
-    </ListView>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"></ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/nodevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nodevice"
+            android:textColor="@color/sample_deploy"
+            android:textSize="16sp" />
+    </RelativeLayout>
 
 </LinearLayout>
